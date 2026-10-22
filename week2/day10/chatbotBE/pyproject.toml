@@ -1,0 +1,26 @@
+[project]
+name = "day10"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Priyanka Vishwakarma21", email = "vishwakarmapriyanka84@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "fastapi[standard]>=0.157.0",
+    "groq>=1.7.0",
+    "pydantic>=2.14.1",
+    "pypdf>=6.21.2",
+    "python-docx>=1.2.0",
+    "python-dotenv>=1.2.4",
+    "unicorn>=2.1.4",
+    "uvicorn>=0.54.0",
+]
+
+[project.scripts]
+day10 = "day10:main"
+
+[build-system]
+requires = ["uv_build>=0.12.17,<0.13.0"]
+build-backend = "uv_build"
