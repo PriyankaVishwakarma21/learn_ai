@@ -1,0 +1,40 @@
+# Boards to poll. One entry per company.
+#
+#   ats:   greenhouse | lever | ashby
+#   slug:  the company's board identifier (NOT its domain)
+#   name:  whatever you want to see in the digest
+#
+# The slug is the last path segment of the company's public careers board:
+#   https://boards.greenhouse.io/<slug>        -> ats: greenhouse
+#   https://jobs.lever.co/<slug>               -> ats: lever
+#   https://jobs.ashbyhq.com/<slug>            -> ats: ashby
+#
+# THESE ARE EXAMPLES — verify each one before you trust the output. Companies
+# migrate between ATS vendors and slugs go dead. Check a slug in your browser:
+#   https://boards-api.greenhouse.io/v1/boards/<slug>/jobs?content=true
+#   https://api.lever.co/v0/postings/<slug>?mode=json
+#   https://api.ashbyhq.com/posting-api/job-board/<slug>?includeCompensation=true
+#
+# A dead slug is not fatal: fetch_board prints the HTTP status and returns [],
+# so one bad entry never takes down the run. Watch the per-board job counts on
+# stdout — a board reporting 0 jobs every day is a slug that needs fixing.
+#
+# Start with 10-15 companies you would actually join. A list of 200 is mostly
+# noise and makes the prefilter counts impossible to reason about.
+
+companies:
+ - {ats: greenhouse, slug: sigmoid, name: Sigmoid}
+ - {ats: greenhouse, slug: platformscience, name: Platform Science}
+ - {ats: greenhouse, slug: sonicwall, name: SonicWall}
+ - {ats: greenhouse, slug: superapp, name: SuperApp}
+ - {ats: greenhouse, slug: conga, name: Conga}
+ - {ats: lever, slug: smart-working-solutions, name: Smart Working Solutions}
+ - {ats: lever, slug: neuron7, name: Neuron7}
+ - {ats: lever, slug: oci, name: Object Computing, Inc.}
+ - {ats: lever, slug: brillio-2, name: Brillio}
+ - {ats: lever, slug: safe, name: Safe Security}
+ - {ats: lever, slug: levelai, name: Level AI}
+ - {ats: ashby, slug: mem0, name: Mem0}
+ - {ats: ashby, slug: emergence, name: Emergence Software}
+ - {ats: ashby, slug: weave, name: Weave}
+ - {ats: ashby, slug: Soulside%20AI, name: Soulside AI}
