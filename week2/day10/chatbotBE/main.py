@@ -1,5 +1,6 @@
 import os
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
+from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
 from groq import Groq
 from dotenv import load_dotenv
@@ -19,6 +20,7 @@ model="openai/gpt-oss-120b"
 
 origins = [
     "http://localhost:3000",
+    "http://127.0.0.1:3000",
 ]
 
 app.add_middleware(
@@ -125,11 +127,22 @@ def  parse_resume(resume_text):
     resume = Resume(**data)
     return resume
 
+cached_resume: Resume | None = None
+
+def get_parsed_resume() -> Resume:
+    global cached_resume
+    if cached_resume is None:
+        resume_path = Path(__file__).parent / "resume.pdf"
+        if not resume_path.exists():
+            resume_path = Path("resume.pdf")
+        resume_text = read_pdf(resume_path)
+        cached_resume = parse_resume(resume_text)
+    return cached_resume
+
 class ChatRequest(BaseModel):
     question: str
 
-def ask_candidate(question: str, resume: Resume):
-
+def ask_candidate_stream(question: str, resume: Resume):
     system_prompt = f"""
 You are an AI assistant representing a job candidate.
 
@@ -152,35 +165,35 @@ say
 
 5. Answer as if HR is interviewing this candidate.
 """
-
-    response = client.chat.completions.create(
-
+    stream = client.chat.completions.create(
         model=model,
-
         messages=[
-
             {
-                "role":"system",
-                "content":system_prompt
+                "role": "system",
+                "content": system_prompt
             },
-
             {
-                "role":"user",
-                "content":question
+                "role": "user",
+                "content": question
             }
-
-        ]
-
+        ],
+        stream=True
     )
-
-    return response.choices[0].message.content
-
-
+    for chunk in stream:
+        content = chunk.choices[0].delta.content
+        if content:
+            yield content
 
 @app.post("/chat")
-async def chat(req: ChatRequest):
-    print("request: ",req)
-    resume_text = read_pdf(Path("resume.pdf"))
-    resume = parse_resume(resume_text)
-    answer  = ask_candidate(req.question,resume)
-    return {"response": answer}
+def chat(req: ChatRequest):
+    print("request: ", req)
+    resume = get_parsed_resume()
+    return StreamingResponse(
+        ask_candidate_stream(req.question, resume),
+        media_type="text/plain; charset=utf-8",
+        headers={
+            "Cache-Control": "no-cache",
+            "Connection": "keep-alive",
+            "X-Accel-Buffering": "no"
+        }
+    )
