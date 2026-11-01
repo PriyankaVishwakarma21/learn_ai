@@ -62,9 +62,10 @@ def ask_llm(question,context):
     return answer
 
 
-query = "How many vacation do I have?"
+query = "I love pizza."
 query_embedding = embeddingModel.encode(query)
 score,context=retrive(query_embedding)
+print(f"Score: {score}", f"Context: {context}")
 answer=ask_llm(query,context)
 print(f"Question: {query}")
 print(f"Answer: {answer}")
