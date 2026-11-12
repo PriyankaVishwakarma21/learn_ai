@@ -33,7 +33,6 @@ export default function Home() {
 
     setInput("");
 
-    // Add user message and empty assistant message for streaming into
     setMessages((prev) => [
       ...prev,
       { role: "user", content: question },
@@ -42,10 +41,7 @@ export default function Home() {
     setIsStreaming(true);
 
     try {
-      const backendUrl =
-        process.env.NEXT_PUBLIC_BACKENDURL;
-
-      const res = await fetch(`${backendUrl}/chat`, {
+      const res = await fetch("/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -78,10 +74,30 @@ export default function Home() {
               content: updated[lastIdx].content + chunk,
             };
           }
+
           return updated;
         });
       }
-    } catch (error: any) {
+
+      // Flush any remaining decoded text
+      const remaining = decoder.decode();
+
+      if (remaining) {
+        setMessages((prev) => {
+          const updated = [...prev];
+          const lastIdx = updated.length - 1;
+
+          if (lastIdx >= 0 && updated[lastIdx].role === "assistant") {
+            updated[lastIdx] = {
+              ...updated[lastIdx],
+              content: updated[lastIdx].content + remaining,
+            };
+          }
+
+          return updated;
+        });
+      }
+    } catch (error) {
       console.error("Streaming error:", error);
       setMessages((prev) => {
         const updated = [...prev];
