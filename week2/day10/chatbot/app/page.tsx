@@ -43,7 +43,7 @@ export default function Home() {
 
     try {
       const backendUrl =
-        process.env.NEXT_PUBLIC_BACKENDURL || "http://localhost:8000";
+        process.env.NEXT_PUBLIC_BACKENDURL;
 
       const res = await fetch(`${backendUrl}/chat`, {
         method: "POST",
