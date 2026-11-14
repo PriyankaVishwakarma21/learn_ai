@@ -1,0 +1,3696 @@
+{
+  "id": "RNa0Lx4nu80",
+  "title": "The Best Course On System Design in 2026",
+  "url": "https://www.youtube.com/watch?v=RNa0Lx4nu80",
+  "full_text": "Hello kids, boys and girls, ladies and gentlemen, this was my dream project. I had wanted to teach system design for a long time, but I was learning it myself . It took me some time, and I don't think anyone else will teach design this way. I don't think anyone will teach you high-level design at this pace. It takes 20 to 21 lectures to cover the high-level design that is asked in every interview. So, in my opinion, in today's AI era where you all are afraid that AI writes code. System design is very important. When we were in college, it wasn't that important. We learned it somehow through work and studies. But for you today, writing code is not a USP , is it? You say you are good at fast typing. Nobody cares about that. The cloud doesn't care about syntax errors these days. But this system design, especially high-level design. I am not talking about low-level design. High-level design is what sets you apart from the crowd. When you do well in a high-level interview, the interviewer feels that this person understands computer science and can make decisions in the company. Because as a fresher, people say where will you do decision-making? Whether to use an array or linked list, that is not a decision. High-level design is that. It is a decision. Okay? So, it will be a total of 30 lectures. In 21 out of 30 lectures , I will cover high-level design concepts, including today's introduction . The difference between low-level design and how networking works. Basics of what databases are. What are SQL, NoSQL, and all that. What are queues? What are message queues? What is Kafka? What are APIs? What is distributed system architecture? What is monolith architecture? What is sharding ? Caching—whatever buzzwords you have heard in your life until now, I will teach you all of that in 20 to 21 lectures. After that, I will show you six, seven, or eight case studies just like they are actually asked: build a URL shortener, rate limiter, a Shopify-like app, or a video streaming app. I will show you all of that live and explain what is done in an interview. How to answer in an interview and what is expected. And system design is also very important to study because there is no single correct answer in system design. Unlike LeetCode, there is no single correct answer in system design. You cannot memorize a perfect answer that works everywhere. I will explain this to you very patiently over the next 10 minutes. All right? So let's begin. The plan is to start this from today. Try reading it. Listen carefully. Please sit with a notebook. Do not keep asking me for notes repeatedly. I do not provide notes . If I provide notes. Then what will you do? Take out a pen and paper, listen, and understand. And let's move forward. First, let me prove what I said earlier , that there is no correct answer in system design. There is no perfect answer. For example, if someone asks you in an interview, \"Tell me, I have to go from Delhi to Patna.\"\"I have to go from Delhi to Patna.\"\"And I have three options.\" \"Either I can go by flight, or I can go by AC3.\" \"It's okay, or I can go in the general coach of the train.\"\"Now tell me, which one is the best among the three?\"\"Now, what answer will you give?\" Everyone will give a different answer to this. There is no single answer to this. Like , I feel that if I had to go personally , I would go by flight. But that is because I have less time and more money , which is why I am choosing the flight , right? If a student is poor and doesn't even have the money to fly, like 5000 rupees, then how will they go? Then they will either go by AC3 or by general class. If a child is very poor, how will they go? Even instead of AC3, they will have to go by general. If someone has plenty of time, why would they go by flight? They will go by train and sleep , because there is comfort in the train . You go to sleep in a train. In a flight, you go sitting like this. There is no comfort in a flight. Do you understand? For example, every system has its criteria. Before arriving at any system design answer, you have to understand what your criteria are. What are the things you can compromise on? Which things are very important to you? For example, if we talk about time , it takes the least amount of time to travel by flight. Right? Going by flight takes the least time, so in terms of time, it is the best. AC3 is okay, it takes time. So we can call AC3 medium. Now, it's obvious that the time taken in AC3 is the same as the time taken in the general coach. So, general is also medium in this. Okay. Then comes price. Flight is the worst in terms of price. It costs the most, right? So, it's the worst option for you. If someone wants to save money, then flight is the worst option for them. Okay. AC3 is medium. Right. It doesn't cost that much, but it costs a decent amount. In terms of price , general is the best. Right? You will spend the least amount of money in the general coach. Let's look at comfort. If someone needs comfort. There is comfort in a flight. You have to travel sitting down. Let's call this medium. It's decent. AC3 has the best comfort. You get a seat or a sheet on which you can sleep and travel. General has the worst comfort. General has the worst comfort. Now, we will answer based on this matrix , right? How can you give an answer beforehand about which one is the best? You can't give one, right? So, you will have to ask your user that okay, we can tell you. You tell us what is most important to you? If a person says that I only want to save time. I have a lot of money and I don't care about comfort . I will even travel standing up. The time taken should be minimal. Then they will go by flight. Someone might say I am not ready to pay money. Make me do anything else. They will go in general. Someone might say I cannot compromise on comfort. I have back pain, I will only travel sleeping. They will have to go by AC3. Now, no system can be made perfect. What do I mean by that? You cannot make all three of these the best. For example, if you say that I want to take less time, then someone will say go by flight. But now, comfort in flight is medium. You might say I want to travel sleeping in the flight too. Which means I want to go in the flight's business class. As soon as you go for that option, your price will increase five times. So, all these things work against each other. In any system, you cannot make everything good. There is no such computer system in the world that is good at everything and can be called the world's best system. No, that's why in system design you must have heard a word: trade-off. What would you have heard? Trade-off means to make something better or to optimize something, you have to break or reduce something else. If you want to optimize the price, you have to compromise on comfort. If you want better timing, you have to compromise on the price. There is no way to have the least amount of time, the lowest price, and the highest comfort all at once. That is why it is said that in system design, there are no perfect answers, there are only trade-offs. So, in an interview, you should not give an answer immediately. Whatever question is asked , you need to understand it and discuss the trade-offs. This will be understood better as we go along. But that is why system design is so important. That is why system design is so complex, because there is no right answer and no wrong answer in it. The answer depends on the company or the use case; what is your use case? What do you actually want to do, brother? Tell us that. We will give the answer according to that. Are you getting the point? Are you not? Alright ? Now let's move toward computer science . Enough talk about flights. Before studying system design, before studying high-level design, how does the internet work? You should have a basic understanding. You don't need to know anything too deep or basic. Like how the wiring works? Just a very basic understanding. What happens on the internet? Everything on the internet is a machine. Everything, every digital thing—you are not a machine. We are not . Every digital thing that is connected to the internet is called a machine or a host. That machine, your laptop, is also a machine. A phone is also a machine. A wearable watch is also a machine. What is kept on Google's servers is also a machine. The server where all YouTube videos are uploaded is also a machine. Meaning, anything that is connected to the internet. If your fridge is a smart fridge, it is also a machine. And generally, there are two types of machines on the internet. One machine is called a client. One machine is called a server. What is one machine called? Server. Okay. Now, all these machines talk to each other. What do all these machines do? They talk to each other. There are only two ways to communicate. One is called what? Making a request and the other is called responding. Making a request means one machine is asking for some data from another machine. Responding means that one machine is providing data to another machine. Like when you watch a YouTube video, as soon as you click on a video, your laptop requests YouTube's machine to show Pratyush bhaiya's video. Then YouTube's machine sends my video as a response, which plays on your laptop. So there are two types of machines, and generally speaking, the machine that makes the request is called the client machine. The machine that provides the answer, or the response, is called the server. I think these terms originated from hotel management. When you go to a restaurant and sit down to eat, you are the client of that hotel. You make a request for the food you want to eat. A waiter, also called a server in English , serves you. He comes and brings you the food. He is providing you with a response. It is not necessary that the response is exactly what you wanted. You might get the correct response. You might also get a wrong response. You asked for an egg and got a sandwich; that is also a response. It is an incorrect response. Your response might arrive late. You asked for it now, but the response arrived an hour later. That is also a valid response. No response is also a response. You ordered food, but nothing happened. That is also a response. A denial is also a response. You asked for food, and the waiter said , \"I won't give it to you.\" That is also a response. So what this means is that there are two machines on the internet: the client and the server. How do they talk to each other? Through requests and responses. All right? So this is basic networking. Everyone should know this. Everyone should be aware of basic networking. All right? Come on, let's move forward. Now let me take you into system design, what it is, and what its concepts are. Let's move on. So, generally speaking, there are two types of designs in system design. One is High-Level Design, which is what is going on in this playlist. The other is Low-Level Design, which is called machine coding. What is it called? It is called machine coding. What is High-Level Design? High-Level Design is even more important. LLD is not much needed these days; I will talk about it later. But nowadays, it isn't really needed. What is High-Level Design? When you build a system or a software, it is like building a house. If you are building a 40-story apartment, you have to plan for it. When a 40-story apartment is built, it requires planning . No one just starts building it immediately. They don't just dump sand and start building, right? It has an architecture. There is planning. Where will the elevator go? Where will the window go? What if there is a flood? How will water reach the top floor? Where will the security guard's room be? How many people can enter? Where will the gates be located? Where will the garden be? In many ways, this planning is called high-level design. So when a person builds software, they don't just start coding right away— opening a Python script and writing code —no, first you have to see what my system does. What parts will be in my system? These parts come later. Which databases will be used? Which APIs will be there? Meaning, what will the components be? How will these parts be connected? What will be the way to build them? How will data transfer happen in my system? So just like when a house is built and the plan or blueprint prepared before construction is what is called high-level design. In this, you just have to plan that this and this will be here. What is low-level design actually? Now you have planned what will be in the room. But which tiles will be used in that room? What design will they have? Going into further detail. Getting into every room . How many bars will the window in the room have? What design of tile will be used in the room? What color paint will be used in the room? This is called low-level design. And in an interview, you have to show this by coding. High-level design does not require coding. High-level design is to see if you know how to build your system or not. And there are nine principles of high-level design that you have to plan around. Nine principles. Like in the flight example, there were three, right? Time, your cost, and your comfort. Similarly, in high-level design, there are nine pointers you need to pay attention to. Just like we asked in the flight example , whether you want more time or comfort . So you will have to ask about these nine : what do you need? What do you need? Did you get it? Okay, what are these nine principles? But these nine principles are very good. First is load and scalability. What do load and scalability really mean ? It's fine as long as only one person is using your app or website. But what happens if you build an Instagram and 1 billion people start using it? How many people can use it at the same time? How many people can use it in a month? At what point will your system break, and what is scalability—if your system was built for 100 people and now you need it for a thousand, how will you do that? Scalable means how will you expand it? You built a house with space for 20 families. Now you feel you need space for 40 families. How will you scale? Build more floors on top. Build another house next to it. This covers vertical and horizontal scaling, which will be discussed in future modules. But the first thing is load or scalability. How much load can your system handle? What are your requirements? How many users should be able to access your system simultaneously? So, you have to ask these questions. What is the second one ? Performance—performance or latency. When a user comes to your app, how long will it take to provide an answer? You went to ChatGPT, typed something; how many seconds should it take for the answer to appear? There must be a requirement that it should be done within 5 seconds, 1 second, or 20 seconds. Or maybe someone says latency doesn't matter, even if it takes an hour, it’s fine. So you have to ask, what will be the second point, the performance of your system, how much? How much latency are you expecting? When a user sends a request and receives a response. There must be a time deadline that it shouldn't exceed. That is called performance. Third, what about availability? Will your app go down anywhere? Will it crash? Like how IRCTC crashes when booking tatkal tickets. That is called being unavailable. You must have seen some websites crashing. Sometimes you open them and see 503 or something else. That is called the website being unavailable. So availability is measured in 99%or 99.9% or 99.99%. Or 99.99%. It is measured in those terms. 99%means if there are 365 days in a year , your website should be available for 99%of those 365 days. Availability simply means how much time your website can be down in a year, and again, no system is perfect. You might say 100%, but no, machines do go down. Hardware fails. The site breaks . The server breaks. The CDN breaks. This is physics. Nobody can stop this. No one on this earth is bold enough to claim they will provide 100% availability. Even the biggest companies cannot state in a contract that they will provide 100%availability. It is simply not possible to do. So 99%or 99.99%, the better the company, the more it will want its app to remain available . But why is availability important? Just think about it. How much business would an app like Amazon do in a day? How much business would an app like Amazon do in a single day? It would be doing billions of dollars in business. You are saying if Amazon says in my 365 days, it will be available 99%of the time. And it will not be there 1%of the time. That means for 3 days in a year, Amazon's website will be down. Suppose that 3-day downtime leads to a 3 billion dollar loss, so do not underestimate availability just because it is 99%; why go above that? As soon as you build a big company, you will realize the value of 99%and how much monetary loss that 1 %downtime can cause. That is why it is asked, how much availability do you need ? What percentage of availability should your system have? What is the fourth one ? Reliability. What is the fourth one? Reliability. Reliability and fault tolerance. Fault tolerance. What does this mean? What does reliability actually mean? That your system provides correct behavior. Your system should keep providing correct behavior. Being available is one thing. Providing correct behavior is another. Take an ATM machine. Suppose an ATM machine is running. That means it is available. But you ask for ₹ 500 and it gives you ₹ 400 . That means the system is not reliable . That system sometimes does one thing and sometimes starts doing something else. So that is not a reliable system. Systems need to be available and reliable. It would be better if it just shut down. Just think how angry you would be if the ATM machine is running and is on. You withdraw 500 and 400 comes out. You would smash the ATM, right? There would be a fight there. You would say, \"Better to just shut down, brother.\" Then why are you running? That is why system reliability also means that your system must be reliable , man. It will return the same result every time, right? You will provide reliable, correct results, right? You wouldn't start showing us wrong results just because there's a load, would you? So, reliability should be important to you. Fault tolerance. Fault tolerance means, for example, you have 10 machines or 10 servers. If one of them dies or goes down, your system should still keep running. It shouldn't be the case that one machine goes down and all your websites across the world disappear. Everything crashes, everything burns, gone. Like a cricket team. There are 11 people in a cricket team. If one of the 11 gets injured. Your team can still play. It might play a bit less effectively, but it can play, right? It shouldn't be that if one person gets injured, the whole team collapses and it's game over. Until this is fixed, that is what is called fault tolerance, that a fault has occurred. Suppose a machine burns out. A fire breaks out somewhere. Okay, there should be a minor problem. But the entire world shouldn't have a problem with that website. This is called fault tolerance. Okay. The next thing is consistency. The next thing is consistency. What does consistency mean, anyway? Consistency means everyone should see the same, correct data. Meaning, all the people using that app should see the same, correct data. The example for consistency is usually given with banks . If Pratyush is sending ₹ 100 to Divya, then 100 should be deducted from Pratyush's account. And 100 should be added to Divya's account. This is called consistent data . It shouldn't be that 100 was deducted from my account. And nothing happened in their account. Then where did the money go? This is called a break in consistency. Your data should remain consistent. This is the next principle. Okay? After that, durability. Durability . Durability means that whatever data you store, you should still have it. Even if the power goes out. For example , if you create an account on Instagram . I created an account on Instagram. I got 263k followers one day. Let's assume Instagram goes down for a day. A fire breaks out at the Instagram office. Instagram goes down across the entire world. Now, when Instagram comes back the next day, my 263k followers shouldn't become zero. It shouldn't say it doesn't remember which account is mine. And tell you to start over. No, no , that app will never run again. That app won't be able to stand on its own feet. Now just think about it. Whoever has an account on Instagram, imagine Instagram goes down for a day or an hour . They come back immediately and say, \" Listen, everyone who created an account , please create it again.\"\"We have forgotten who had what followers.\" Now we don't even know, right? This is called durability. The data you have collected must be durable. Whether there is a fire, a flood, or whatever happens , the data should remain. When you come back, you should come back with that same data. Do not come back with new data. This is called durability. Alright . Next is security. Obviously, your app security is a risk. Security means data leakage is a security issue. Getting hacked is a security issue. So, I don't think there is much need to explain security. Okay, the eighth point is cost . How much does it cost to build your system? Is it not happening that in the attempt to make everything perfect, you are increasing your costs too much? You aren't even getting that much business. I said, right, what was it in the flight train? Your cost is also a factor, right ? It costs money to build a system. System design costs money. You cannot— now suppose you are in an interview and for every answer, you say, \"Sir, we will just add another server.\"\"We'll open an office here and put another server there .\" Not a server everywhere, brother, who is going to pay for that cost? Cost also has a limit, right? Any company has limited money to burn. So, how much will it cost to build the system? Now you are constructing a building. Someone said, \" Sir, the building doesn't look good.\"\" Do something about it.\" So you say, \"Oh , we will install gold tiles on every floor of the building.\" That's good. You can install them. But where is the money coming from? Its cost is skyrocketing, isn't it? Cost is also a parameter. And the ninth is maintainability. Maintainability. It's not that important . It is mostly necessary at the low level. But maintainability is also something; your system shouldn't become so complex. You've made such a mess of it that only you can understand it. And as soon as you leave the company, the company sinks . No one else can understand where this system is running from. Meaning, machines spread across the world, data moving from here to there. It is flowing into its data. In other words, maintainability is not that great. Focus is on the high level, but still, maintainability means the system should remain clean. Like if you placed it on a table and there are wires scattered everywhere on it. You won't understand which wire is going where, or what it is connected to . Then you get tangled up in it. It should be neat and clean. That is what it means in Hindi. So look, these nine points are important in system design. Now, again, no system is perfect. In any interview, your answer cannot be that, \" Sir, we will make all nine perfect.\" You cannot do it. For example, take the example of Instagram and a bank. Whose? Take the example of Instagram and a bank . Take the example of Instagram and a bank. Okay? Let's talk about reliable data. Let's talk about reliable data. Reliable means correct data. Now, tell me one thing, you checked your balance. Checked your bank balance. Okay? According to you, there should have been ₹ 2 lakhs in your bank. The bank showed you incorrect data for a moment. It said you have ₹ 500. What will you do? Calls to the bank, messages, FIR; it will cause a panic, right brother? Just think about it. According to you, there were 2 lakhs in your account. You checked your balance once on PhonePe. SBI is saying it is ₹ 500. You will immediately run to the police. There will be an uproar across the country, so a bank cannot afford to show wrong data. But, but, but in contrast, let's say my reel on Instagram had 90,000 views in reality, but Instagram showed me wrong views. Instagram showed me 80,000 views for a little while. It will get fixed. It showed 80,000 views for a moment. What will happen because of this? What difference does it make to me? Will anyone go to the police station for this ? Will anyone file an FIR? No. It will fix it after a little while. So Instagram can afford a little bit of wrong data. This doesn't mean Instagram is totally wrong, it's about what is most important to you. For whom is reliability more important? For Instagram or for a bank? For a bank? Now let's talk about availability, availability, availability. Okay? Let's talk about availability. If a bank feels that it won't be able to provide reliable data. If the bank feels it won't be able to provide consistent data. Meaning, if Suresh made a payment and Ramesh didn't receive it, we can't have that. So, the bank would rather prefer to shut down. The bank will say my server is down. That is why you might see SBI's server remains down. But Instagram will say, let it run, let it run, whoever's data it is, let it run. If everyone is getting wrong data for a little while. Let it show, what's the issue? As long as the reels keep coming . People should keep watching reels. People are coming to watch reels, right . So Instagram can afford this. Do you understand what we are saying about what is more important for whom? Now, if you are asked in a system design interview to build Instagram, you won't put as much emphasis on reliability. But if you are asked to build a bank's system and you say reliability is fine, we'll do it a bit, no, you will fail. So you understand that these nine points are not set in stone, that nothing outside of this can happen, right? According to every system, every system will say that some of these nine points are the most important for me. For some points, it will say that we can tolerate a little bit of downtime. A little bit, not too much. It's not that we can't tolerate it, but we can tolerate a little. Meaning, if there are some ups and downs, we will manage. So this is how high-level design is done. Okay? So this was an introductory lecture. My throat has also gone dry from shouting. But we hope that you understood what high-level design means . It means reading these nine points, asking the interviewer questions on these nine points, and designing your system according to them, and how to design it? What parts are in it? How are they connected? All this will be very clear to you in the upcoming 20 to 21 lectures . Okay? So, thank you very much for coming. Do leave a like on the video, see you in the next one.",
+  "transcript": [
+    {
+      "text": "Hello kids, boys and girls, ladies and",
+      "start": 0.579,
+      "duration": 3.416
+    },
+    {
+      "text": "gentlemen, this was my dream project. I",
+      "start": 2.2,
+      "duration": 3.317
+    },
+    {
+      "text": "had wanted to teach system design for a",
+      "start": 3.995,
+      "duration": 3.005
+    },
+    {
+      "text": "long time, but I was learning it myself",
+      "start": 5.517,
+      "duration": 2.262
+    },
+    {
+      "text": ".",
+      "start": 7.0,
+      "duration": 3.068
+    },
+    {
+      "text": "It took me some time, and I don't think",
+      "start": 7.779,
+      "duration": 5.601
+    },
+    {
+      "text": "anyone else will teach design this way.",
+      "start": 10.068,
+      "duration": 4.923
+    },
+    {
+      "text": "I don't think anyone will teach you",
+      "start": 13.38,
+      "duration": 3.839
+    },
+    {
+      "text": "high-level design at this pace.",
+      "start": 14.991,
+      "duration": 4.144
+    },
+    {
+      "text": "It takes 20 to 21 lectures to cover the",
+      "start": 17.219,
+      "duration": 3.881
+    },
+    {
+      "text": "high-level design that is asked in every",
+      "start": 19.135,
+      "duration": 4.357
+    },
+    {
+      "text": "interview. So, in my opinion, in today's",
+      "start": 21.1,
+      "duration": 4.382
+    },
+    {
+      "text": "AI era where you all are afraid that AI",
+      "start": 23.492,
+      "duration": 4.334
+    },
+    {
+      "text": "writes code. System design is very",
+      "start": 25.482,
+      "duration": 4.204
+    },
+    {
+      "text": "important. When we were in college, it",
+      "start": 27.826,
+      "duration": 3.767
+    },
+    {
+      "text": "wasn't that important. We learned it",
+      "start": 29.686,
+      "duration": 4.367
+    },
+    {
+      "text": "somehow through work and studies. But",
+      "start": 31.593,
+      "duration": 4.695
+    },
+    {
+      "text": "for you today, writing code is not a USP",
+      "start": 34.053,
+      "duration": 4.011
+    },
+    {
+      "text": ", is it? You say you are good at fast",
+      "start": 36.288,
+      "duration": 3.455
+    },
+    {
+      "text": "typing. Nobody cares about that. The",
+      "start": 38.064,
+      "duration": 3.247
+    },
+    {
+      "text": "cloud doesn't care about syntax errors",
+      "start": 39.743,
+      "duration": 3.179
+    },
+    {
+      "text": "these days. But this system design,",
+      "start": 41.311,
+      "duration": 3.318
+    },
+    {
+      "text": "especially high-level design. I am not",
+      "start": 42.922,
+      "duration": 2.737
+    },
+    {
+      "text": "talking about low-level design.",
+      "start": 44.629,
+      "duration": 3.519
+    },
+    {
+      "text": "High-level design is what sets you apart",
+      "start": 45.659,
+      "duration": 4.865
+    },
+    {
+      "text": "from the crowd. When you do well in a",
+      "start": 48.148,
+      "duration": 4.667
+    },
+    {
+      "text": "high-level interview, the interviewer",
+      "start": 50.524,
+      "duration": 4.4
+    },
+    {
+      "text": "feels that this person understands",
+      "start": 52.815,
+      "duration": 4.52
+    },
+    {
+      "text": "computer science and can make decisions",
+      "start": 54.924,
+      "duration": 4.543
+    },
+    {
+      "text": "in the company. Because as a fresher,",
+      "start": 57.335,
+      "duration": 3.517
+    },
+    {
+      "text": "people say where will you do",
+      "start": 59.467,
+      "duration": 3.542
+    },
+    {
+      "text": "decision-making? Whether to use an array",
+      "start": 60.852,
+      "duration": 4.18
+    },
+    {
+      "text": "or linked list, that is not a decision.",
+      "start": 63.009,
+      "duration": 4.481
+    },
+    {
+      "text": "High-level design is that. It is a",
+      "start": 65.032,
+      "duration": 5.241
+    },
+    {
+      "text": "decision. Okay? So, it will be a total",
+      "start": 67.49,
+      "duration": 5.242
+    },
+    {
+      "text": "of 30 lectures. In 21 out of 30 lectures",
+      "start": 70.273,
+      "duration": 4.183
+    },
+    {
+      "text": ", I will cover high-level design",
+      "start": 72.732,
+      "duration": 3.814
+    },
+    {
+      "text": "concepts, including today's introduction",
+      "start": 74.456,
+      "duration": 2.983
+    },
+    {
+      "text": ".",
+      "start": 76.546,
+      "duration": 2.369
+    },
+    {
+      "text": "The difference between low-level design",
+      "start": 77.439,
+      "duration": 3.26
+    },
+    {
+      "text": "and how networking works.",
+      "start": 78.915,
+      "duration": 4.181
+    },
+    {
+      "text": "Basics of what databases are. What are",
+      "start": 80.699,
+      "duration": 5.091
+    },
+    {
+      "text": "SQL, NoSQL, and all that. What are",
+      "start": 83.096,
+      "duration": 5.276
+    },
+    {
+      "text": "queues? What are message queues? What is",
+      "start": 85.79,
+      "duration": 5.084
+    },
+    {
+      "text": "Kafka? What are APIs? What is",
+      "start": 88.372,
+      "duration": 4.564
+    },
+    {
+      "text": "distributed system architecture? What is",
+      "start": 90.874,
+      "duration": 4.377
+    },
+    {
+      "text": "monolith architecture? What is sharding",
+      "start": 92.936,
+      "duration": 3.063
+    },
+    {
+      "text": "?",
+      "start": 95.251,
+      "duration": 2.422
+    },
+    {
+      "text": "Caching—whatever buzzwords you have",
+      "start": 95.999,
+      "duration": 3.305
+    },
+    {
+      "text": "heard in your life until now, I will",
+      "start": 97.673,
+      "duration": 3.129
+    },
+    {
+      "text": "teach you all of that in 20 to 21",
+      "start": 99.304,
+      "duration": 3.335
+    },
+    {
+      "text": "lectures.",
+      "start": 100.802,
+      "duration": 4.393
+    },
+    {
+      "text": "After that, I will show you six, seven,",
+      "start": 102.639,
+      "duration": 5.176
+    },
+    {
+      "text": "or eight case studies just like they are",
+      "start": 105.195,
+      "duration": 5.113
+    },
+    {
+      "text": "actually asked: build a URL shortener,",
+      "start": 107.815,
+      "duration": 4.985
+    },
+    {
+      "text": "rate limiter, a Shopify-like app, or a",
+      "start": 110.308,
+      "duration": 4.852
+    },
+    {
+      "text": "video streaming app.",
+      "start": 112.8,
+      "duration": 4.599
+    },
+    {
+      "text": "I will show you all of that live and",
+      "start": 115.16,
+      "duration": 4.599
+    },
+    {
+      "text": "explain what is done in an interview.",
+      "start": 117.399,
+      "duration": 4.073
+    },
+    {
+      "text": "How to answer in an interview and what",
+      "start": 119.759,
+      "duration": 3.695
+    },
+    {
+      "text": "is expected. And system design is also",
+      "start": 121.472,
+      "duration": 4.089
+    },
+    {
+      "text": "very important to study because there is",
+      "start": 123.454,
+      "duration": 3.905
+    },
+    {
+      "text": "no single correct answer in system",
+      "start": 125.561,
+      "duration": 3.805
+    },
+    {
+      "text": "design. Unlike LeetCode, there is no",
+      "start": 127.359,
+      "duration": 4.461
+    },
+    {
+      "text": "single correct answer in system design.",
+      "start": 129.366,
+      "duration": 4.736
+    },
+    {
+      "text": "You cannot memorize a perfect answer",
+      "start": 131.82,
+      "duration": 4.239
+    },
+    {
+      "text": "that works everywhere.",
+      "start": 134.102,
+      "duration": 3.428
+    },
+    {
+      "text": "I will explain this to you very",
+      "start": 136.059,
+      "duration": 3.416
+    },
+    {
+      "text": "patiently over the next 10 minutes. All",
+      "start": 137.53,
+      "duration": 4.363
+    },
+    {
+      "text": "right? So let's begin. The plan is to",
+      "start": 139.475,
+      "duration": 4.735
+    },
+    {
+      "text": "start this from today. Try reading it.",
+      "start": 141.893,
+      "duration": 4.021
+    },
+    {
+      "text": "Listen carefully. Please sit with a",
+      "start": 144.21,
+      "duration": 2.894
+    },
+    {
+      "text": "notebook. Do not keep asking me for",
+      "start": 145.914,
+      "duration": 2.506
+    },
+    {
+      "text": "notes repeatedly. I do not provide notes",
+      "start": 147.104,
+      "duration": 2.975
+    },
+    {
+      "text": ". If I provide notes. Then what will you",
+      "start": 148.42,
+      "duration": 3.619
+    },
+    {
+      "text": "do? Take out a pen and paper, listen,",
+      "start": 150.079,
+      "duration": 4.1
+    },
+    {
+      "text": "and understand. And let's move forward.",
+      "start": 152.039,
+      "duration": 3.89
+    },
+    {
+      "text": "First, let me prove what I said earlier",
+      "start": 154.179,
+      "duration": 3.411
+    },
+    {
+      "text": ", that there is no correct answer in",
+      "start": 155.929,
+      "duration": 3.678
+    },
+    {
+      "text": "system design. There is no perfect",
+      "start": 157.59,
+      "duration": 4.43
+    },
+    {
+      "text": "answer. For example, if someone asks you",
+      "start": 159.607,
+      "duration": 4.524
+    },
+    {
+      "text": "in an interview, \"Tell me, I have to go",
+      "start": 162.02,
+      "duration": 4.749
+    },
+    {
+      "text": "from Delhi to Patna.\"\"I have to go from",
+      "start": 164.131,
+      "duration": 4.695
+    },
+    {
+      "text": "Delhi to Patna.\"\"And I have three",
+      "start": 166.769,
+      "duration": 3.37
+    },
+    {
+      "text": "options.\"",
+      "start": 168.826,
+      "duration": 3.48
+    },
+    {
+      "text": "\"Either I can go by flight, or I can go",
+      "start": 170.139,
+      "duration": 3.541
+    },
+    {
+      "text": "by AC3.\"",
+      "start": 172.306,
+      "duration": 3.329
+    },
+    {
+      "text": "\"It's okay, or I can go in the general",
+      "start": 173.68,
+      "duration": 4.2
+    },
+    {
+      "text": "coach of the train.\"\"Now tell me, which",
+      "start": 175.635,
+      "duration": 4.28
+    },
+    {
+      "text": "one is the best among the three?\"\"Now,",
+      "start": 177.88,
+      "duration": 4.038
+    },
+    {
+      "text": "what answer will you give?\" Everyone",
+      "start": 179.915,
+      "duration": 4.195
+    },
+    {
+      "text": "will give a different answer to this.",
+      "start": 181.918,
+      "duration": 3.916
+    },
+    {
+      "text": "There is no single answer to this. Like",
+      "start": 184.11,
+      "duration": 4.206
+    },
+    {
+      "text": ", I feel that if I had to go personally",
+      "start": 185.834,
+      "duration": 4.892
+    },
+    {
+      "text": ", I would go by flight. But that is",
+      "start": 188.316,
+      "duration": 4.553
+    },
+    {
+      "text": "because I have less time and more money",
+      "start": 190.726,
+      "duration": 4.287
+    },
+    {
+      "text": ", which is why I am choosing the flight",
+      "start": 192.869,
+      "duration": 3.8
+    },
+    {
+      "text": ", right? If a student is poor and",
+      "start": 195.013,
+      "duration": 3.345
+    },
+    {
+      "text": "doesn't even have the money to fly, like",
+      "start": 196.669,
+      "duration": 3.572
+    },
+    {
+      "text": "5000 rupees, then how will they go? Then",
+      "start": 198.358,
+      "duration": 3.618
+    },
+    {
+      "text": "they will either go by AC3 or by general",
+      "start": 200.241,
+      "duration": 3.895
+    },
+    {
+      "text": "class. If a child is very poor, how will",
+      "start": 201.976,
+      "duration": 3.855
+    },
+    {
+      "text": "they go? Even instead of AC3, they will",
+      "start": 204.136,
+      "duration": 3.422
+    },
+    {
+      "text": "have to go by general. If someone has",
+      "start": 205.831,
+      "duration": 3.683
+    },
+    {
+      "text": "plenty of time, why would they go by",
+      "start": 207.558,
+      "duration": 3.448
+    },
+    {
+      "text": "flight? They will go by train and sleep",
+      "start": 209.514,
+      "duration": 2.778
+    },
+    {
+      "text": ", because there is comfort in the train",
+      "start": 211.006,
+      "duration": 2.702
+    },
+    {
+      "text": ". You go to sleep in a train. In a",
+      "start": 212.292,
+      "duration": 3.099
+    },
+    {
+      "text": "flight, you go sitting like this. There",
+      "start": 213.708,
+      "duration": 3.361
+    },
+    {
+      "text": "is no comfort in a flight. Do you",
+      "start": 215.391,
+      "duration": 4.395
+    },
+    {
+      "text": "understand? For example, every system",
+      "start": 217.069,
+      "duration": 4.95
+    },
+    {
+      "text": "has its criteria.",
+      "start": 219.786,
+      "duration": 3.973
+    },
+    {
+      "text": "Before arriving at any system design",
+      "start": 222.019,
+      "duration": 3.668
+    },
+    {
+      "text": "answer, you have to understand what your",
+      "start": 223.759,
+      "duration": 3.7
+    },
+    {
+      "text": "criteria are.",
+      "start": 225.687,
+      "duration": 3.592
+    },
+    {
+      "text": "What are the things you can compromise",
+      "start": 227.459,
+      "duration": 4.031
+    },
+    {
+      "text": "on? Which things are very important to",
+      "start": 229.279,
+      "duration": 4.366
+    },
+    {
+      "text": "you? For example, if we talk about time",
+      "start": 231.49,
+      "duration": 3.975
+    },
+    {
+      "text": ", it takes the least amount of time to",
+      "start": 233.645,
+      "duration": 4.154
+    },
+    {
+      "text": "travel by flight. Right? Going by flight",
+      "start": 235.465,
+      "duration": 3.954
+    },
+    {
+      "text": "takes the least time, so in terms of",
+      "start": 237.799,
+      "duration": 3.901
+    },
+    {
+      "text": "time, it is the best. AC3 is okay, it",
+      "start": 239.419,
+      "duration": 5.6
+    },
+    {
+      "text": "takes time. So we can call AC3 medium.",
+      "start": 241.7,
+      "duration": 4.873
+    },
+    {
+      "text": "Now, it's obvious that the time taken in",
+      "start": 245.019,
+      "duration": 3.109
+    },
+    {
+      "text": "AC3 is the same as the time taken in the",
+      "start": 246.573,
+      "duration": 3.094
+    },
+    {
+      "text": "general coach. So, general is also",
+      "start": 248.128,
+      "duration": 5.183
+    },
+    {
+      "text": "medium in this. Okay. Then comes price.",
+      "start": 249.667,
+      "duration": 6.092
+    },
+    {
+      "text": "Flight is the worst in terms of price.",
+      "start": 253.311,
+      "duration": 4.211
+    },
+    {
+      "text": "It costs the most, right? So, it's the",
+      "start": 255.759,
+      "duration": 3.152
+    },
+    {
+      "text": "worst option for you. If someone wants",
+      "start": 257.522,
+      "duration": 2.716
+    },
+    {
+      "text": "to save money, then flight is the worst",
+      "start": 258.911,
+      "duration": 4.013
+    },
+    {
+      "text": "option for them. Okay. AC3 is medium.",
+      "start": 260.238,
+      "duration": 4.567
+    },
+    {
+      "text": "Right. It doesn't cost that much, but it",
+      "start": 262.924,
+      "duration": 3.765
+    },
+    {
+      "text": "costs a decent amount. In terms of price",
+      "start": 264.805,
+      "duration": 3.984
+    },
+    {
+      "text": ", general is the best. Right? You will",
+      "start": 266.689,
+      "duration": 3.516
+    },
+    {
+      "text": "spend the least amount of money in the",
+      "start": 268.789,
+      "duration": 3.234
+    },
+    {
+      "text": "general coach. Let's look at comfort. If",
+      "start": 270.205,
+      "duration": 4.334
+    },
+    {
+      "text": "someone needs comfort. There is comfort",
+      "start": 272.023,
+      "duration": 4.188
+    },
+    {
+      "text": "in a flight. You have to travel sitting",
+      "start": 274.539,
+      "duration": 3.595
+    },
+    {
+      "text": "down. Let's call this medium. It's",
+      "start": 276.211,
+      "duration": 4.256
+    },
+    {
+      "text": "decent. AC3 has the best comfort. You",
+      "start": 278.134,
+      "duration": 4.203
+    },
+    {
+      "text": "get a seat or a sheet on which you can",
+      "start": 280.467,
+      "duration": 4.105
+    },
+    {
+      "text": "sleep and travel. General has the worst",
+      "start": 282.337,
+      "duration": 4.474
+    },
+    {
+      "text": "comfort. General has the worst comfort.",
+      "start": 284.572,
+      "duration": 4.105
+    },
+    {
+      "text": "Now, we will answer based on this matrix",
+      "start": 286.811,
+      "duration": 3.371
+    },
+    {
+      "text": ", right? How can you give an answer",
+      "start": 288.677,
+      "duration": 2.953
+    },
+    {
+      "text": "beforehand about which one is the best?",
+      "start": 290.182,
+      "duration": 3.737
+    },
+    {
+      "text": "You can't give one, right? So, you will",
+      "start": 291.63,
+      "duration": 4.689
+    },
+    {
+      "text": "have to ask your user that okay, we can",
+      "start": 293.919,
+      "duration": 4.43
+    },
+    {
+      "text": "tell you. You tell us what is most",
+      "start": 296.319,
+      "duration": 4.425
+    },
+    {
+      "text": "important to you? If a person says that",
+      "start": 298.349,
+      "duration": 4.716
+    },
+    {
+      "text": "I only want to save time. I have a lot",
+      "start": 300.744,
+      "duration": 4.058
+    },
+    {
+      "text": "of money and I don't care about comfort",
+      "start": 303.065,
+      "duration": 3.371
+    },
+    {
+      "text": ". I will even travel standing up. The",
+      "start": 304.802,
+      "duration": 3.223
+    },
+    {
+      "text": "time taken should be minimal. Then they",
+      "start": 306.436,
+      "duration": 3.259
+    },
+    {
+      "text": "will go by flight. Someone might say I",
+      "start": 308.025,
+      "duration": 3.417
+    },
+    {
+      "text": "am not ready to pay money. Make me do",
+      "start": 309.695,
+      "duration": 3.867
+    },
+    {
+      "text": "anything else. They will go in general.",
+      "start": 311.442,
+      "duration": 3.85
+    },
+    {
+      "text": "Someone might say I cannot compromise on",
+      "start": 313.562,
+      "duration": 3.311
+    },
+    {
+      "text": "comfort. I have back pain, I will only",
+      "start": 315.292,
+      "duration": 3.953
+    },
+    {
+      "text": "travel sleeping. They will have to go by",
+      "start": 316.873,
+      "duration": 3.287
+    },
+    {
+      "text": "AC3.",
+      "start": 319.245,
+      "duration": 4.154
+    },
+    {
+      "text": "Now, no system can be made perfect.",
+      "start": 320.16,
+      "duration": 5.679
+    },
+    {
+      "text": "What do I mean by that? You cannot make",
+      "start": 323.399,
+      "duration": 4.761
+    },
+    {
+      "text": "all three of these the best.",
+      "start": 325.839,
+      "duration": 4.435
+    },
+    {
+      "text": "For example, if you say that I want to",
+      "start": 328.16,
+      "duration": 4.337
+    },
+    {
+      "text": "take less time, then someone will say go",
+      "start": 330.274,
+      "duration": 3.505
+    },
+    {
+      "text": "by flight.",
+      "start": 332.497,
+      "duration": 3.623
+    },
+    {
+      "text": "But now, comfort in flight is medium.",
+      "start": 333.779,
+      "duration": 4.051
+    },
+    {
+      "text": "You might say I want to travel sleeping",
+      "start": 336.12,
+      "duration": 3.509
+    },
+    {
+      "text": "in the flight too. Which means I want to",
+      "start": 337.83,
+      "duration": 3.421
+    },
+    {
+      "text": "go in the flight's business class. As",
+      "start": 339.629,
+      "duration": 3.623
+    },
+    {
+      "text": "soon as you go for that option, your",
+      "start": 341.251,
+      "duration": 4.408
+    },
+    {
+      "text": "price will increase five times.",
+      "start": 343.252,
+      "duration": 5.145
+    },
+    {
+      "text": "So, all these things work against each",
+      "start": 345.659,
+      "duration": 3.74
+    },
+    {
+      "text": "other.",
+      "start": 348.397,
+      "duration": 3.166
+    },
+    {
+      "text": "In any system, you cannot make",
+      "start": 349.399,
+      "duration": 4.161
+    },
+    {
+      "text": "everything good.",
+      "start": 351.563,
+      "duration": 3.721
+    },
+    {
+      "text": "There is no such computer system in the",
+      "start": 353.56,
+      "duration": 3.492
+    },
+    {
+      "text": "world that is good at everything and can",
+      "start": 355.284,
+      "duration": 4.125
+    },
+    {
+      "text": "be called the world's best system.",
+      "start": 357.052,
+      "duration": 4.91
+    },
+    {
+      "text": "No, that's why in system design you must",
+      "start": 359.409,
+      "duration": 4.849
+    },
+    {
+      "text": "have heard a word: trade-off. What would",
+      "start": 361.962,
+      "duration": 4.077
+    },
+    {
+      "text": "you have heard?",
+      "start": 364.258,
+      "duration": 4.911
+    },
+    {
+      "text": "Trade-off means to make something better",
+      "start": 366.039,
+      "duration": 6.032
+    },
+    {
+      "text": "or to optimize something, you have to",
+      "start": 369.169,
+      "duration": 6.931
+    },
+    {
+      "text": "break or reduce something else.",
+      "start": 372.071,
+      "duration": 5.904
+    },
+    {
+      "text": "If you want to optimize the price, you",
+      "start": 376.1,
+      "duration": 4.359
+    },
+    {
+      "text": "have to compromise on comfort.",
+      "start": 377.975,
+      "duration": 4.787
+    },
+    {
+      "text": "If you want better timing, you have to",
+      "start": 380.459,
+      "duration": 4.68
+    },
+    {
+      "text": "compromise on the price.",
+      "start": 382.762,
+      "duration": 4.348
+    },
+    {
+      "text": "There is no way to have the least amount",
+      "start": 385.139,
+      "duration": 3.653
+    },
+    {
+      "text": "of time, the lowest price, and the",
+      "start": 387.11,
+      "duration": 3.85
+    },
+    {
+      "text": "highest comfort all at once.",
+      "start": 388.792,
+      "duration": 4.492
+    },
+    {
+      "text": "That is why it is said that in system",
+      "start": 390.96,
+      "duration": 4.649
+    },
+    {
+      "text": "design, there are no perfect answers,",
+      "start": 393.284,
+      "duration": 4.582
+    },
+    {
+      "text": "there are only trade-offs. So, in an",
+      "start": 395.609,
+      "duration": 4.418
+    },
+    {
+      "text": "interview, you should not give an answer",
+      "start": 397.866,
+      "duration": 4.257
+    },
+    {
+      "text": "immediately. Whatever question is asked",
+      "start": 400.027,
+      "duration": 4.072
+    },
+    {
+      "text": ", you need to understand it and discuss",
+      "start": 402.123,
+      "duration": 3.671
+    },
+    {
+      "text": "the trade-offs. This will be understood",
+      "start": 404.099,
+      "duration": 3.383
+    },
+    {
+      "text": "better as we go along. But that is why",
+      "start": 405.794,
+      "duration": 3.835
+    },
+    {
+      "text": "system design is so important. That is",
+      "start": 407.482,
+      "duration": 4.148
+    },
+    {
+      "text": "why system design is so complex, because",
+      "start": 409.629,
+      "duration": 3.855
+    },
+    {
+      "text": "there is no right answer and no wrong",
+      "start": 411.63,
+      "duration": 4.37
+    },
+    {
+      "text": "answer in it. The answer depends on the",
+      "start": 413.484,
+      "duration": 4.682
+    },
+    {
+      "text": "company or the use case; what is your",
+      "start": 416.0,
+      "duration": 3.712
+    },
+    {
+      "text": "use case? What do you actually want to",
+      "start": 418.166,
+      "duration": 3.439
+    },
+    {
+      "text": "do, brother? Tell us that. We will give",
+      "start": 419.712,
+      "duration": 3.197
+    },
+    {
+      "text": "the answer according to that. Are you",
+      "start": 421.605,
+      "duration": 3.323
+    },
+    {
+      "text": "getting the point? Are you not? Alright",
+      "start": 422.909,
+      "duration": 4.038
+    },
+    {
+      "text": "? Now let's move toward computer science",
+      "start": 424.928,
+      "duration": 4.435
+    },
+    {
+      "text": ". Enough talk about flights. Before",
+      "start": 426.947,
+      "duration": 4.153
+    },
+    {
+      "text": "studying system design, before studying",
+      "start": 429.363,
+      "duration": 3.518
+    },
+    {
+      "text": "high-level design, how does the internet",
+      "start": 431.1,
+      "duration": 3.392
+    },
+    {
+      "text": "work? You should have a basic",
+      "start": 432.881,
+      "duration": 3.146
+    },
+    {
+      "text": "understanding. You don't need to know",
+      "start": 434.492,
+      "duration": 3.05
+    },
+    {
+      "text": "anything too deep or basic. Like how the",
+      "start": 436.027,
+      "duration": 2.845
+    },
+    {
+      "text": "wiring works? Just a very basic",
+      "start": 437.542,
+      "duration": 3.136
+    },
+    {
+      "text": "understanding. What happens on the",
+      "start": 438.872,
+      "duration": 4.104
+    },
+    {
+      "text": "internet? Everything on the internet is",
+      "start": 440.678,
+      "duration": 3.991
+    },
+    {
+      "text": "a machine. Everything, every digital",
+      "start": 442.976,
+      "duration": 3.588
+    },
+    {
+      "text": "thing—you are not a machine. We are not",
+      "start": 444.669,
+      "duration": 4.391
+    },
+    {
+      "text": ". Every digital thing that is connected",
+      "start": 446.564,
+      "duration": 5.014
+    },
+    {
+      "text": "to the internet is called a machine or a",
+      "start": 449.06,
+      "duration": 4.566
+    },
+    {
+      "text": "host. That machine, your laptop, is also",
+      "start": 451.578,
+      "duration": 3.973
+    },
+    {
+      "text": "a machine. A phone is also a machine. A",
+      "start": 453.626,
+      "duration": 4.113
+    },
+    {
+      "text": "wearable watch is also a machine. What",
+      "start": 455.551,
+      "duration": 4.006
+    },
+    {
+      "text": "is kept on Google's servers is also a",
+      "start": 457.739,
+      "duration": 3.584
+    },
+    {
+      "text": "machine. The server where all YouTube",
+      "start": 459.557,
+      "duration": 3.682
+    },
+    {
+      "text": "videos are uploaded is also a machine.",
+      "start": 461.323,
+      "duration": 3.656
+    },
+    {
+      "text": "Meaning, anything that is connected to",
+      "start": 463.239,
+      "duration": 4.078
+    },
+    {
+      "text": "the internet. If your fridge is a smart",
+      "start": 464.979,
+      "duration": 4.426
+    },
+    {
+      "text": "fridge, it is also a machine. And",
+      "start": 467.317,
+      "duration": 4.009
+    },
+    {
+      "text": "generally, there are two types of",
+      "start": 469.405,
+      "duration": 4.404
+    },
+    {
+      "text": "machines on the internet. One machine is",
+      "start": 471.326,
+      "duration": 5.41
+    },
+    {
+      "text": "called a client. One machine is called a",
+      "start": 473.809,
+      "duration": 4.791
+    },
+    {
+      "text": "server. What is one machine called?",
+      "start": 476.736,
+      "duration": 4.367
+    },
+    {
+      "text": "Server. Okay. Now, all these machines",
+      "start": 478.6,
+      "duration": 4.38
+    },
+    {
+      "text": "talk to each other. What do all these",
+      "start": 481.103,
+      "duration": 4.288
+    },
+    {
+      "text": "machines do? They talk to each other.",
+      "start": 482.98,
+      "duration": 4.861
+    },
+    {
+      "text": "There are only two ways to communicate.",
+      "start": 485.391,
+      "duration": 5.421
+    },
+    {
+      "text": "One is called what? Making a request and",
+      "start": 487.841,
+      "duration": 6.189
+    },
+    {
+      "text": "the other is called responding. Making a",
+      "start": 490.812,
+      "duration": 5.758
+    },
+    {
+      "text": "request means one machine is asking for",
+      "start": 494.03,
+      "duration": 5.029
+    },
+    {
+      "text": "some data from another machine.",
+      "start": 496.57,
+      "duration": 4.594
+    },
+    {
+      "text": "Responding means that one machine is",
+      "start": 499.059,
+      "duration": 5.34
+    },
+    {
+      "text": "providing data to another machine.",
+      "start": 501.164,
+      "duration": 5.663
+    },
+    {
+      "text": "Like when you watch a YouTube video, as",
+      "start": 504.399,
+      "duration": 4.553
+    },
+    {
+      "text": "soon as you click on a video, your",
+      "start": 506.827,
+      "duration": 4.371
+    },
+    {
+      "text": "laptop requests YouTube's machine to",
+      "start": 508.952,
+      "duration": 5.306
+    },
+    {
+      "text": "show Pratyush bhaiya's video.",
+      "start": 511.198,
+      "duration": 5.13
+    },
+    {
+      "text": "Then YouTube's machine sends my video as",
+      "start": 514.258,
+      "duration": 4.701
+    },
+    {
+      "text": "a response, which plays on your laptop.",
+      "start": 516.328,
+      "duration": 5.521
+    },
+    {
+      "text": "So there are two types of machines, and",
+      "start": 518.959,
+      "duration": 5.563
+    },
+    {
+      "text": "generally speaking, the machine that",
+      "start": 521.849,
+      "duration": 5.491
+    },
+    {
+      "text": "makes the request is called the client",
+      "start": 524.522,
+      "duration": 6.169
+    },
+    {
+      "text": "machine. The machine that provides the",
+      "start": 527.34,
+      "duration": 6.41
+    },
+    {
+      "text": "answer, or the response, is called the",
+      "start": 530.691,
+      "duration": 5.555
+    },
+    {
+      "text": "server. I think these terms originated",
+      "start": 533.75,
+      "duration": 4.826
+    },
+    {
+      "text": "from hotel management. When you go to a",
+      "start": 536.246,
+      "duration": 4.301
+    },
+    {
+      "text": "restaurant and sit down to eat, you are",
+      "start": 538.576,
+      "duration": 4.072
+    },
+    {
+      "text": "the client of that hotel. You make a",
+      "start": 540.547,
+      "duration": 4.257
+    },
+    {
+      "text": "request for the food you want to eat. A",
+      "start": 542.648,
+      "duration": 4.208
+    },
+    {
+      "text": "waiter, also called a server in English",
+      "start": 544.804,
+      "duration": 3.93
+    },
+    {
+      "text": ", serves you. He comes and brings you",
+      "start": 546.856,
+      "duration": 3.726
+    },
+    {
+      "text": "the food. He is providing you with a",
+      "start": 548.734,
+      "duration": 3.746
+    },
+    {
+      "text": "response. It is not necessary that the",
+      "start": 550.582,
+      "duration": 3.869
+    },
+    {
+      "text": "response is exactly what you wanted. You",
+      "start": 552.48,
+      "duration": 3.88
+    },
+    {
+      "text": "might get the correct response. You",
+      "start": 554.451,
+      "duration": 3.621
+    },
+    {
+      "text": "might also get a wrong response. You",
+      "start": 556.36,
+      "duration": 3.192
+    },
+    {
+      "text": "asked for an egg and got a sandwich;",
+      "start": 558.072,
+      "duration": 3.109
+    },
+    {
+      "text": "that is also a response. It is an",
+      "start": 559.552,
+      "duration": 3.898
+    },
+    {
+      "text": "incorrect response. Your response might",
+      "start": 561.181,
+      "duration": 4.072
+    },
+    {
+      "text": "arrive late. You asked for it now, but",
+      "start": 563.45,
+      "duration": 3.482
+    },
+    {
+      "text": "the response arrived an hour later. That",
+      "start": 565.253,
+      "duration": 3.884
+    },
+    {
+      "text": "is also a valid response. No response is",
+      "start": 566.932,
+      "duration": 4.025
+    },
+    {
+      "text": "also a response. You ordered food, but",
+      "start": 569.137,
+      "duration": 3.479
+    },
+    {
+      "text": "nothing happened. That is also a",
+      "start": 570.957,
+      "duration": 3.822
+    },
+    {
+      "text": "response. A denial is also a response.",
+      "start": 572.616,
+      "duration": 3.486
+    },
+    {
+      "text": "You asked for food, and the waiter said",
+      "start": 574.779,
+      "duration": 3.116
+    },
+    {
+      "text": ", \"I won't give it to you.\" That is also",
+      "start": 576.102,
+      "duration": 3.949
+    },
+    {
+      "text": "a response. So what this means is that",
+      "start": 577.895,
+      "duration": 4.237
+    },
+    {
+      "text": "there are two machines on the internet:",
+      "start": 580.051,
+      "duration": 4.202
+    },
+    {
+      "text": "the client and the server. How do they",
+      "start": 582.132,
+      "duration": 4.435
+    },
+    {
+      "text": "talk to each other? Through requests and",
+      "start": 584.253,
+      "duration": 4.375
+    },
+    {
+      "text": "responses. All right? So this is basic",
+      "start": 586.567,
+      "duration": 3.499
+    },
+    {
+      "text": "networking. Everyone should know this.",
+      "start": 588.628,
+      "duration": 2.884
+    },
+    {
+      "text": "Everyone should be aware of basic",
+      "start": 590.066,
+      "duration": 3.503
+    },
+    {
+      "text": "networking. All right? Come on, let's",
+      "start": 591.512,
+      "duration": 4.303
+    },
+    {
+      "text": "move forward. Now let me take you into",
+      "start": 593.569,
+      "duration": 4.544
+    },
+    {
+      "text": "system design, what it is, and what its",
+      "start": 595.815,
+      "duration": 4.183
+    },
+    {
+      "text": "concepts are. Let's move on. So,",
+      "start": 598.113,
+      "duration": 3.685
+    },
+    {
+      "text": "generally speaking, there are two types",
+      "start": 599.998,
+      "duration": 3.517
+    },
+    {
+      "text": "of designs in system design. One is",
+      "start": 601.798,
+      "duration": 3.345
+    },
+    {
+      "text": "High-Level Design, which is what is",
+      "start": 603.515,
+      "duration": 3.596
+    },
+    {
+      "text": "going on in this playlist. The other is",
+      "start": 605.143,
+      "duration": 3.569
+    },
+    {
+      "text": "Low-Level Design, which is called",
+      "start": 607.111,
+      "duration": 4.203
+    },
+    {
+      "text": "machine coding. What is it called? It is",
+      "start": 608.712,
+      "duration": 4.626
+    },
+    {
+      "text": "called machine coding. What is",
+      "start": 611.314,
+      "duration": 3.906
+    },
+    {
+      "text": "High-Level Design? High-Level Design is",
+      "start": 613.338,
+      "duration": 3.75
+    },
+    {
+      "text": "even more important. LLD is not much",
+      "start": 615.22,
+      "duration": 4.19
+    },
+    {
+      "text": "needed these days; I will talk about it",
+      "start": 617.088,
+      "duration": 4.443
+    },
+    {
+      "text": "later. But nowadays, it isn't really",
+      "start": 619.41,
+      "duration": 4.729
+    },
+    {
+      "text": "needed. What is High-Level Design? When",
+      "start": 621.531,
+      "duration": 5.162
+    },
+    {
+      "text": "you build a system or a software, it is",
+      "start": 624.139,
+      "duration": 4.806
+    },
+    {
+      "text": "like building a house. If you are",
+      "start": 626.693,
+      "duration": 4.895
+    },
+    {
+      "text": "building a 40-story apartment, you have",
+      "start": 628.945,
+      "duration": 4.699
+    },
+    {
+      "text": "to plan for it. When a 40-story",
+      "start": 631.588,
+      "duration": 4.217
+    },
+    {
+      "text": "apartment is built, it requires planning",
+      "start": 633.644,
+      "duration": 3.818
+    },
+    {
+      "text": ". No one just starts building it",
+      "start": 635.805,
+      "duration": 3.047
+    },
+    {
+      "text": "immediately. They don't just dump sand",
+      "start": 637.462,
+      "duration": 2.752
+    },
+    {
+      "text": "and start building, right? It has an",
+      "start": 638.852,
+      "duration": 3.559
+    },
+    {
+      "text": "architecture. There is planning. Where",
+      "start": 640.214,
+      "duration": 4.083
+    },
+    {
+      "text": "will the elevator go? Where will the",
+      "start": 642.411,
+      "duration": 4.062
+    },
+    {
+      "text": "window go? What if there is a flood? How",
+      "start": 644.297,
+      "duration": 4.026
+    },
+    {
+      "text": "will water reach the top floor? Where",
+      "start": 646.473,
+      "duration": 3.63
+    },
+    {
+      "text": "will the security guard's room be? How",
+      "start": 648.323,
+      "duration": 3.233
+    },
+    {
+      "text": "many people can enter? Where will the",
+      "start": 650.103,
+      "duration": 3.052
+    },
+    {
+      "text": "gates be located? Where will the garden",
+      "start": 651.556,
+      "duration": 3.268
+    },
+    {
+      "text": "be? In many ways, this planning is",
+      "start": 653.155,
+      "duration": 4.024
+    },
+    {
+      "text": "called high-level design.",
+      "start": 654.824,
+      "duration": 4.198
+    },
+    {
+      "text": "So when a person builds software, they",
+      "start": 657.179,
+      "duration": 3.592
+    },
+    {
+      "text": "don't just start coding right away—",
+      "start": 659.022,
+      "duration": 3.64
+    },
+    {
+      "text": "opening a Python script and writing code",
+      "start": 660.771,
+      "duration": 3.64
+    },
+    {
+      "text": "—no, first you have to see what my",
+      "start": 662.662,
+      "duration": 3.537
+    },
+    {
+      "text": "system does.",
+      "start": 664.411,
+      "duration": 4.242
+    },
+    {
+      "text": "What parts will be in my system? These",
+      "start": 666.199,
+      "duration": 4.102
+    },
+    {
+      "text": "parts come later. Which databases will",
+      "start": 668.653,
+      "duration": 3.607
+    },
+    {
+      "text": "be used? Which APIs will be there?",
+      "start": 670.301,
+      "duration": 4.078
+    },
+    {
+      "text": "Meaning, what will the components be?",
+      "start": 672.26,
+      "duration": 5.259
+    },
+    {
+      "text": "How will these parts be connected? What",
+      "start": 674.379,
+      "duration": 5.765
+    },
+    {
+      "text": "will be the way to build them? How will",
+      "start": 677.519,
+      "duration": 4.76
+    },
+    {
+      "text": "data transfer happen in my system?",
+      "start": 680.144,
+      "duration": 4.413
+    },
+    {
+      "text": "So just like when a house is built and",
+      "start": 682.279,
+      "duration": 4.497
+    },
+    {
+      "text": "the plan or blueprint prepared before",
+      "start": 684.557,
+      "duration": 4.03
+    },
+    {
+      "text": "construction is what is called",
+      "start": 686.776,
+      "duration": 3.523
+    },
+    {
+      "text": "high-level design.",
+      "start": 688.587,
+      "duration": 4.341
+    },
+    {
+      "text": "In this, you just have to plan that this",
+      "start": 690.299,
+      "duration": 5.748
+    },
+    {
+      "text": "and this will be here. What is low-level",
+      "start": 692.928,
+      "duration": 5.73
+    },
+    {
+      "text": "design actually? Now you have planned",
+      "start": 696.047,
+      "duration": 4.727
+    },
+    {
+      "text": "what will be in the room. But which",
+      "start": 698.658,
+      "duration": 4.327
+    },
+    {
+      "text": "tiles will be used in that room? What",
+      "start": 700.774,
+      "duration": 4.074
+    },
+    {
+      "text": "design will they have? Going into",
+      "start": 702.985,
+      "duration": 4.161
+    },
+    {
+      "text": "further detail. Getting into every room",
+      "start": 704.848,
+      "duration": 4.377
+    },
+    {
+      "text": ". How many bars will the window in the",
+      "start": 707.146,
+      "duration": 4.745
+    },
+    {
+      "text": "room have? What design of tile will be",
+      "start": 709.225,
+      "duration": 4.415
+    },
+    {
+      "text": "used in the room?",
+      "start": 711.891,
+      "duration": 3.51
+    },
+    {
+      "text": "What color paint will be used in the",
+      "start": 713.64,
+      "duration": 4.42
+    },
+    {
+      "text": "room? This is called low-level design.",
+      "start": 715.401,
+      "duration": 5.555
+    },
+    {
+      "text": "And in an interview, you have to show",
+      "start": 718.06,
+      "duration": 5.449
+    },
+    {
+      "text": "this by coding. High-level design does",
+      "start": 720.956,
+      "duration": 4.323
+    },
+    {
+      "text": "not require coding.",
+      "start": 723.509,
+      "duration": 4.081
+    },
+    {
+      "text": "High-level design is to see if you know",
+      "start": 725.279,
+      "duration": 5.4
+    },
+    {
+      "text": "how to build your system or not.",
+      "start": 727.59,
+      "duration": 4.97
+    },
+    {
+      "text": "And there are nine principles of",
+      "start": 730.679,
+      "duration": 4.161
+    },
+    {
+      "text": "high-level design that you have to plan",
+      "start": 732.56,
+      "duration": 3.289
+    },
+    {
+      "text": "around.",
+      "start": 734.84,
+      "duration": 2.826
+    },
+    {
+      "text": "Nine principles. Like in the flight",
+      "start": 735.849,
+      "duration": 3.785
+    },
+    {
+      "text": "example, there were three, right? Time,",
+      "start": 737.666,
+      "duration": 4.452
+    },
+    {
+      "text": "your cost, and your comfort. Similarly,",
+      "start": 739.634,
+      "duration": 4.566
+    },
+    {
+      "text": "in high-level design, there are nine",
+      "start": 742.118,
+      "duration": 4.961
+    },
+    {
+      "text": "pointers you need to pay attention to.",
+      "start": 744.2,
+      "duration": 5.079
+    },
+    {
+      "text": "Just like we asked in the flight example",
+      "start": 747.079,
+      "duration": 4.345
+    },
+    {
+      "text": ", whether you want more time or comfort",
+      "start": 749.279,
+      "duration": 2.866
+    },
+    {
+      "text": ".",
+      "start": 751.424,
+      "duration": 3.099
+    },
+    {
+      "text": "So you will have to ask about these nine",
+      "start": 752.145,
+      "duration": 5.332
+    },
+    {
+      "text": ": what do you need? What do you need?",
+      "start": 754.523,
+      "duration": 4.734
+    },
+    {
+      "text": "Did you get it? Okay, what are these",
+      "start": 757.477,
+      "duration": 3.218
+    },
+    {
+      "text": "nine principles? But these nine",
+      "start": 759.257,
+      "duration": 3.563
+    },
+    {
+      "text": "principles are very good.",
+      "start": 760.695,
+      "duration": 4.625
+    },
+    {
+      "text": "First is load and scalability.",
+      "start": 762.82,
+      "duration": 4.763
+    },
+    {
+      "text": "What do load and scalability really mean",
+      "start": 765.32,
+      "duration": 5.262
+    },
+    {
+      "text": "? It's fine as long as only one person",
+      "start": 767.583,
+      "duration": 5.999
+    },
+    {
+      "text": "is using your app or website. But what",
+      "start": 770.582,
+      "duration": 5.592
+    },
+    {
+      "text": "happens if you build an Instagram and 1",
+      "start": 773.582,
+      "duration": 5.143
+    },
+    {
+      "text": "billion people start using it? How many",
+      "start": 776.174,
+      "duration": 4.888
+    },
+    {
+      "text": "people can use it at the same time? How",
+      "start": 778.725,
+      "duration": 5.935
+    },
+    {
+      "text": "many people can use it in a month?",
+      "start": 781.062,
+      "duration": 6.042
+    },
+    {
+      "text": "At what point will your system break,",
+      "start": 784.66,
+      "duration": 5.082
+    },
+    {
+      "text": "and what is scalability—if your system",
+      "start": 787.104,
+      "duration": 5.019
+    },
+    {
+      "text": "was built for 100 people and now you",
+      "start": 789.742,
+      "duration": 4.955
+    },
+    {
+      "text": "need it for a thousand, how will you do",
+      "start": 792.123,
+      "duration": 3.996
+    },
+    {
+      "text": "that?",
+      "start": 794.697,
+      "duration": 3.942
+    },
+    {
+      "text": "Scalable means how will you expand it?",
+      "start": 796.119,
+      "duration": 4.888
+    },
+    {
+      "text": "You built a house with space for 20",
+      "start": 798.639,
+      "duration": 4.998
+    },
+    {
+      "text": "families. Now you feel you need space",
+      "start": 801.007,
+      "duration": 5.162
+    },
+    {
+      "text": "for 40 families. How will you scale?",
+      "start": 803.637,
+      "duration": 5.012
+    },
+    {
+      "text": "Build more floors on top. Build another",
+      "start": 806.169,
+      "duration": 4.33
+    },
+    {
+      "text": "house next to it. This covers vertical",
+      "start": 808.649,
+      "duration": 3.37
+    },
+    {
+      "text": "and horizontal scaling, which will be",
+      "start": 810.499,
+      "duration": 3.399
+    },
+    {
+      "text": "discussed in future modules. But the",
+      "start": 812.019,
+      "duration": 4.292
+    },
+    {
+      "text": "first thing is load or scalability. How",
+      "start": 813.898,
+      "duration": 4.525
+    },
+    {
+      "text": "much load can your system handle? What",
+      "start": 816.311,
+      "duration": 3.866
+    },
+    {
+      "text": "are your requirements? How many users",
+      "start": 818.423,
+      "duration": 3.099
+    },
+    {
+      "text": "should be able to access your system",
+      "start": 820.177,
+      "duration": 2.968
+    },
+    {
+      "text": "simultaneously? So, you have to ask",
+      "start": 821.522,
+      "duration": 3.386
+    },
+    {
+      "text": "these questions. What is the second one",
+      "start": 823.145,
+      "duration": 2.386
+    },
+    {
+      "text": "?",
+      "start": 824.908,
+      "duration": 4.066
+    },
+    {
+      "text": "Performance—performance or latency.",
+      "start": 825.531,
+      "duration": 6.167
+    },
+    {
+      "text": "When a user comes to your app, how long",
+      "start": 828.974,
+      "duration": 5.725
+    },
+    {
+      "text": "will it take to provide an answer?",
+      "start": 831.698,
+      "duration": 5.097
+    },
+    {
+      "text": "You went to ChatGPT, typed something;",
+      "start": 834.699,
+      "duration": 4.303
+    },
+    {
+      "text": "how many seconds should it take for the",
+      "start": 836.795,
+      "duration": 4.065
+    },
+    {
+      "text": "answer to appear?",
+      "start": 839.002,
+      "duration": 3.762
+    },
+    {
+      "text": "There must be a requirement that it",
+      "start": 840.86,
+      "duration": 3.755
+    },
+    {
+      "text": "should be done within 5 seconds, 1",
+      "start": 842.764,
+      "duration": 3.895
+    },
+    {
+      "text": "second, or 20 seconds.",
+      "start": 844.615,
+      "duration": 3.871
+    },
+    {
+      "text": "Or maybe someone says latency doesn't",
+      "start": 846.659,
+      "duration": 3.799
+    },
+    {
+      "text": "matter, even if it takes an hour, it’s",
+      "start": 848.486,
+      "duration": 3.621
+    },
+    {
+      "text": "fine. So you have to ask, what will be",
+      "start": 850.458,
+      "duration": 3.048
+    },
+    {
+      "text": "the second point, the performance of",
+      "start": 852.107,
+      "duration": 3.229
+    },
+    {
+      "text": "your system, how much? How much latency",
+      "start": 853.506,
+      "duration": 4.066
+    },
+    {
+      "text": "are you expecting? When a user sends a",
+      "start": 855.336,
+      "duration": 4.782
+    },
+    {
+      "text": "request and receives a response. There",
+      "start": 857.572,
+      "duration": 4.571
+    },
+    {
+      "text": "must be a time deadline that it",
+      "start": 860.118,
+      "duration": 4.309
+    },
+    {
+      "text": "shouldn't exceed. That is called",
+      "start": 862.143,
+      "duration": 4.609
+    },
+    {
+      "text": "performance. Third, what about",
+      "start": 864.427,
+      "duration": 5.63
+    },
+    {
+      "text": "availability? Will your app go down",
+      "start": 866.752,
+      "duration": 6.393
+    },
+    {
+      "text": "anywhere? Will it crash? Like how IRCTC",
+      "start": 870.057,
+      "duration": 4.927
+    },
+    {
+      "text": "crashes when booking tatkal tickets.",
+      "start": 873.145,
+      "duration": 4.015
+    },
+    {
+      "text": "That is called being unavailable. You",
+      "start": 874.984,
+      "duration": 4.536
+    },
+    {
+      "text": "must have seen some websites crashing.",
+      "start": 877.16,
+      "duration": 4.034
+    },
+    {
+      "text": "Sometimes you open them and see 503 or",
+      "start": 879.52,
+      "duration": 3.639
+    },
+    {
+      "text": "something else. That is called the",
+      "start": 881.194,
+      "duration": 3.893
+    },
+    {
+      "text": "website being unavailable. So",
+      "start": 883.159,
+      "duration": 6.458
+    },
+    {
+      "text": "availability is measured in 99%or 99.9%",
+      "start": 885.087,
+      "duration": 7.233
+    },
+    {
+      "text": "or 99.99%.",
+      "start": 889.617,
+      "duration": 5.042
+    },
+    {
+      "text": "Or 99.99%.",
+      "start": 892.32,
+      "duration": 4.339
+    },
+    {
+      "text": "It is measured in those terms.",
+      "start": 894.659,
+      "duration": 5.6
+    },
+    {
+      "text": "99%means if there are 365 days in a year",
+      "start": 896.659,
+      "duration": 7.11
+    },
+    {
+      "text": ", your website should be available for",
+      "start": 900.259,
+      "duration": 7.16
+    },
+    {
+      "text": "99%of those 365 days.",
+      "start": 903.769,
+      "duration": 6.331
+    },
+    {
+      "text": "Availability simply means how much time",
+      "start": 907.419,
+      "duration": 5.363
+    },
+    {
+      "text": "your website can be down in a year, and",
+      "start": 910.1,
+      "duration": 5.46
+    },
+    {
+      "text": "again, no system is perfect.",
+      "start": 912.782,
+      "duration": 5.043
+    },
+    {
+      "text": "You might say 100%, but no, machines do",
+      "start": 915.56,
+      "duration": 5.437
+    },
+    {
+      "text": "go down. Hardware fails. The site breaks",
+      "start": 917.825,
+      "duration": 5.736
+    },
+    {
+      "text": ". The server breaks. The CDN breaks.",
+      "start": 920.997,
+      "duration": 5.162
+    },
+    {
+      "text": "This is physics. Nobody can stop this.",
+      "start": 923.561,
+      "duration": 4.782
+    },
+    {
+      "text": "No one on this earth is bold enough to",
+      "start": 926.159,
+      "duration": 3.752
+    },
+    {
+      "text": "claim they will provide 100%",
+      "start": 928.343,
+      "duration": 4.147
+    },
+    {
+      "text": "availability. Even the biggest companies",
+      "start": 929.911,
+      "duration": 4.704
+    },
+    {
+      "text": "cannot state in a contract that they",
+      "start": 932.49,
+      "duration": 4.261
+    },
+    {
+      "text": "will provide 100%availability. It is",
+      "start": 934.615,
+      "duration": 4.28
+    },
+    {
+      "text": "simply not possible to do. So 99%or",
+      "start": 936.751,
+      "duration": 5.226
+    },
+    {
+      "text": "99.99%, the better the company, the more",
+      "start": 938.895,
+      "duration": 6.088
+    },
+    {
+      "text": "it will want its app to remain available",
+      "start": 941.977,
+      "duration": 4.977
+    },
+    {
+      "text": ". But why is availability important?",
+      "start": 944.983,
+      "duration": 4.206
+    },
+    {
+      "text": "Just think about it. How much business",
+      "start": 946.954,
+      "duration": 4.27
+    },
+    {
+      "text": "would an app like Amazon do in a day?",
+      "start": 949.189,
+      "duration": 3.823
+    },
+    {
+      "text": "How much business would an app like",
+      "start": 951.224,
+      "duration": 3.696
+    },
+    {
+      "text": "Amazon do in a single day? It would be",
+      "start": 953.012,
+      "duration": 3.747
+    },
+    {
+      "text": "doing billions of dollars in business.",
+      "start": 954.92,
+      "duration": 4.297
+    },
+    {
+      "text": "You are saying if Amazon says in my 365",
+      "start": 956.759,
+      "duration": 4.732
+    },
+    {
+      "text": "days, it will be available 99%of the",
+      "start": 959.217,
+      "duration": 4.615
+    },
+    {
+      "text": "time. And it will not be there 1%of the",
+      "start": 961.491,
+      "duration": 4.968
+    },
+    {
+      "text": "time. That means for 3 days in a year,",
+      "start": 963.832,
+      "duration": 5.544
+    },
+    {
+      "text": "Amazon's website will be down. Suppose",
+      "start": 966.459,
+      "duration": 5.057
+    },
+    {
+      "text": "that 3-day downtime leads to a 3 billion",
+      "start": 969.376,
+      "duration": 4.072
+    },
+    {
+      "text": "dollar loss, so do not underestimate",
+      "start": 971.516,
+      "duration": 4.072
+    },
+    {
+      "text": "availability just because it is 99%; why",
+      "start": 973.448,
+      "duration": 4.578
+    },
+    {
+      "text": "go above that? As soon as you build a",
+      "start": 975.588,
+      "duration": 5.146
+    },
+    {
+      "text": "big company, you will realize the value",
+      "start": 978.026,
+      "duration": 5.348
+    },
+    {
+      "text": "of 99%and how much monetary loss that 1",
+      "start": 980.734,
+      "duration": 4.893
+    },
+    {
+      "text": "%downtime can cause. That is why it is",
+      "start": 983.374,
+      "duration": 3.962
+    },
+    {
+      "text": "asked, how much availability do you need",
+      "start": 985.627,
+      "duration": 3.851
+    },
+    {
+      "text": "? What percentage of availability should",
+      "start": 987.336,
+      "duration": 4.239
+    },
+    {
+      "text": "your system have? What is the fourth one",
+      "start": 989.478,
+      "duration": 4.387
+    },
+    {
+      "text": "? Reliability. What is the fourth one?",
+      "start": 991.575,
+      "duration": 4.883
+    },
+    {
+      "text": "Reliability. Reliability and fault",
+      "start": 993.865,
+      "duration": 4.934
+    },
+    {
+      "text": "tolerance. Fault tolerance. What does",
+      "start": 996.458,
+      "duration": 4.239
+    },
+    {
+      "text": "this mean? What does reliability",
+      "start": 998.799,
+      "duration": 4.299
+    },
+    {
+      "text": "actually mean? That your system provides",
+      "start": 1000.697,
+      "duration": 4.406
+    },
+    {
+      "text": "correct behavior. Your system should",
+      "start": 1003.098,
+      "duration": 3.94
+    },
+    {
+      "text": "keep providing correct behavior. Being",
+      "start": 1005.103,
+      "duration": 3.853
+    },
+    {
+      "text": "available is one thing. Providing",
+      "start": 1007.038,
+      "duration": 3.997
+    },
+    {
+      "text": "correct behavior is another. Take an ATM",
+      "start": 1008.956,
+      "duration": 3.998
+    },
+    {
+      "text": "machine. Suppose an ATM machine is",
+      "start": 1011.035,
+      "duration": 4.085
+    },
+    {
+      "text": "running. That means it is available. But",
+      "start": 1012.954,
+      "duration": 5.884
+    },
+    {
+      "text": "you ask for ₹ 500 and it gives you ₹ 400",
+      "start": 1015.12,
+      "duration": 5.407
+    },
+    {
+      "text": ". That means the system is not reliable",
+      "start": 1018.838,
+      "duration": 3.302
+    },
+    {
+      "text": ". That system sometimes does one thing",
+      "start": 1020.527,
+      "duration": 3.085
+    },
+    {
+      "text": "and sometimes starts doing something",
+      "start": 1022.14,
+      "duration": 3.804
+    },
+    {
+      "text": "else. So that is not a reliable system.",
+      "start": 1023.612,
+      "duration": 4.154
+    },
+    {
+      "text": "Systems need to be available and",
+      "start": 1025.944,
+      "duration": 3.344
+    },
+    {
+      "text": "reliable. It would be better if it just",
+      "start": 1027.766,
+      "duration": 3.134
+    },
+    {
+      "text": "shut down. Just think how angry you",
+      "start": 1029.288,
+      "duration": 3.488
+    },
+    {
+      "text": "would be if the ATM machine is running",
+      "start": 1030.9,
+      "duration": 3.726
+    },
+    {
+      "text": "and is on. You withdraw 500 and 400",
+      "start": 1032.776,
+      "duration": 3.386
+    },
+    {
+      "text": "comes out. You would smash the ATM,",
+      "start": 1034.626,
+      "duration": 3.036
+    },
+    {
+      "text": "right? There would be a fight there. You",
+      "start": 1036.162,
+      "duration": 2.546
+    },
+    {
+      "text": "would say, \"Better to just shut down,",
+      "start": 1037.662,
+      "duration": 2.958
+    },
+    {
+      "text": "brother.\" Then why are you running?",
+      "start": 1038.708,
+      "duration": 3.814
+    },
+    {
+      "text": "That is why system reliability also",
+      "start": 1040.62,
+      "duration": 3.962
+    },
+    {
+      "text": "means that your system must be reliable",
+      "start": 1042.522,
+      "duration": 3.118
+    },
+    {
+      "text": ", man.",
+      "start": 1044.582,
+      "duration": 2.494
+    },
+    {
+      "text": "It will return the same result every",
+      "start": 1045.64,
+      "duration": 2.859
+    },
+    {
+      "text": "time, right? You will provide reliable,",
+      "start": 1047.076,
+      "duration": 2.716
+    },
+    {
+      "text": "correct results, right? You wouldn't",
+      "start": 1048.499,
+      "duration": 2.577
+    },
+    {
+      "text": "start showing us wrong results just",
+      "start": 1049.792,
+      "duration": 2.825
+    },
+    {
+      "text": "because there's a load, would you? So,",
+      "start": 1051.076,
+      "duration": 3.864
+    },
+    {
+      "text": "reliability should be important to you.",
+      "start": 1052.617,
+      "duration": 4.043
+    },
+    {
+      "text": "Fault tolerance.",
+      "start": 1054.94,
+      "duration": 4.311
+    },
+    {
+      "text": "Fault tolerance means, for example, you",
+      "start": 1056.66,
+      "duration": 5.239
+    },
+    {
+      "text": "have 10 machines or 10 servers.",
+      "start": 1059.251,
+      "duration": 5.226
+    },
+    {
+      "text": "If one of them dies or goes down, your",
+      "start": 1061.899,
+      "duration": 5.66
+    },
+    {
+      "text": "system should still keep running.",
+      "start": 1064.477,
+      "duration": 4.482
+    },
+    {
+      "text": "It shouldn't be the case that one",
+      "start": 1067.559,
+      "duration": 3.047
+    },
+    {
+      "text": "machine goes down and all your websites",
+      "start": 1068.959,
+      "duration": 3.58
+    },
+    {
+      "text": "across the world disappear.",
+      "start": 1070.606,
+      "duration": 3.736
+    },
+    {
+      "text": "Everything crashes, everything burns,",
+      "start": 1072.539,
+      "duration": 4.058
+    },
+    {
+      "text": "gone. Like a cricket team. There are 11",
+      "start": 1074.342,
+      "duration": 4.197
+    },
+    {
+      "text": "people in a cricket team. If one of the",
+      "start": 1076.597,
+      "duration": 4.004
+    },
+    {
+      "text": "11 gets injured. Your team can still",
+      "start": 1078.539,
+      "duration": 3.575
+    },
+    {
+      "text": "play. It might play a bit less",
+      "start": 1080.601,
+      "duration": 3.585
+    },
+    {
+      "text": "effectively, but it can play, right? It",
+      "start": 1082.114,
+      "duration": 3.774
+    },
+    {
+      "text": "shouldn't be that if one person gets",
+      "start": 1084.186,
+      "duration": 3.451
+    },
+    {
+      "text": "injured, the whole team collapses and",
+      "start": 1085.888,
+      "duration": 3.609
+    },
+    {
+      "text": "it's game over. Until this is fixed,",
+      "start": 1087.637,
+      "duration": 3.897
+    },
+    {
+      "text": "that is what is called fault tolerance,",
+      "start": 1089.497,
+      "duration": 3.944
+    },
+    {
+      "text": "that a fault has occurred. Suppose a",
+      "start": 1091.534,
+      "duration": 3.569
+    },
+    {
+      "text": "machine burns out. A fire breaks out",
+      "start": 1093.441,
+      "duration": 3.582
+    },
+    {
+      "text": "somewhere. Okay, there should be a minor",
+      "start": 1095.103,
+      "duration": 3.514
+    },
+    {
+      "text": "problem. But the entire world shouldn't",
+      "start": 1097.023,
+      "duration": 3.121
+    },
+    {
+      "text": "have a problem with that website. This",
+      "start": 1098.617,
+      "duration": 4.184
+    },
+    {
+      "text": "is called fault tolerance. Okay. The",
+      "start": 1100.144,
+      "duration": 5.102
+    },
+    {
+      "text": "next thing is consistency. The next",
+      "start": 1102.801,
+      "duration": 4.414
+    },
+    {
+      "text": "thing is consistency. What does",
+      "start": 1105.246,
+      "duration": 4.446
+    },
+    {
+      "text": "consistency mean, anyway? Consistency",
+      "start": 1107.215,
+      "duration": 5.333
+    },
+    {
+      "text": "means everyone should see the same,",
+      "start": 1109.692,
+      "duration": 5.757
+    },
+    {
+      "text": "correct data. Meaning, all the people",
+      "start": 1112.548,
+      "duration": 5.406
+    },
+    {
+      "text": "using that app should see the same,",
+      "start": 1115.449,
+      "duration": 4.392
+    },
+    {
+      "text": "correct data. The example for",
+      "start": 1117.954,
+      "duration": 3.698
+    },
+    {
+      "text": "consistency is usually given with banks",
+      "start": 1119.841,
+      "duration": 2.818
+    },
+    {
+      "text": ".",
+      "start": 1121.652,
+      "duration": 4.234
+    },
+    {
+      "text": "If Pratyush is sending ₹ 100 to Divya,",
+      "start": 1122.659,
+      "duration": 5.824
+    },
+    {
+      "text": "then 100 should be deducted from",
+      "start": 1125.886,
+      "duration": 4.913
+    },
+    {
+      "text": "Pratyush's account.",
+      "start": 1128.483,
+      "duration": 4.139
+    },
+    {
+      "text": "And 100 should be added to Divya's",
+      "start": 1130.799,
+      "duration": 4.3
+    },
+    {
+      "text": "account. This is called consistent data",
+      "start": 1132.622,
+      "duration": 4.826
+    },
+    {
+      "text": ". It shouldn't be that 100 was deducted",
+      "start": 1135.099,
+      "duration": 4.191
+    },
+    {
+      "text": "from my account. And nothing happened in",
+      "start": 1137.448,
+      "duration": 3.256
+    },
+    {
+      "text": "their account. Then where did the money",
+      "start": 1139.29,
+      "duration": 2.923
+    },
+    {
+      "text": "go? This is called a break in",
+      "start": 1140.704,
+      "duration": 3.36
+    },
+    {
+      "text": "consistency. Your data should remain",
+      "start": 1142.213,
+      "duration": 3.987
+    },
+    {
+      "text": "consistent. This is the next principle.",
+      "start": 1144.064,
+      "duration": 5.839
+    },
+    {
+      "text": "Okay? After that, durability. Durability",
+      "start": 1146.2,
+      "duration": 4.96
+    },
+    {
+      "text": ".",
+      "start": 1149.903,
+      "duration": 3.745
+    },
+    {
+      "text": "Durability means that whatever data you",
+      "start": 1151.16,
+      "duration": 5.52
+    },
+    {
+      "text": "store, you should still have it.",
+      "start": 1153.648,
+      "duration": 5.732
+    },
+    {
+      "text": "Even if the power goes out. For example",
+      "start": 1156.68,
+      "duration": 5.118
+    },
+    {
+      "text": ", if you create an account on Instagram",
+      "start": 1159.38,
+      "duration": 4.498
+    },
+    {
+      "text": ". I created an account on Instagram. I",
+      "start": 1161.798,
+      "duration": 5.411
+    },
+    {
+      "text": "got 263k followers one day. Let's assume",
+      "start": 1163.878,
+      "duration": 5.501
+    },
+    {
+      "text": "Instagram goes down for a day. A fire",
+      "start": 1167.209,
+      "duration": 3.552
+    },
+    {
+      "text": "breaks out at the Instagram office.",
+      "start": 1169.379,
+      "duration": 2.951
+    },
+    {
+      "text": "Instagram goes down across the entire",
+      "start": 1170.761,
+      "duration": 3.65
+    },
+    {
+      "text": "world. Now, when Instagram comes back",
+      "start": 1172.33,
+      "duration": 3.87
+    },
+    {
+      "text": "the next day, my 263k followers",
+      "start": 1174.411,
+      "duration": 3.553
+    },
+    {
+      "text": "shouldn't become zero. It shouldn't say",
+      "start": 1176.2,
+      "duration": 2.706
+    },
+    {
+      "text": "it doesn't remember which account is",
+      "start": 1177.964,
+      "duration": 2.749
+    },
+    {
+      "text": "mine. And tell you to start over. No, no",
+      "start": 1178.906,
+      "duration": 3.614
+    },
+    {
+      "text": ", that app will never run again. That",
+      "start": 1180.713,
+      "duration": 3.325
+    },
+    {
+      "text": "app won't be able to stand on its own",
+      "start": 1182.52,
+      "duration": 3.087
+    },
+    {
+      "text": "feet. Now just think about it. Whoever",
+      "start": 1184.038,
+      "duration": 3.317
+    },
+    {
+      "text": "has an account on Instagram, imagine",
+      "start": 1185.607,
+      "duration": 3.638
+    },
+    {
+      "text": "Instagram goes down for a day or an hour",
+      "start": 1187.355,
+      "duration": 3.589
+    },
+    {
+      "text": ". They come back immediately and say, \"",
+      "start": 1189.245,
+      "duration": 3.168
+    },
+    {
+      "text": "Listen, everyone who created an account",
+      "start": 1190.944,
+      "duration": 2.931
+    },
+    {
+      "text": ", please create it again.\"\"We have",
+      "start": 1192.413,
+      "duration": 3.227
+    },
+    {
+      "text": "forgotten who had what followers.\" Now",
+      "start": 1193.875,
+      "duration": 3.773
+    },
+    {
+      "text": "we don't even know, right? This is",
+      "start": 1195.64,
+      "duration": 4.534
+    },
+    {
+      "text": "called durability. The data you have",
+      "start": 1197.648,
+      "duration": 5.144
+    },
+    {
+      "text": "collected must be durable. Whether there",
+      "start": 1200.174,
+      "duration": 4.439
+    },
+    {
+      "text": "is a fire, a flood, or whatever happens",
+      "start": 1202.792,
+      "duration": 3.86
+    },
+    {
+      "text": ", the data should remain. When you come",
+      "start": 1204.613,
+      "duration": 3.445
+    },
+    {
+      "text": "back, you should come back with that",
+      "start": 1206.652,
+      "duration": 3.332
+    },
+    {
+      "text": "same data. Do not come back with new",
+      "start": 1208.058,
+      "duration": 4.4
+    },
+    {
+      "text": "data. This is called durability. Alright",
+      "start": 1209.984,
+      "duration": 5.466
+    },
+    {
+      "text": ". Next is security. Obviously, your app",
+      "start": 1212.458,
+      "duration": 5.282
+    },
+    {
+      "text": "security is a risk. Security means data",
+      "start": 1215.45,
+      "duration": 4.088
+    },
+    {
+      "text": "leakage is a security issue. Getting",
+      "start": 1217.74,
+      "duration": 3.897
+    },
+    {
+      "text": "hacked is a security issue. So, I don't",
+      "start": 1219.538,
+      "duration": 3.985
+    },
+    {
+      "text": "think there is much need to explain",
+      "start": 1221.637,
+      "duration": 4.935
+    },
+    {
+      "text": "security. Okay, the eighth point is cost",
+      "start": 1223.523,
+      "duration": 5.204
+    },
+    {
+      "text": ". How much does it cost to build your",
+      "start": 1226.572,
+      "duration": 4.206
+    },
+    {
+      "text": "system? Is it not happening that in the",
+      "start": 1228.727,
+      "duration": 3.875
+    },
+    {
+      "text": "attempt to make everything perfect, you",
+      "start": 1230.778,
+      "duration": 3.671
+    },
+    {
+      "text": "are increasing your costs too much? You",
+      "start": 1232.602,
+      "duration": 3.18
+    },
+    {
+      "text": "aren't even getting that much business.",
+      "start": 1234.449,
+      "duration": 2.829
+    },
+    {
+      "text": "I said, right, what was it in the flight",
+      "start": 1235.782,
+      "duration": 2.824
+    },
+    {
+      "text": "train? Your cost is also a factor, right",
+      "start": 1237.278,
+      "duration": 3.101
+    },
+    {
+      "text": "? It costs money to build a system.",
+      "start": 1238.606,
+      "duration": 4.208
+    },
+    {
+      "text": "System design costs money. You cannot—",
+      "start": 1240.379,
+      "duration": 4.452
+    },
+    {
+      "text": "now suppose you are in an interview and",
+      "start": 1242.814,
+      "duration": 4.085
+    },
+    {
+      "text": "for every answer, you say, \"Sir, we will",
+      "start": 1244.831,
+      "duration": 4.536
+    },
+    {
+      "text": "just add another server.\"\"We'll open an",
+      "start": 1246.899,
+      "duration": 4.46
+    },
+    {
+      "text": "office here and put another server there",
+      "start": 1249.367,
+      "duration": 4.282
+    },
+    {
+      "text": ".\" Not a server everywhere, brother, who",
+      "start": 1251.359,
+      "duration": 4.573
+    },
+    {
+      "text": "is going to pay for that cost? Cost also",
+      "start": 1253.649,
+      "duration": 4.514
+    },
+    {
+      "text": "has a limit, right? Any company has",
+      "start": 1255.932,
+      "duration": 4.748
+    },
+    {
+      "text": "limited money to burn. So, how much will",
+      "start": 1258.163,
+      "duration": 4.601
+    },
+    {
+      "text": "it cost to build the system? Now you are",
+      "start": 1260.68,
+      "duration": 3.802
+    },
+    {
+      "text": "constructing a building. Someone said, \"",
+      "start": 1262.764,
+      "duration": 3.773
+    },
+    {
+      "text": "Sir, the building doesn't look good.\"\"",
+      "start": 1264.482,
+      "duration": 3.694
+    },
+    {
+      "text": "Do something about it.\" So you say, \"Oh",
+      "start": 1266.537,
+      "duration": 3.199
+    },
+    {
+      "text": ", we will install gold tiles on every",
+      "start": 1268.176,
+      "duration": 3.459
+    },
+    {
+      "text": "floor of the building.\" That's good. You",
+      "start": 1269.736,
+      "duration": 3.314
+    },
+    {
+      "text": "can install them. But where is the money",
+      "start": 1271.635,
+      "duration": 3.133
+    },
+    {
+      "text": "coming from? Its cost is skyrocketing,",
+      "start": 1273.05,
+      "duration": 3.931
+    },
+    {
+      "text": "isn't it? Cost is also a parameter. And",
+      "start": 1274.768,
+      "duration": 4.12
+    },
+    {
+      "text": "the ninth is maintainability.",
+      "start": 1276.981,
+      "duration": 3.916
+    },
+    {
+      "text": "Maintainability. It's not that important",
+      "start": 1278.888,
+      "duration": 3.771
+    },
+    {
+      "text": ". It is mostly necessary at the low",
+      "start": 1280.897,
+      "duration": 4.113
+    },
+    {
+      "text": "level. But maintainability is also",
+      "start": 1282.659,
+      "duration": 4.679
+    },
+    {
+      "text": "something; your system shouldn't become",
+      "start": 1285.01,
+      "duration": 3.49
+    },
+    {
+      "text": "so complex.",
+      "start": 1287.338,
+      "duration": 3.974
+    },
+    {
+      "text": "You've made such a mess of it that only",
+      "start": 1288.5,
+      "duration": 5.216
+    },
+    {
+      "text": "you can understand it. And as soon as",
+      "start": 1291.312,
+      "duration": 4.261
+    },
+    {
+      "text": "you leave the company, the company sinks",
+      "start": 1293.716,
+      "duration": 3.542
+    },
+    {
+      "text": ". No one else can understand where this",
+      "start": 1295.573,
+      "duration": 3.091
+    },
+    {
+      "text": "system is running from. Meaning,",
+      "start": 1297.258,
+      "duration": 3.472
+    },
+    {
+      "text": "machines spread across the world, data",
+      "start": 1298.664,
+      "duration": 4.041
+    },
+    {
+      "text": "moving from here to there. It is flowing",
+      "start": 1300.73,
+      "duration": 3.476
+    },
+    {
+      "text": "into its data. In other words,",
+      "start": 1302.705,
+      "duration": 4.186
+    },
+    {
+      "text": "maintainability is not that great. Focus",
+      "start": 1304.206,
+      "duration": 4.292
+    },
+    {
+      "text": "is on the high level, but still,",
+      "start": 1306.891,
+      "duration": 3.554
+    },
+    {
+      "text": "maintainability means the system should",
+      "start": 1308.498,
+      "duration": 3.112
+    },
+    {
+      "text": "remain clean.",
+      "start": 1310.445,
+      "duration": 2.366
+    },
+    {
+      "text": "Like if you placed it on a table and",
+      "start": 1311.61,
+      "duration": 2.499
+    },
+    {
+      "text": "there are wires scattered everywhere on",
+      "start": 1312.811,
+      "duration": 2.86
+    },
+    {
+      "text": "it. You won't understand which wire is",
+      "start": 1314.109,
+      "duration": 3.082
+    },
+    {
+      "text": "going where, or what it is connected to",
+      "start": 1315.671,
+      "duration": 3.434
+    },
+    {
+      "text": ". Then you get tangled up in it. It",
+      "start": 1317.191,
+      "duration": 3.527
+    },
+    {
+      "text": "should be neat and clean. That is what",
+      "start": 1319.105,
+      "duration": 3.6
+    },
+    {
+      "text": "it means in Hindi. So look, these nine",
+      "start": 1320.718,
+      "duration": 4.366
+    },
+    {
+      "text": "points are important in system design.",
+      "start": 1322.705,
+      "duration": 6.453
+    },
+    {
+      "text": "Now, again, no system is perfect. In any",
+      "start": 1325.084,
+      "duration": 6.329
+    },
+    {
+      "text": "interview, your answer cannot be that, \"",
+      "start": 1329.158,
+      "duration": 4.563
+    },
+    {
+      "text": "Sir, we will make all nine perfect.\" You",
+      "start": 1331.413,
+      "duration": 4.412
+    },
+    {
+      "text": "cannot do it. For example, take the",
+      "start": 1333.721,
+      "duration": 4.936
+    },
+    {
+      "text": "example of Instagram and a bank. Whose?",
+      "start": 1335.825,
+      "duration": 5.899
+    },
+    {
+      "text": "Take the example of Instagram and a bank",
+      "start": 1338.657,
+      "duration": 5.662
+    },
+    {
+      "text": ". Take the example of Instagram and a",
+      "start": 1341.724,
+      "duration": 5.064
+    },
+    {
+      "text": "bank. Okay? Let's talk about reliable",
+      "start": 1344.319,
+      "duration": 4.8
+    },
+    {
+      "text": "data. Let's talk about reliable data.",
+      "start": 1346.788,
+      "duration": 4.96
+    },
+    {
+      "text": "Reliable means correct data. Now, tell",
+      "start": 1349.119,
+      "duration": 5.361
+    },
+    {
+      "text": "me one thing, you checked your balance.",
+      "start": 1351.748,
+      "duration": 4.481
+    },
+    {
+      "text": "Checked your bank balance. Okay?",
+      "start": 1354.48,
+      "duration": 3.562
+    },
+    {
+      "text": "According to you, there should have been",
+      "start": 1356.229,
+      "duration": 4.003
+    },
+    {
+      "text": "₹ 2 lakhs in your bank. The bank showed",
+      "start": 1358.042,
+      "duration": 4.9
+    },
+    {
+      "text": "you incorrect data for a moment. It said",
+      "start": 1360.232,
+      "duration": 5.714
+    },
+    {
+      "text": "you have ₹ 500. What will you do? Calls",
+      "start": 1362.942,
+      "duration": 4.972
+    },
+    {
+      "text": "to the bank, messages, FIR; it will",
+      "start": 1365.946,
+      "duration": 4.199
+    },
+    {
+      "text": "cause a panic, right brother? Just think",
+      "start": 1367.914,
+      "duration": 4.055
+    },
+    {
+      "text": "about it. According to you, there were 2",
+      "start": 1370.145,
+      "duration": 3.686
+    },
+    {
+      "text": "lakhs in your account. You checked your",
+      "start": 1371.969,
+      "duration": 4.11
+    },
+    {
+      "text": "balance once on PhonePe. SBI is saying",
+      "start": 1373.831,
+      "duration": 4.344
+    },
+    {
+      "text": "it is ₹ 500. You will immediately run to",
+      "start": 1376.079,
+      "duration": 3.964
+    },
+    {
+      "text": "the police. There will be an uproar",
+      "start": 1378.175,
+      "duration": 3.909
+    },
+    {
+      "text": "across the country, so a bank cannot",
+      "start": 1380.043,
+      "duration": 5.015
+    },
+    {
+      "text": "afford to show wrong data. But, but, but",
+      "start": 1382.084,
+      "duration": 5.594
+    },
+    {
+      "text": "in contrast, let's say my reel on",
+      "start": 1385.058,
+      "duration": 5.627
+    },
+    {
+      "text": "Instagram had 90,000 views in reality,",
+      "start": 1387.678,
+      "duration": 6.182
+    },
+    {
+      "text": "but Instagram showed me wrong views.",
+      "start": 1390.685,
+      "duration": 5.365
+    },
+    {
+      "text": "Instagram showed me 80,000 views for a",
+      "start": 1393.86,
+      "duration": 4.273
+    },
+    {
+      "text": "little while. It will get fixed. It",
+      "start": 1396.05,
+      "duration": 4.261
+    },
+    {
+      "text": "showed 80,000 views for a moment. What",
+      "start": 1398.133,
+      "duration": 3.192
+    },
+    {
+      "text": "will happen because of this? What",
+      "start": 1400.311,
+      "duration": 2.127
+    },
+    {
+      "text": "difference does it make to me? Will",
+      "start": 1401.325,
+      "duration": 2.446
+    },
+    {
+      "text": "anyone go to the police station for this",
+      "start": 1402.438,
+      "duration": 3.984
+    },
+    {
+      "text": "? Will anyone file an FIR? No. It will",
+      "start": 1403.771,
+      "duration": 4.125
+    },
+    {
+      "text": "fix it after a little while. So",
+      "start": 1406.422,
+      "duration": 4.147
+    },
+    {
+      "text": "Instagram can afford a little bit of",
+      "start": 1407.896,
+      "duration": 5.19
+    },
+    {
+      "text": "wrong data. This doesn't mean Instagram",
+      "start": 1410.569,
+      "duration": 4.66
+    },
+    {
+      "text": "is totally wrong, it's about what is",
+      "start": 1413.086,
+      "duration": 4.185
+    },
+    {
+      "text": "most important to you. For whom is",
+      "start": 1415.229,
+      "duration": 3.921
+    },
+    {
+      "text": "reliability more important? For",
+      "start": 1417.271,
+      "duration": 5.478
+    },
+    {
+      "text": "Instagram or for a bank? For a bank? Now",
+      "start": 1419.15,
+      "duration": 5.615
+    },
+    {
+      "text": "let's talk about availability,",
+      "start": 1422.749,
+      "duration": 4.74
+    },
+    {
+      "text": "availability, availability. Okay? Let's",
+      "start": 1424.765,
+      "duration": 4.604
+    },
+    {
+      "text": "talk about availability.",
+      "start": 1427.489,
+      "duration": 4.353
+    },
+    {
+      "text": "If a bank feels that it won't be able to",
+      "start": 1429.369,
+      "duration": 4.747
+    },
+    {
+      "text": "provide reliable data. If the bank feels",
+      "start": 1431.842,
+      "duration": 4.111
+    },
+    {
+      "text": "it won't be able to provide consistent",
+      "start": 1434.116,
+      "duration": 3.877
+    },
+    {
+      "text": "data. Meaning, if Suresh made a payment",
+      "start": 1435.953,
+      "duration": 3.939
+    },
+    {
+      "text": "and Ramesh didn't receive it, we can't",
+      "start": 1437.993,
+      "duration": 4.197
+    },
+    {
+      "text": "have that. So, the bank would rather",
+      "start": 1439.892,
+      "duration": 4.427
+    },
+    {
+      "text": "prefer to shut down. The bank will say",
+      "start": 1442.19,
+      "duration": 4.129
+    },
+    {
+      "text": "my server is down. That is why you might",
+      "start": 1444.319,
+      "duration": 4.071
+    },
+    {
+      "text": "see SBI's server remains down. But",
+      "start": 1446.319,
+      "duration": 4.132
+    },
+    {
+      "text": "Instagram will say, let it run, let it",
+      "start": 1448.39,
+      "duration": 4.3
+    },
+    {
+      "text": "run, whoever's data it is, let it run.",
+      "start": 1450.451,
+      "duration": 3.712
+    },
+    {
+      "text": "If everyone is getting wrong data for a",
+      "start": 1452.69,
+      "duration": 2.938
+    },
+    {
+      "text": "little while. Let it show, what's the",
+      "start": 1454.163,
+      "duration": 2.629
+    },
+    {
+      "text": "issue? As long as the reels keep coming",
+      "start": 1455.628,
+      "duration": 2.381
+    },
+    {
+      "text": ". People should keep watching reels.",
+      "start": 1456.792,
+      "duration": 2.228
+    },
+    {
+      "text": "People are coming to watch reels, right",
+      "start": 1458.009,
+      "duration": 3.576
+    },
+    {
+      "text": ". So Instagram can afford this. Do you",
+      "start": 1459.02,
+      "duration": 4.949
+    },
+    {
+      "text": "understand what we are saying about what",
+      "start": 1461.585,
+      "duration": 4.695
+    },
+    {
+      "text": "is more important for whom?",
+      "start": 1463.969,
+      "duration": 4.273
+    },
+    {
+      "text": "Now, if you are asked in a system design",
+      "start": 1466.28,
+      "duration": 3.876
+    },
+    {
+      "text": "interview to build Instagram, you won't",
+      "start": 1468.242,
+      "duration": 4.758
+    },
+    {
+      "text": "put as much emphasis on reliability.",
+      "start": 1470.156,
+      "duration": 4.672
+    },
+    {
+      "text": "But if you are asked to build a bank's",
+      "start": 1473.0,
+      "duration": 3.704
+    },
+    {
+      "text": "system and you say reliability is fine,",
+      "start": 1474.828,
+      "duration": 4.751
+    },
+    {
+      "text": "we'll do it a bit, no, you will fail.",
+      "start": 1476.704,
+      "duration": 5.215
+    },
+    {
+      "text": "So you understand that these nine points",
+      "start": 1479.579,
+      "duration": 4.338
+    },
+    {
+      "text": "are not set in stone, that nothing",
+      "start": 1481.919,
+      "duration": 5.0
+    },
+    {
+      "text": "outside of this can happen, right?",
+      "start": 1483.917,
+      "duration": 5.271
+    },
+    {
+      "text": "According to every system, every system",
+      "start": 1486.919,
+      "duration": 4.538
+    },
+    {
+      "text": "will say that some of these nine points",
+      "start": 1489.188,
+      "duration": 4.632
+    },
+    {
+      "text": "are the most important for me.",
+      "start": 1491.457,
+      "duration": 4.133
+    },
+    {
+      "text": "For some points, it will say that we can",
+      "start": 1493.82,
+      "duration": 3.82
+    },
+    {
+      "text": "tolerate a little bit of downtime.",
+      "start": 1495.59,
+      "duration": 3.492
+    },
+    {
+      "text": "A little bit, not too much. It's not",
+      "start": 1497.64,
+      "duration": 2.892
+    },
+    {
+      "text": "that we can't tolerate it, but we can",
+      "start": 1499.082,
+      "duration": 3.071
+    },
+    {
+      "text": "tolerate a little. Meaning, if there are",
+      "start": 1500.532,
+      "duration": 3.248
+    },
+    {
+      "text": "some ups and downs, we will manage. So",
+      "start": 1502.153,
+      "duration": 4.196
+    },
+    {
+      "text": "this is how high-level design is done.",
+      "start": 1503.78,
+      "duration": 3.967
+    },
+    {
+      "text": "Okay? So this was an introductory",
+      "start": 1506.349,
+      "duration": 2.923
+    },
+    {
+      "text": "lecture. My throat has also gone dry",
+      "start": 1507.747,
+      "duration": 3.644
+    },
+    {
+      "text": "from shouting. But we hope that you",
+      "start": 1509.272,
+      "duration": 4.778
+    },
+    {
+      "text": "understood what high-level design means",
+      "start": 1511.391,
+      "duration": 3.728
+    },
+    {
+      "text": ".",
+      "start": 1514.05,
+      "duration": 3.306
+    },
+    {
+      "text": "It means reading these nine points,",
+      "start": 1515.119,
+      "duration": 4.475
+    },
+    {
+      "text": "asking the interviewer questions on",
+      "start": 1517.356,
+      "duration": 4.601
+    },
+    {
+      "text": "these nine points, and designing your",
+      "start": 1519.594,
+      "duration": 4.663
+    },
+    {
+      "text": "system according to them, and how to",
+      "start": 1521.957,
+      "duration": 4.082
+    },
+    {
+      "text": "design it?",
+      "start": 1524.257,
+      "duration": 4.76
+    },
+    {
+      "text": "What parts are in it? How are they",
+      "start": 1526.039,
+      "duration": 5.634
+    },
+    {
+      "text": "connected? All this will be very clear",
+      "start": 1529.017,
+      "duration": 5.218
+    },
+    {
+      "text": "to you in the upcoming 20 to 21 lectures",
+      "start": 1531.673,
+      "duration": 4.585
+    },
+    {
+      "text": ". Okay? So, thank you very much for",
+      "start": 1534.235,
+      "duration": 3.868
+    },
+    {
+      "text": "coming. Do leave a like on the video,",
+      "start": 1536.258,
+      "duration": 5.001
+    },
+    {
+      "text": "see you in the next one.",
+      "start": 1538.103,
+      "duration": 3.156
+    }
+  ],
+  "text": "Hello kids, boys and girls, ladies and gentlemen, this was my dream project. I had wanted to teach system design for a long time, but I was learning it myself . It took me some time, and I don't think anyone else will teach design this way. I don't think anyone will teach you high-level design at this pace. It takes 20 to 21 lectures to cover the high-level design that is asked in every interview. So, in my opinion, in today's AI era where you all are afraid that AI writes code. System design is very important. When we were in college, it wasn't that important. We learned it somehow through work and studies. But for you today, writing code is not a USP , is it? You say you are good at fast typing. Nobody cares about that. The cloud doesn't care about syntax errors these days. But this system design, especially high-level design. I am not talking about low-level design. High-level design is what sets you apart from the crowd. When you do well in a high-level interview, the interviewer feels that this person understands computer science and can make decisions in the company. Because as a fresher, people say where will you do decision-making? Whether to use an array or linked list, that is not a decision. High-level design is that. It is a decision. Okay? So, it will be a total of 30 lectures. In 21 out of 30 lectures , I will cover high-level design concepts, including today's introduction . The difference between low-level design and how networking works. Basics of what databases are. What are SQL, NoSQL, and all that. What are queues? What are message queues? What is Kafka? What are APIs? What is distributed system architecture? What is monolith architecture? What is sharding ? Caching—whatever buzzwords you have heard in your life until now, I will teach you all of that in 20 to 21 lectures. After that, I will show you six, seven, or eight case studies just like they are actually asked: build a URL shortener, rate limiter, a Shopify-like app, or a video streaming app. I will show you all of that live and explain what is done in an interview. How to answer in an interview and what is expected. And system design is also very important to study because there is no single correct answer in system design. Unlike LeetCode, there is no single correct answer in system design. You cannot memorize a perfect answer that works everywhere. I will explain this to you very patiently over the next 10 minutes. All right? So let's begin. The plan is to start this from today. Try reading it. Listen carefully. Please sit with a notebook. Do not keep asking me for notes repeatedly. I do not provide notes . If I provide notes. Then what will you do? Take out a pen and paper, listen, and understand. And let's move forward. First, let me prove what I said earlier , that there is no correct answer in system design. There is no perfect answer. For example, if someone asks you in an interview, \"Tell me, I have to go from Delhi to Patna.\"\"I have to go from Delhi to Patna.\"\"And I have three options.\" \"Either I can go by flight, or I can go by AC3.\" \"It's okay, or I can go in the general coach of the train.\"\"Now tell me, which one is the best among the three?\"\"Now, what answer will you give?\" Everyone will give a different answer to this. There is no single answer to this. Like , I feel that if I had to go personally , I would go by flight. But that is because I have less time and more money , which is why I am choosing the flight , right? If a student is poor and doesn't even have the money to fly, like 5000 rupees, then how will they go? Then they will either go by AC3 or by general class. If a child is very poor, how will they go? Even instead of AC3, they will have to go by general. If someone has plenty of time, why would they go by flight? They will go by train and sleep , because there is comfort in the train . You go to sleep in a train. In a flight, you go sitting like this. There is no comfort in a flight. Do you understand? For example, every system has its criteria. Before arriving at any system design answer, you have to understand what your criteria are. What are the things you can compromise on? Which things are very important to you? For example, if we talk about time , it takes the least amount of time to travel by flight. Right? Going by flight takes the least time, so in terms of time, it is the best. AC3 is okay, it takes time. So we can call AC3 medium. Now, it's obvious that the time taken in AC3 is the same as the time taken in the general coach. So, general is also medium in this. Okay. Then comes price. Flight is the worst in terms of price. It costs the most, right? So, it's the worst option for you. If someone wants to save money, then flight is the worst option for them. Okay. AC3 is medium. Right. It doesn't cost that much, but it costs a decent amount. In terms of price , general is the best. Right? You will spend the least amount of money in the general coach. Let's look at comfort. If someone needs comfort. There is comfort in a flight. You have to travel sitting down. Let's call this medium. It's decent. AC3 has the best comfort. You get a seat or a sheet on which you can sleep and travel. General has the worst comfort. General has the worst comfort. Now, we will answer based on this matrix , right? How can you give an answer beforehand about which one is the best? You can't give one, right? So, you will have to ask your user that okay, we can tell you. You tell us what is most important to you? If a person says that I only want to save time. I have a lot of money and I don't care about comfort . I will even travel standing up. The time taken should be minimal. Then they will go by flight. Someone might say I am not ready to pay money. Make me do anything else. They will go in general. Someone might say I cannot compromise on comfort. I have back pain, I will only travel sleeping. They will have to go by AC3. Now, no system can be made perfect. What do I mean by that? You cannot make all three of these the best. For example, if you say that I want to take less time, then someone will say go by flight. But now, comfort in flight is medium. You might say I want to travel sleeping in the flight too. Which means I want to go in the flight's business class. As soon as you go for that option, your price will increase five times. So, all these things work against each other. In any system, you cannot make everything good. There is no such computer system in the world that is good at everything and can be called the world's best system. No, that's why in system design you must have heard a word: trade-off. What would you have heard? Trade-off means to make something better or to optimize something, you have to break or reduce something else. If you want to optimize the price, you have to compromise on comfort. If you want better timing, you have to compromise on the price. There is no way to have the least amount of time, the lowest price, and the highest comfort all at once. That is why it is said that in system design, there are no perfect answers, there are only trade-offs. So, in an interview, you should not give an answer immediately. Whatever question is asked , you need to understand it and discuss the trade-offs. This will be understood better as we go along. But that is why system design is so important. That is why system design is so complex, because there is no right answer and no wrong answer in it. The answer depends on the company or the use case; what is your use case? What do you actually want to do, brother? Tell us that. We will give the answer according to that. Are you getting the point? Are you not? Alright ? Now let's move toward computer science . Enough talk about flights. Before studying system design, before studying high-level design, how does the internet work? You should have a basic understanding. You don't need to know anything too deep or basic. Like how the wiring works? Just a very basic understanding. What happens on the internet? Everything on the internet is a machine. Everything, every digital thing—you are not a machine. We are not . Every digital thing that is connected to the internet is called a machine or a host. That machine, your laptop, is also a machine. A phone is also a machine. A wearable watch is also a machine. What is kept on Google's servers is also a machine. The server where all YouTube videos are uploaded is also a machine. Meaning, anything that is connected to the internet. If your fridge is a smart fridge, it is also a machine. And generally, there are two types of machines on the internet. One machine is called a client. One machine is called a server. What is one machine called? Server. Okay. Now, all these machines talk to each other. What do all these machines do? They talk to each other. There are only two ways to communicate. One is called what? Making a request and the other is called responding. Making a request means one machine is asking for some data from another machine. Responding means that one machine is providing data to another machine. Like when you watch a YouTube video, as soon as you click on a video, your laptop requests YouTube's machine to show Pratyush bhaiya's video. Then YouTube's machine sends my video as a response, which plays on your laptop. So there are two types of machines, and generally speaking, the machine that makes the request is called the client machine. The machine that provides the answer, or the response, is called the server. I think these terms originated from hotel management. When you go to a restaurant and sit down to eat, you are the client of that hotel. You make a request for the food you want to eat. A waiter, also called a server in English , serves you. He comes and brings you the food. He is providing you with a response. It is not necessary that the response is exactly what you wanted. You might get the correct response. You might also get a wrong response. You asked for an egg and got a sandwich; that is also a response. It is an incorrect response. Your response might arrive late. You asked for it now, but the response arrived an hour later. That is also a valid response. No response is also a response. You ordered food, but nothing happened. That is also a response. A denial is also a response. You asked for food, and the waiter said , \"I won't give it to you.\" That is also a response. So what this means is that there are two machines on the internet: the client and the server. How do they talk to each other? Through requests and responses. All right? So this is basic networking. Everyone should know this. Everyone should be aware of basic networking. All right? Come on, let's move forward. Now let me take you into system design, what it is, and what its concepts are. Let's move on. So, generally speaking, there are two types of designs in system design. One is High-Level Design, which is what is going on in this playlist. The other is Low-Level Design, which is called machine coding. What is it called? It is called machine coding. What is High-Level Design? High-Level Design is even more important. LLD is not much needed these days; I will talk about it later. But nowadays, it isn't really needed. What is High-Level Design? When you build a system or a software, it is like building a house. If you are building a 40-story apartment, you have to plan for it. When a 40-story apartment is built, it requires planning . No one just starts building it immediately. They don't just dump sand and start building, right? It has an architecture. There is planning. Where will the elevator go? Where will the window go? What if there is a flood? How will water reach the top floor? Where will the security guard's room be? How many people can enter? Where will the gates be located? Where will the garden be? In many ways, this planning is called high-level design. So when a person builds software, they don't just start coding right away— opening a Python script and writing code —no, first you have to see what my system does. What parts will be in my system? These parts come later. Which databases will be used? Which APIs will be there? Meaning, what will the components be? How will these parts be connected? What will be the way to build them? How will data transfer happen in my system? So just like when a house is built and the plan or blueprint prepared before construction is what is called high-level design. In this, you just have to plan that this and this will be here. What is low-level design actually? Now you have planned what will be in the room. But which tiles will be used in that room? What design will they have? Going into further detail. Getting into every room . How many bars will the window in the room have? What design of tile will be used in the room? What color paint will be used in the room? This is called low-level design. And in an interview, you have to show this by coding. High-level design does not require coding. High-level design is to see if you know how to build your system or not. And there are nine principles of high-level design that you have to plan around. Nine principles. Like in the flight example, there were three, right? Time, your cost, and your comfort. Similarly, in high-level design, there are nine pointers you need to pay attention to. Just like we asked in the flight example , whether you want more time or comfort . So you will have to ask about these nine : what do you need? What do you need? Did you get it? Okay, what are these nine principles? But these nine principles are very good. First is load and scalability. What do load and scalability really mean ? It's fine as long as only one person is using your app or website. But what happens if you build an Instagram and 1 billion people start using it? How many people can use it at the same time? How many people can use it in a month? At what point will your system break, and what is scalability—if your system was built for 100 people and now you need it for a thousand, how will you do that? Scalable means how will you expand it? You built a house with space for 20 families. Now you feel you need space for 40 families. How will you scale? Build more floors on top. Build another house next to it. This covers vertical and horizontal scaling, which will be discussed in future modules. But the first thing is load or scalability. How much load can your system handle? What are your requirements? How many users should be able to access your system simultaneously? So, you have to ask these questions. What is the second one ? Performance—performance or latency. When a user comes to your app, how long will it take to provide an answer? You went to ChatGPT, typed something; how many seconds should it take for the answer to appear? There must be a requirement that it should be done within 5 seconds, 1 second, or 20 seconds. Or maybe someone says latency doesn't matter, even if it takes an hour, it’s fine. So you have to ask, what will be the second point, the performance of your system, how much? How much latency are you expecting? When a user sends a request and receives a response. There must be a time deadline that it shouldn't exceed. That is called performance. Third, what about availability? Will your app go down anywhere? Will it crash? Like how IRCTC crashes when booking tatkal tickets. That is called being unavailable. You must have seen some websites crashing. Sometimes you open them and see 503 or something else. That is called the website being unavailable. So availability is measured in 99%or 99.9% or 99.99%. Or 99.99%. It is measured in those terms. 99%means if there are 365 days in a year , your website should be available for 99%of those 365 days. Availability simply means how much time your website can be down in a year, and again, no system is perfect. You might say 100%, but no, machines do go down. Hardware fails. The site breaks . The server breaks. The CDN breaks. This is physics. Nobody can stop this. No one on this earth is bold enough to claim they will provide 100% availability. Even the biggest companies cannot state in a contract that they will provide 100%availability. It is simply not possible to do. So 99%or 99.99%, the better the company, the more it will want its app to remain available . But why is availability important? Just think about it. How much business would an app like Amazon do in a day? How much business would an app like Amazon do in a single day? It would be doing billions of dollars in business. You are saying if Amazon says in my 365 days, it will be available 99%of the time. And it will not be there 1%of the time. That means for 3 days in a year, Amazon's website will be down. Suppose that 3-day downtime leads to a 3 billion dollar loss, so do not underestimate availability just because it is 99%; why go above that? As soon as you build a big company, you will realize the value of 99%and how much monetary loss that 1 %downtime can cause. That is why it is asked, how much availability do you need ? What percentage of availability should your system have? What is the fourth one ? Reliability. What is the fourth one? Reliability. Reliability and fault tolerance. Fault tolerance. What does this mean? What does reliability actually mean? That your system provides correct behavior. Your system should keep providing correct behavior. Being available is one thing. Providing correct behavior is another. Take an ATM machine. Suppose an ATM machine is running. That means it is available. But you ask for ₹ 500 and it gives you ₹ 400 . That means the system is not reliable . That system sometimes does one thing and sometimes starts doing something else. So that is not a reliable system. Systems need to be available and reliable. It would be better if it just shut down. Just think how angry you would be if the ATM machine is running and is on. You withdraw 500 and 400 comes out. You would smash the ATM, right? There would be a fight there. You would say, \"Better to just shut down, brother.\" Then why are you running? That is why system reliability also means that your system must be reliable , man. It will return the same result every time, right? You will provide reliable, correct results, right? You wouldn't start showing us wrong results just because there's a load, would you? So, reliability should be important to you. Fault tolerance. Fault tolerance means, for example, you have 10 machines or 10 servers. If one of them dies or goes down, your system should still keep running. It shouldn't be the case that one machine goes down and all your websites across the world disappear. Everything crashes, everything burns, gone. Like a cricket team. There are 11 people in a cricket team. If one of the 11 gets injured. Your team can still play. It might play a bit less effectively, but it can play, right? It shouldn't be that if one person gets injured, the whole team collapses and it's game over. Until this is fixed, that is what is called fault tolerance, that a fault has occurred. Suppose a machine burns out. A fire breaks out somewhere. Okay, there should be a minor problem. But the entire world shouldn't have a problem with that website. This is called fault tolerance. Okay. The next thing is consistency. The next thing is consistency. What does consistency mean, anyway? Consistency means everyone should see the same, correct data. Meaning, all the people using that app should see the same, correct data. The example for consistency is usually given with banks . If Pratyush is sending ₹ 100 to Divya, then 100 should be deducted from Pratyush's account. And 100 should be added to Divya's account. This is called consistent data . It shouldn't be that 100 was deducted from my account. And nothing happened in their account. Then where did the money go? This is called a break in consistency. Your data should remain consistent. This is the next principle. Okay? After that, durability. Durability . Durability means that whatever data you store, you should still have it. Even if the power goes out. For example , if you create an account on Instagram . I created an account on Instagram. I got 263k followers one day. Let's assume Instagram goes down for a day. A fire breaks out at the Instagram office. Instagram goes down across the entire world. Now, when Instagram comes back the next day, my 263k followers shouldn't become zero. It shouldn't say it doesn't remember which account is mine. And tell you to start over. No, no , that app will never run again. That app won't be able to stand on its own feet. Now just think about it. Whoever has an account on Instagram, imagine Instagram goes down for a day or an hour . They come back immediately and say, \" Listen, everyone who created an account , please create it again.\"\"We have forgotten who had what followers.\" Now we don't even know, right? This is called durability. The data you have collected must be durable. Whether there is a fire, a flood, or whatever happens , the data should remain. When you come back, you should come back with that same data. Do not come back with new data. This is called durability. Alright . Next is security. Obviously, your app security is a risk. Security means data leakage is a security issue. Getting hacked is a security issue. So, I don't think there is much need to explain security. Okay, the eighth point is cost . How much does it cost to build your system? Is it not happening that in the attempt to make everything perfect, you are increasing your costs too much? You aren't even getting that much business. I said, right, what was it in the flight train? Your cost is also a factor, right ? It costs money to build a system. System design costs money. You cannot— now suppose you are in an interview and for every answer, you say, \"Sir, we will just add another server.\"\"We'll open an office here and put another server there .\" Not a server everywhere, brother, who is going to pay for that cost? Cost also has a limit, right? Any company has limited money to burn. So, how much will it cost to build the system? Now you are constructing a building. Someone said, \" Sir, the building doesn't look good.\"\" Do something about it.\" So you say, \"Oh , we will install gold tiles on every floor of the building.\" That's good. You can install them. But where is the money coming from? Its cost is skyrocketing, isn't it? Cost is also a parameter. And the ninth is maintainability. Maintainability. It's not that important . It is mostly necessary at the low level. But maintainability is also something; your system shouldn't become so complex. You've made such a mess of it that only you can understand it. And as soon as you leave the company, the company sinks . No one else can understand where this system is running from. Meaning, machines spread across the world, data moving from here to there. It is flowing into its data. In other words, maintainability is not that great. Focus is on the high level, but still, maintainability means the system should remain clean. Like if you placed it on a table and there are wires scattered everywhere on it. You won't understand which wire is going where, or what it is connected to . Then you get tangled up in it. It should be neat and clean. That is what it means in Hindi. So look, these nine points are important in system design. Now, again, no system is perfect. In any interview, your answer cannot be that, \" Sir, we will make all nine perfect.\" You cannot do it. For example, take the example of Instagram and a bank. Whose? Take the example of Instagram and a bank . Take the example of Instagram and a bank. Okay? Let's talk about reliable data. Let's talk about reliable data. Reliable means correct data. Now, tell me one thing, you checked your balance. Checked your bank balance. Okay? According to you, there should have been ₹ 2 lakhs in your bank. The bank showed you incorrect data for a moment. It said you have ₹ 500. What will you do? Calls to the bank, messages, FIR; it will cause a panic, right brother? Just think about it. According to you, there were 2 lakhs in your account. You checked your balance once on PhonePe. SBI is saying it is ₹ 500. You will immediately run to the police. There will be an uproar across the country, so a bank cannot afford to show wrong data. But, but, but in contrast, let's say my reel on Instagram had 90,000 views in reality, but Instagram showed me wrong views. Instagram showed me 80,000 views for a little while. It will get fixed. It showed 80,000 views for a moment. What will happen because of this? What difference does it make to me? Will anyone go to the police station for this ? Will anyone file an FIR? No. It will fix it after a little while. So Instagram can afford a little bit of wrong data. This doesn't mean Instagram is totally wrong, it's about what is most important to you. For whom is reliability more important? For Instagram or for a bank? For a bank? Now let's talk about availability, availability, availability. Okay? Let's talk about availability. If a bank feels that it won't be able to provide reliable data. If the bank feels it won't be able to provide consistent data. Meaning, if Suresh made a payment and Ramesh didn't receive it, we can't have that. So, the bank would rather prefer to shut down. The bank will say my server is down. That is why you might see SBI's server remains down. But Instagram will say, let it run, let it run, whoever's data it is, let it run. If everyone is getting wrong data for a little while. Let it show, what's the issue? As long as the reels keep coming . People should keep watching reels. People are coming to watch reels, right . So Instagram can afford this. Do you understand what we are saying about what is more important for whom? Now, if you are asked in a system design interview to build Instagram, you won't put as much emphasis on reliability. But if you are asked to build a bank's system and you say reliability is fine, we'll do it a bit, no, you will fail. So you understand that these nine points are not set in stone, that nothing outside of this can happen, right? According to every system, every system will say that some of these nine points are the most important for me. For some points, it will say that we can tolerate a little bit of downtime. A little bit, not too much. It's not that we can't tolerate it, but we can tolerate a little. Meaning, if there are some ups and downs, we will manage. So this is how high-level design is done. Okay? So this was an introductory lecture. My throat has also gone dry from shouting. But we hope that you understood what high-level design means . It means reading these nine points, asking the interviewer questions on these nine points, and designing your system according to them, and how to design it? What parts are in it? How are they connected? All this will be very clear to you in the upcoming 20 to 21 lectures . Okay? So, thank you very much for coming. Do leave a like on the video, see you in the next one.",
+  "channel": "Gaurav Sen",
+  "timestamp": "00:00"
+}

@@ -1,0 +1,5271 @@
+{
+  "id": "6JjFSJK0Y",
+  "title": "w_Horizontal vs Vertical Scaling ｜ System Design Free Course",
+  "url": "https://www.youtube.com/watch?v=6JjFSJK0Y",
+  "full_text": "Hello kids, how are you? How are you? Today's topic is scaling. We'll teach you all about this topic today. Last time we covered scaling, we explained what vertical and horizontal scaling are. Some people were saying that horizontal is good. That's not true in system design. So, let's explain what both are. When to use what? The first question you'll likely ask is, what will you do if you scale? Vertical or horizontal, and there's no single answer to horizontal. The question is, why would you do it? So , it's crucial to understand that. How does horizontal scaling work? Horizontal is a little more complex than vertical scaling. How do load balancers work? What is a heartbeat? What are cookies? What do you mean when you log in? What does it mean when they say \"cookies are stored on the server\"? How do all these things work? What is a stateless server? It's very important horizontally because you have to make it stateless. Consistent hashing will be covered in a future lecture, but Danny Luin and Tom Layton were two people who discovered it. Then an entire company was formed around it. Today, that company is known as Akamai. So, it's very important; all this is connected to the real world. Okay? And let me tell you one more thing: if we go home tomorrow, it's possible that videos won't be available for three or four days while Chhath is going on. So, don't complain in the comments about them not being available. Right? So, understand everything a little. Okay? Now, let's see what scaling means. Scaling doesn't mean anything. Whatever your system is, what your system looks like in the beginning. We told you in the previous article that a laptop is your system, that's all. So if it is working for 10 users then scaling means how to take it from 10 users to 10 crore users? This is what is called scaling. Scaling means increasing . You are living in one room, it is fine to live there but three people, four people can live in one room. Apartments have to be made for a thousand people to live. What is an apartment? It is a collection of rooms. So this is called scale that by scaling one room we have made an apartment. Okay? Let's do it. Now there are only two ways of scaling. One is called vertical scaling and the other is called horizontal scaling. What ? Vertical and horizontal. (Vertical) and horizontal () if you do not remember , to understand this, suppose there is a child and he can lift 20 kg weight, how much 20 kg weight can he lift at one time, now you have to make him lift 40 kg weight, now 20 kg is not enough for you, you need 40 kg, so you have two options, either send this child to the gym, build a little body of this child, make this child big, make him muscle, then he will start lifting 40 kg, okay and one way is that this child was lifting 20 kg, similarly bring another Sukhandi child and make him stand next to him, this is the thing in which you are making the child grow, by sending the child to the gym you are advancing the child, you are improving the child, this is called vertical because you can see that the height of the child has increased, the child was this big, now the child has become this big, so this is called vertical scaling, horizontal means another like this Bring a child and make him stand, that is why it is called horizontal, because earlier there was one child, if we make three or four more children stand like him, then they will start lifting, or one child was so big, we made him so big by sending him to the gym, so this is vertical scaling, and when you make a lot of children stand side by side, you call it horizontal scaling because it expands horizontally , so the same thing happens in this too , if you want to scale, then vertical means that you buy a bigger system, buy a bigger server which has more CPU, more RAM, more disk space, buy that, horizontal means that you buy more servers, if one server is not working then no problem, buy one more, buy two more, buy 10 more, so this is bigger servers, this is more servers, generally doing vertical is very simple, why is it simple because it does not require any code change, if your app, if your website is running on any server on any website, then you will not have to change the code, it is not that on a laptop You don't have to go and code anything; you just have to call AWS or whoever you purchased your server from, and they'll scale your server in a jiffy . Let's assume that there's no code change involved. Horizontal is a bit complex; it's complex because it has many reasons . As soon as horizontal is introduced, a load balancer comes into the picture, as we explained yesterday; we'll discuss this in detail. Load balancer comes into the picture. Secondly, there's the problem of stateful and stateless servers, which may require code changes. We'll explain what stateless is. That's why it's a bit complex. Vertical costs are very high. We mentioned yesterday that its cost increases exponentially. If you take a small child to the gym, it will cost a lot when compared to horizontal. Horizontal costs are linear; if one child costs ₹ 10, two children will cost ₹ 20. It's simple math. That simple math doesn't work in vertical. Linear math doesn't work. Exponential math works. So its cost is higher. This one costs less. Another problem with vertical is that there's a ceiling. How long can you send a child to the gym? How many kilos can each person lift? If he was lifting 20 kilos, if you send him to the gym, he'll lift 200. Now, will the child increase his lifting beyond 200? It's impossible that you send a child to the gym all his life and he'll keep lifting. There's a human limit, right? Similarly, machines also have a limit. So, there's a ceiling for vertical scaling. How much RAM can you buy? You bought 1 TB of RAM. Now, there's nothing more available in the world, where will you get it? And horizontal doesn't have a ceiling. You can buy as many machines as you want. One machine, two machines, a thousand machines, 10,000 machines, whatever you ask for, you'll get as many machines as you want. So, horizontally, there's no ceiling; there's an unlimited ceiling. Vertically, there's a defined ceiling. What it is, is defined. And one thing: vertically, there's a little downtime. What vertical scaling means is that if there's a machine, a server, a computer , and your code is running on it. Your code is running on it right now. So , what will AWS do when it changes it? First, it will shut down your code on this machine. It will copy this code to a larger machine and start that larger machine. What does this take? It takes time. As soon as your code is shut down on this machine, your website will go down and become inoperable. Someone searching for pratyush.com won't find it because the computer it was running on has been turned off. Until this code is copied to the new computer, which AWS does. You don't have to do anything, but it will take some time, brother. From the time you copy it to the time you start this machine, your website will be down. So, there's downtime in this. Horizontal doesn't have downtime. Horizontal doesn't have downtime. If you have four machines running and you need to add a fifth, it'll happen seamlessly. You don't need to shut down all four. If you have three children who are gaining weight well, and you need to bring a fourth child, just bring him in . There's no need to disturb all three. So, horizontal doesn't have downtime. So , what are the differences between vertical and horizontal scaling? If someone asks you what the differences are, these are the differences. Vertical is better in some things, vertical isn't better in others. The one thing that's better is that vertical is simple. Vertical doesn't require much brainpower; it just takes money and it's done. Horizontal is a bit more complex. Horizontal scaling is a bit complex for us. Now the question arises, which one to do? Whenever we start something, whenever someone opens their own startup, people usually try vertical scaling first. Usually, vertical scaling is tried up to a certain limit. Why? Because no one has that much complex knowledge in the beginning, so people don't try horizontal scaling. So, vertical scaling is initially tried . After a certain point, when either the ceiling is hit or the cost becomes so high, only then do people move to horizontal scaling. Only then do people say, \"Let's learn a little more complex things and then move to horizontal.\" So, your answer to starting should be, \" Sir, if there's double or triple the load, we'll go vertical.\" As soon as we feel that vertical costs are becoming too high or that vertical hardware limits are being reached, then we'll move to horizontal scaling. Large companies use mixed systems. This means they have very large computers. These are very large computers that they have scaled vertically, and there are many such large computers. Meaning, first scale vertically, make the computer bigger. When that limit is reached, install more similarly large computers. And remember one more thing: the database, now scale the database as well . The problem that exists in the computer that uses your code is the same problem that exists in the computer that uses your database. People prefer vertical scaling in databases. You'll understand why this is preferred when we teach you about sharding later. Horizontalizing a database. Now, what does horizontal mean? Any machine can run your code. That's fine in code, that's possible. Now, let's say the database contains data for 10 users. How do you scale it horizontally? Scaling horizontally means having one computer with data for three users, another computer with data for four users, and another computer with data for the remaining three users. This process is called splitting or sharding. It becomes even more complex. It becomes very complex. So, in the case of databases, people prefer to scale vertically as long as possible. When it becomes absolutely impossible to scale vertically, like AWS saying you'll have to pay ₹ 1 crore, then people say, \"Okay, let's do sharding or splitting,\" because sharding and splitting are a different beast. It then becomes very complex. So, in a code server, it's fine; a little vertical scaling will become horizontal . In a database, people prefer to scale vertically as long as possible. Only when they run out of options will they scale horizontally. Right? Now, there's not much to understand about vertical. There's no vertical at all. Just call AWS and say we need a bigger machine. Everything will be done . AWS will handle whatever happens. As a system design student, you don't need to worry about that. What do you need to worry about? Horizontal scaling. This is complex. If it's complex, it's more important to learn. That's why we'll explain horizontal scaling to you now. Vertical scaling is done. Vertical scaling means buy a bigger machine, that's it. Horizontal scaling requires some decision-making. So, let's move on. Let's explain horizontal scaling to you. Now, as soon as horizontal scaling comes into play, the horizontal architecture is very simple: you had one computer. Now, let's say you have three computers . This is your C1 computer. This is your C2 computer. This is your C3 computer. This is your simple laptop. All three have their own RAM, their own CPU, and their own disks, so they're all easily independent computers. As soon as horizontal scaling comes into the picture, you need a load balancer. You need a load balancer. Why is this necessary, and why wasn't it necessary before, and why isn't a load balancer needed vertically? It's because of how your system works. You're running your code on a laptop. Your code is running on this laptop. A user comes in. The user sends a request to this laptop. A request can be anything. Clicking a button is a request. Pressing the back button is also a request. Asking something on a chat or GPT is a request. Clicking on a YouTube playlist is a request. Commenting on YouTube is any kind of user activity—anything that the user does with their hands, pressing the computer, is a request. Okay? So, initially, it was simple: the user would send a request to this laptop because there was only one laptop. This laptop would send a response to the user , so it was very simple at first. Now the problem is that you have three laptops. Code is running on all three. Any one of the three laptops can serve a user's request. The same code is running on all three. So, for example, if the Chat GPT program is running on all three laptops, and a user asks, \"What is Shah Rukh Khan's age ?\" any of the three laptops can fulfill the request. But it's impossible for any laptop to have all the users on one laptop and these two remain idle, or for all the users to have all the users on these two and this one remain idle. This is why load balancing is so important. Now, what do we do with load balancing? We place a load balancer in front of our laptop. We place a person in front of our laptop, in front of our house. Now, the user was directly sending a request to your laptop to tell us Shah Rukh Khan's age. Now, the user is not directly connected to your laptop. The user knows only one thing: the load balancer. Now, every request the user sends will go to the load balancer first. Which one ? The load balancer. What is a load balancer? A load balancer is also a laptop. Some different code is running inside it. Its job is different. What is that job? Now, the load balancer receives a request from this man. It asks, \"What is Shah Rukh Khan's age?\" The load balancer has to decide which of the three laptops should this request go to. That's why it's called a load balancer. Now, the load balancer doesn't have just one user for every user. You have millions of users. So, user one is talking to this same user. User two is also talking to this same load balancer . User three is also talking to this same load balancer. So, what is coming to the load balancer? Load is coming. Now, how should this load be balanced? Should all the requests be sent to this laptop, or should all the requests be sent to this one, or should all three be sent to this one, two to this one, and one to this one? How should we balance? This is the load balancer's job. Whose job is this? This is the load balancer's job. Okay. So, now, it must have some function. Next, we'll see how this works. There's some algorithm for this too. How does it work? But before that, understand one very important thing we talked about: stateless servers. What did we say? Stateless servers. When we created the horizontal table, did we write it somewhere? Where did we write it? Stateless. What does this mean? Look , understand it very easily. Now, what does stateless mean? For example, imagine a scenario. We are a user. What are we? We are a user. My name is Pratyush. My name is Pratyush. Okay. Everything is a request. So, what did we do? Let's say this is an Amazon website . So what did we do? My name is Pratyush , right? So what was our first request? We requested to create an account on Amazon. On what? We requested to create an account. Let's say that request went to the load balancer and went to laptop C1. The load balancer can send it to anyone. Let's say the account creation process was completed on C1. Now, C1 doesn't know that there is a user named Pratyush. C1 knows this. C2 and C3 don't know what's going on yet . How would C2 and C3 know? They're different laptops, right? So, C1 knows that Pratyush has created his account. So far, everything is fine. Okay. What's our next request? We like a laptop and click to buy on that laptop. This is also a request. Everything is a request, so we click to buy a laptop. By God's grace, this request also went to C1. So, C1 already knew that Pratyush had just created an account. Now, C1 also knows that Pratyush wants to buy a Dell laptop. He wants to add it to cart . So, C1 added it to cart. C2 and C3 have no idea about me yet because nothing has happened to them. Okay. Next, we're going to the final step. We've created the account, added it to cart. Now, we want to make the payment and complete our purchase of that laptop . This is also a request. Making the payment is also a request. But now, by God's grace, it went to C2. This payment request went to C2. Now, look! We never created an account on C2. When I created an account on C1, C1 must have stored my information on its disk, on its hard disk, that this guy is Pratyush, his username is P Narayan, and his password is password. I added Pratyush to cart. C1 must have stored this in its RAM, thinking that this guy just added a Dell laptop to his cart. Very good. But when my payment request goes to C2, C2 will be confused. What request will reach C2, that Pratyush wants to make a payment of 65,000 rupees? Now C2 will ask, \"Who is Pratyush, and for whom is he trying to make a payment ? What's wrong with him?\" C2 will reject my request because it doesn't know what's going on. Imagine, there are three hotels. What's the point? There are three hotels here. Right? You enter one hotel and order for the first time. Everything is going well . You even eat at the same hotel, place your order, the food arrives, and you eat. Now you feel like making a payment , so you leave this hotel and enter this hotel. You go there and say, \"Here's ₹ 720 payment.\" What's the payment for? You didn't even eat here. You ate at Ram Hotel, and then you come to Shyam Hotel and say you'll pay ₹ 720. This problem is called a state problem. This is happening, each server is keeping my information to itself. This type of design is called a stateful server. What is it called? It's called a stateful server. What is state? Any information about any user? What is this user's user ID? What was it doing? When any user sends a request, the information related to that request is stored. As long as everything was going to C1, there was no problem. As soon as one of my requests goes to C2, there will be a problem. This type of design is called a stateful server. Why is it called a stateful server? Because this server keeps my state, my information, my information about Pratyush, and the information about the requests Pratyush is making, all to itself. It doesn't share it with anyone. So, when you design this, it's called a stateful server. Now, if you have such a design, your load balancer will have to ensure that if Pratyush is a user, then all of Pratyush's work, all the work Pratyush wants to do in the world, all the requests Pratyush wants to make, always go to one laptop, and not to any other. If Pratyush enters a hotel for the first time, he will order from there, eat there, pay there, and leave a tip there . Pratyush cannot go to any other hotel. This is where the problem arises. Suppose this laptop is busy. A hotel is very crowded. The two of them are sitting comfortably , eating tea and biscuits. Now Pratyush arrives, and the load balancer thinks, \" Okay, Pratyush needs to be sent to C1.\" It remembers that Pratyush went to C1, so it pushes him into this queue as well . Pratyush is standing in line even though both of these laptops are empty. The other Shyam Hotel and Mohan Hotel are empty, and Pratyush is entering the line at Ram Hotel, saying, \"I'll pay here, eat here, and sleep here.\" This is wrong . To solve this problem, you have to convert your server from stateful to stateless. What does that mean? You have to convert a stateful server from stateful to stateless. What is this stateless thing ? Let me explain. Did you understand the problem with stateful? This is a problem with horizontal servers. It's not a problem with vertical servers . There's only one laptop and one hotel in vertical servers. The hotel will remember you, eat, and do whatever you want. This problem occurs with horizontal servers. This is called the state problem, and to solve this problem , we'll build a stateless server. What is a stateless server? Now, let's explain this state problem. What does state mean? Any information about any request or any user is called state, and this is called a cookie. Not a cookie, but a cookie. Okay? What happens is, how does login work? When you buy a laptop for the first time and you go to Instagram, say, instagram.com, and log in, you have to provide your username or password, or you have to log in with your Google account. After that, if you log in with Chrome, say, you come back tomorrow, shut down your laptop, and open Instagram again, you don't have to log in. That Instagram account remains logged in , right? How does this happen? It's done with cookies. What happens is that whenever you assume you have a server, the one marked C1 and C2 above, this is C1. When someone comes to log in for the first time, you're the first one, Pratyush is the first one, the server says, \"OK, enter your username and password. Authentication is successful.\" The server understands that this is Pratyush . Now it creates a session. What does a session mean? What does a session ID say? It says that this person's name is Pratyush. He's authenticated, meaning he entered his username and password correctly, we've got his account, and we'll remember it for that long. For example, for two days, seven days, or eight days. It's like a token. When you go somewhere for the first time, you're asked to register, so you register and sign in. After that, the guard there will remember that you came. If you don't log in for a month or two, the server will forget you, and you'll have to register . This is what a session is. Now, what this server does is, let's say you log in as a user. The server will create a session ID. The session ID is something like a big ABX and send it to your browser. It will send it to your browser, that is , to your Chrome browser. From then on, whenever you log in, you're done. Now, if you open Instagram or do anything, your browser will send this cookie. This is called a cookie. It will send it to the server. The server will read the cookie and understand, \" Yes, this is Pratyush. We need to remember him for 10 days. He's logged in .\" That's why you don't have to log in again and again. If this weren't the case, every time you open or close Instagram.com, it would prompt you to enter your username and password. This doesn't happen. Why? This isn't the case . So, you can use this cookie as a statement, \"What is this cookie?\" Your information is this: your name is this, your ID is this, your IP is this, your password is this, your username is this , so and so, whatever information there is about you. Okay, so what comes next? Wait a minute . Yes, sorry, someone's information came up. So, this cookie system, so what happens in stateful? What happens in stateful? You were a user, you went and logged in. Suppose your first login was on C1, then C1 remembered your cookie and session information. Now, if you go back to C1, you don't have to log in, but when you make a request to C2, you have to log in again . Why? Because C1 has kept this cookie and session information in itself. It didn't share this with C2, so C2 had a problem. This was stateful. Stateless doesn't mean that this cookie or session is stored in a shared storage . What? Your cookie or session should be stored on a shared system or shared server. Now, what will happen is that no matter which server you go to, whether it's C1 , C2, or any other, everyone will read this shared system and know that it belongs to Pratyush. Even if you take the previous example, you logged in, added to Amazon, and added to cart. What did you do? Add to cart. Now, all this information, all this state, will be stored in a shared storage. It won't be stored in your laptop's own memory. It will be stored in a shared storage. Now, if you go to another storage to make a payment, that shared storage will see what this person has done so far: created an account and added to cart. Okay, you want to make a payment. Yes, you can make a payment of Rs. 65,000. So , the problem with these three hotels is that previously, none of the hotels were talking to each other. Now, all the hotels are connected. You go and place your order here, eat here, and then go here to pay. The person there will ask the central system, \"Hey, this guy came, paid ₹ 720 , who is this guy?\" Someone will tell him, \"Yes, he came, placed an order, and ate the food. This is the payment for that.\" This person will take your payment. This system is called stateless servers . No single server is individually remembering your state. Everyone is storing a shared server somewhere, and everyone is reading from their own shared server. This is crucial when building a horizontally scaling system. If you make it stateful, it will cause a lot of problems. Let me explain why. Now, another thought should come to your mind: can we also do what we said, that all of Pratyush's requests go to one server? Why is this problematic? There's a load problem. Now, Pratyush is making 2,000 requests a day. You're sending all of Pratyush's requests to C1. What will C2 and C3 do if C1 is busy? Suppose a fire breaks out in C1, what will happen then? Then you'll send it to C2. He'll have to log in again. That's why all these problems arise in stateful systems. Stateless systems are designed to make your system stateless. So whose problem is this? Horizontal. And how do you solve it? Let's do it this way. Now , let's move on to load balancers. A load balancer has four functions in total. How many functions does it have in total? A load balancer has four functions. First, it's obvious that you need to spread the traffic, the user requests, across all the servers. Spreading is the main function. Second, you need to keep checking the health. What do you need to keep doing? Health checks. This is called heartbeat . What's this called? A heartbeat. A heartbeat isn't anything. If you have three laptops in your system and a load balancer, the load balancer will ask all three laptops, \"Listen, Laptop One, are you okay?\" Laptop One will say, \"Yes, brother, I'm fine.\" What's this called? A health check. You ask, \"Are you okay?\" It says , \"I'm fine.\" It's a very simple request . There's no fraud involved. It asks, \" Are you okay?\" It says, \"Yes, I'm fine. \" This means the health check has passed , and this happens continuously. This happens every five seconds, every ten seconds. If the load balancer thinks, \"C1 hasn't responded,\" say, three times in a row. We ask, \"Are you okay?\" It didn't respond. Then, five seconds later, it asks, \"Are you okay?\" It didn't respond . Then, it asks, \"Are you okay?\" It doesn't respond. Then, it asks, \"Are you okay?\" It doesn't respond. So, the load balancer thinks, \"C1 has caught fire. C1 has gone down.\" So, no traffic is sent to C1. Traffic is no longer sent to C1. This is called a health check. The second and third are to add or remove machines. Which ones? Add or remove. Suppose you had three machines in total: one, two, and three. This was your load balancer. So, it was currently serving these three. Now, you can also install a fourth machine and tell your load balancer that C4 is now in the system. The load balancer will now perform a health check on this machine as well and start sending traffic to it. So, previously, it was sending traffic to three. Now, it will spread traffic to four and start doing health checks on it as well. What is the fourth function? For security. What is the fourth function? For security. When the load balancer wasn't in place, the user was talking directly to your laptop. The user was talking directly to your laptop. Your laptop will need to have a public IP. Remember, we explained public IP and private IP in Lecture 2. What are they? A public IP refers to the main gate of your apartment or society. A private IP refers to your home address. Someone from Zomato could access the main gate, but not your home. Without a load balancer, every user could directly access your C1 laptop because your C1 was public, so they could access your C1 laptop. What happens with a load balancer? Think of the load balancer as the main gate. Think of C1, C2, and C3 as house addresses. Now, a user can't directly access your laptop. The user will go to the main gate. The main gate will decide which house to send the user to, increasing security. If someone has direct access to your server, they can do anything. Now, they only have access to the load balancer. They can hack the load balancer, for example. They can't access your machine. They're not allowed to access your machine. They don't even know your machine's IP address. So, security is one of its four functions. These three are simple. How will you spread traffic? There are techniques for this. You'll be asked, \" Okay, you've built a load balancer. Which load balancing algorithm will you use?\" So, the simplest algorithm is called round robin. What does round robin mean? Request one comes, give it to C1. Request two comes, give it to C2. Request three comes, give it to C3. Request four comes, give it back to C1. Request five comes, give it back to C2. Request six comes, give it to C3, and repeat. This is called round robin. The first request comes, give it to this one . Now give it its turn. Any other request comes, give it to this one. The next request comes, give it to this one . This is called round robin. So, this is the simplest. There's no brain involved. The load balancer knows, \"I have three laptops.\" A request came in, \"Yes, take C1.\" Another came in, \"C2.\" A third came in, \"C3.\" So, it's like dealing cards, one, two, three, this, and so on. This is very simple, very easy. What's the problem with this? The problem is that some requests are heavy. Some requests are heavy. And they are heavy, aren't they? A request could be for payment. So, let's say a payment request is a heavy request. Another request could be just a click of the back button , so that's a light request. Meaning, processing a request can take a lot of time, while processing another request can take less time. Just think about it, all kinds of work work. If you give us a video, it will take time, brother. Sending us a large payment, that will take time too, but if someone presses the back button, it will take less time . The same thing happens in chat. You tell Chat GPT to tell you Shah Rukh Khan's age; it's a small request, and it will respond immediately. Now, you're asking it to make a game, and you're giving us the full draft, which will take longer. So, what happens in round robin is that one of your machines might get overloaded. What could happen? It could get overloaded. Is the overloaded machine going to this one, because it's not being used intelligently? The request comes in, it goes to this one, and it can't go to any other one. Let's say this has happened to you: your laptop with C1 is running at 99%, meaning it's running at 99%, and this machine could catch fire any moment, while C2 is running comfortably at 40%. Now, when a request comes in, the load balancer is following round robin, so it's determined to send it to this one, whether it's at 99%or 100%. I don't care . So, what could happen is that your machine could get overloaded. So this is simple, but it also has a problem. What is the other method? Load-based? Load-based, either connection-based or request-based. Send the server that appears to be the least free. This solves the problem of round robin. The problem with round robin was that you were forcing the server to be loaded . This solves that problem. It says, \" Okay, send it to the one with the least load.\" Isn't it? There are three interview rooms, or three people cooking. One person is making a small thing: tea, another person is making parathas, and another person is preparing a seven-course meal . So you'll see that the one serving the seven-course meal is already busy. If the tea vendor finishes immediately, give the next dish to the one serving. So, this is called load-based balancing, so that the one with the least load gets the least. The third is weighted round robin. What is it? Weighted round robin. What is weighted round robin? In horizontal scaling, it's not necessary that all your laptops be identical. It could be, no problem. But it could also be that laptop C1 has 8 GB of RAM, C2 has 128 GB of RAM, and C3 has 1 TB of RAM. Ideally, C1 should receive fewer requests. C2 should receive slightly more, and C3 should receive the most. So, you can also assign weights to these. Weight means ratio. This one has a weight of 1, this one has a weight of 2 , and this one has a weight of 3. Now, how will this be distributed? What does 1 + 2 + 3 mean? 6. So, out of every six requests, one will go to C1, two to C2, and three to C3. What is this called? Weighted round robin. So you've weighted C1, saying, okay, if there are six requests, one will go to this, the next two will go to this, the next three will go to this. Then if another request comes, it repeats. One will go to this, two will go to this, three will go to this. This is called weighted round robin. Okay? And the fourth method, the fourth method , is called hash-based. What is it called? Hash-based. Now, what is hash-based? First of all, understand the meaning of hash. Hash means take any information, any information, and convert it into a number. Convert it into a number. We'll give you a very simple example of hashing: take any number and multiply it by 10. Now, suppose you have the number 17, then 17 modulo 10 means when you divide 17 by 10, how much reminder is left? 7 is left. 27 modulo 10 is also 7. What is 13 modulo 10? It's 3. So this number is called a hash. You're converting information into a number, so it's hash-based. Now, a hash can contain anything. Information means any information. You can do this with a user ID; if a request comes for this user ID, we'll send it there. You can combine the user's IP address. You can combine the user's port number. We'll explain all this later when we come to networking. But information means anything is hashed by the type of request. If someone asks for a video, we'll send it to C1. If someone sends a payment request, we'll send it to C2. If someone wants to place an order, we'll send it to C3. So, hash-based can mean both: you decide which channel will go where based on the user's information, by hashing it and converting it into a number, as is happening here. Or you can do it role-based: \"Okay, brother, we've already decided that I have YouTube, so whenever anyone wants to watch a video, we'll send them to C1 . This is my rule. No matter who the user is, no matter how much load C1 is running. Whenever anyone wants to make a payment, we'll send them to C2. We've decided this. And if anyone wants to order something, we'll send them to C3. This is decided.\" So, there are a few methods, what are they called? Balancing algorithms. What do they call them? Balancing algorithms. Let me explain to recap. What's the simplest? Round Robin one by one. What's a little bit more than that? Weighted Round Robin. You decide the weights. Don't give them one at a time. Give one to this one. Give the next two to that one. Give the next three to that one. What happens after that? Load-based means give it to the server that's currently under the least load. And what about the fourth one? Hash-based. Decide which one goes to which server based on the incoming requests. It's pre-determined. Load plays no role in this, and round-robin or anything like that plays a role. It's pre-decided that every request that comes in this way will go to this server . So, this is the balancing algorithm, and this is the overall scaling. This is the overall scaling. If you understand scaling this much, you're in a very good position to explain. We've already talked for 30-40 minutes. If you want, you can also talk about it for 30-40 minutes. Okay? So watch this video, tell us in the comments, and if the video doesn't come in the next two, three, four days, please revise. We're planning a project in the AI series. That project is in development, so it hasn't arrived. Some people are asking, so I'll let you know. He has one remaining project, so we'll get that done. Right now, we're building it ourselves. We're encountering some errors, which is why it's not working. So, until then, let's just watch it. Thank you very much for watching. You guys are also very happy.",
+  "transcript": [
+    {
+      "text": "Hello kids, how are you? How are you?",
+      "start": 0.568,
+      "duration": 4.022
+    },
+    {
+      "text": "Today's topic is scaling. We'll teach",
+      "start": 2.433,
+      "duration": 5.086
+    },
+    {
+      "text": "you all about this topic today.",
+      "start": 4.59,
+      "duration": 4.201
+    },
+    {
+      "text": "Last time we covered scaling, we",
+      "start": 7.519,
+      "duration": 2.776
+    },
+    {
+      "text": "explained what vertical and horizontal",
+      "start": 8.791,
+      "duration": 3.184
+    },
+    {
+      "text": "scaling are. Some people were saying",
+      "start": 10.295,
+      "duration": 3.47
+    },
+    {
+      "text": "that horizontal is good. That's not true",
+      "start": 11.975,
+      "duration": 3.34
+    },
+    {
+      "text": "in system design.",
+      "start": 13.765,
+      "duration": 3.711
+    },
+    {
+      "text": "So, let's explain what both are. When to",
+      "start": 15.315,
+      "duration": 3.94
+    },
+    {
+      "text": "use what? The first question you'll",
+      "start": 17.476,
+      "duration": 3.602
+    },
+    {
+      "text": "likely ask is, what will you do if you",
+      "start": 19.255,
+      "duration": 3.724
+    },
+    {
+      "text": "scale? Vertical or horizontal, and",
+      "start": 21.078,
+      "duration": 4.05
+    },
+    {
+      "text": "there's no single answer to horizontal.",
+      "start": 22.979,
+      "duration": 3.272
+    },
+    {
+      "text": "The question is, why would you do it? So",
+      "start": 25.128,
+      "duration": 2.538
+    },
+    {
+      "text": ", it's crucial to understand that. How",
+      "start": 26.251,
+      "duration": 2.943
+    },
+    {
+      "text": "does horizontal scaling work? Horizontal",
+      "start": 27.666,
+      "duration": 2.753
+    },
+    {
+      "text": "is a little more complex than vertical",
+      "start": 29.194,
+      "duration": 1.989
+    },
+    {
+      "text": "scaling.",
+      "start": 30.419,
+      "duration": 3.137
+    },
+    {
+      "text": "How do load balancers work? What is a",
+      "start": 31.183,
+      "duration": 4.551
+    },
+    {
+      "text": "heartbeat? What are cookies? What do you",
+      "start": 33.556,
+      "duration": 4.531
+    },
+    {
+      "text": "mean when you log in? What does it mean",
+      "start": 35.734,
+      "duration": 4.238
+    },
+    {
+      "text": "when they say \"cookies are stored on the",
+      "start": 38.087,
+      "duration": 3.813
+    },
+    {
+      "text": "server\"? How do all these things work?",
+      "start": 39.972,
+      "duration": 3.443
+    },
+    {
+      "text": "What is a stateless server? It's very",
+      "start": 41.9,
+      "duration": 2.823
+    },
+    {
+      "text": "important horizontally because you have",
+      "start": 43.415,
+      "duration": 2.635
+    },
+    {
+      "text": "to make it stateless.",
+      "start": 44.723,
+      "duration": 3.089
+    },
+    {
+      "text": "Consistent hashing will be covered in a",
+      "start": 46.05,
+      "duration": 4.6
+    },
+    {
+      "text": "future lecture, but",
+      "start": 47.812,
+      "duration": 2.838
+    },
+    {
+      "text": "Danny Luin and Tom Layton were two",
+      "start": 50.679,
+      "duration": 4.622
+    },
+    {
+      "text": "people who discovered it. Then an entire",
+      "start": 52.965,
+      "duration": 3.819
+    },
+    {
+      "text": "company was formed around it. Today,",
+      "start": 55.301,
+      "duration": 3.249
+    },
+    {
+      "text": "that company is known as Akamai. So,",
+      "start": 56.784,
+      "duration": 3.004
+    },
+    {
+      "text": "it's very important; all this is",
+      "start": 58.55,
+      "duration": 3.787
+    },
+    {
+      "text": "connected to the real world. Okay?",
+      "start": 59.788,
+      "duration": 4.058
+    },
+    {
+      "text": "And let me tell you one more thing: if",
+      "start": 62.337,
+      "duration": 3.055
+    },
+    {
+      "text": "we go home tomorrow, it's possible that",
+      "start": 63.846,
+      "duration": 3.056
+    },
+    {
+      "text": "videos won't be available for three or",
+      "start": 65.392,
+      "duration": 3.297
+    },
+    {
+      "text": "four days while Chhath is going on. So,",
+      "start": 66.902,
+      "duration": 2.816
+    },
+    {
+      "text": "don't complain in the comments about",
+      "start": 68.689,
+      "duration": 2.483
+    },
+    {
+      "text": "them not being available. Right? So,",
+      "start": 69.718,
+      "duration": 3.612
+    },
+    {
+      "text": "understand everything a little. Okay?",
+      "start": 71.172,
+      "duration": 4.283
+    },
+    {
+      "text": "Now, let's see what scaling means.",
+      "start": 73.33,
+      "duration": 3.989
+    },
+    {
+      "text": "Scaling doesn't mean anything.",
+      "start": 75.455,
+      "duration": 3.344
+    },
+    {
+      "text": "Whatever your system is, what your",
+      "start": 77.319,
+      "duration": 3.494
+    },
+    {
+      "text": "system looks like in the beginning. We",
+      "start": 78.799,
+      "duration": 3.573
+    },
+    {
+      "text": "told you in the previous article that a",
+      "start": 80.813,
+      "duration": 3.417
+    },
+    {
+      "text": "laptop is your system, that's all.",
+      "start": 82.372,
+      "duration": 4.406
+    },
+    {
+      "text": "So if it is working for 10 users then",
+      "start": 84.23,
+      "duration": 5.03
+    },
+    {
+      "text": "scaling means how to take it from 10",
+      "start": 86.778,
+      "duration": 4.94
+    },
+    {
+      "text": "users to 10 crore users? This is what is",
+      "start": 89.26,
+      "duration": 4.451
+    },
+    {
+      "text": "called scaling. Scaling means increasing",
+      "start": 91.718,
+      "duration": 4.057
+    },
+    {
+      "text": ". You are living in one room, it is fine",
+      "start": 93.711,
+      "duration": 3.842
+    },
+    {
+      "text": "to live there but three people, four",
+      "start": 95.775,
+      "duration": 3.948
+    },
+    {
+      "text": "people can live in one room. Apartments",
+      "start": 97.553,
+      "duration": 3.58
+    },
+    {
+      "text": "have to be made for a thousand people to",
+      "start": 99.723,
+      "duration": 3.136
+    },
+    {
+      "text": "live. What is an apartment? It is a",
+      "start": 101.133,
+      "duration": 3.352
+    },
+    {
+      "text": "collection of rooms. So this is called",
+      "start": 102.859,
+      "duration": 3.353
+    },
+    {
+      "text": "scale that by scaling one room we have",
+      "start": 104.485,
+      "duration": 4.585
+    },
+    {
+      "text": "made an apartment. Okay? Let's do it.",
+      "start": 106.212,
+      "duration": 5.589
+    },
+    {
+      "text": "Now there are only two ways of scaling.",
+      "start": 109.07,
+      "duration": 4.775
+    },
+    {
+      "text": "One is called vertical scaling and the",
+      "start": 111.801,
+      "duration": 4.371
+    },
+    {
+      "text": "other is called horizontal scaling. What",
+      "start": 113.845,
+      "duration": 4.908
+    },
+    {
+      "text": "? Vertical and horizontal. (Vertical)",
+      "start": 116.172,
+      "duration": 4.861
+    },
+    {
+      "text": "and horizontal () if you do not remember",
+      "start": 118.753,
+      "duration": 4.618
+    },
+    {
+      "text": ", to understand this, suppose there is a",
+      "start": 121.033,
+      "duration": 4.618
+    },
+    {
+      "text": "child and he can lift 20 kg weight, how",
+      "start": 123.371,
+      "duration": 4.39
+    },
+    {
+      "text": "much 20 kg weight can he lift at one",
+      "start": 125.651,
+      "duration": 4.332
+    },
+    {
+      "text": "time, now you have to make him lift 40",
+      "start": 127.761,
+      "duration": 4.447
+    },
+    {
+      "text": "kg weight, now 20 kg is not enough for",
+      "start": 129.983,
+      "duration": 4.335
+    },
+    {
+      "text": "you, you need 40 kg, so you have two",
+      "start": 132.208,
+      "duration": 4.333
+    },
+    {
+      "text": "options, either send this child to the",
+      "start": 134.318,
+      "duration": 4.504
+    },
+    {
+      "text": "gym, build a little body of this child,",
+      "start": 136.541,
+      "duration": 4.447
+    },
+    {
+      "text": "make this child big, make him muscle,",
+      "start": 138.822,
+      "duration": 4.39
+    },
+    {
+      "text": "then he will start lifting 40 kg, okay",
+      "start": 140.988,
+      "duration": 4.219
+    },
+    {
+      "text": "and one way is that this child was",
+      "start": 143.212,
+      "duration": 4.171
+    },
+    {
+      "text": "lifting 20 kg, similarly bring another",
+      "start": 145.207,
+      "duration": 3.934
+    },
+    {
+      "text": "Sukhandi child and make him stand next",
+      "start": 147.383,
+      "duration": 3.516
+    },
+    {
+      "text": "to him, this is the thing in which you",
+      "start": 149.141,
+      "duration": 3.471
+    },
+    {
+      "text": "are making the child grow, by sending",
+      "start": 150.899,
+      "duration": 3.471
+    },
+    {
+      "text": "the child to the gym you are advancing",
+      "start": 152.612,
+      "duration": 3.561
+    },
+    {
+      "text": "the child, you are improving the child,",
+      "start": 154.37,
+      "duration": 3.606
+    },
+    {
+      "text": "this is called vertical because you can",
+      "start": 156.173,
+      "duration": 3.471
+    },
+    {
+      "text": "see that the height of the child has",
+      "start": 157.976,
+      "duration": 3.426
+    },
+    {
+      "text": "increased, the child was this big, now",
+      "start": 159.644,
+      "duration": 3.516
+    },
+    {
+      "text": "the child has become this big, so this",
+      "start": 161.402,
+      "duration": 3.516
+    },
+    {
+      "text": "is called vertical scaling, horizontal",
+      "start": 163.16,
+      "duration": 3.471
+    },
+    {
+      "text": "means another like this Bring a child",
+      "start": 164.918,
+      "duration": 3.426
+    },
+    {
+      "text": "and make him stand, that is why it is",
+      "start": 166.631,
+      "duration": 3.561
+    },
+    {
+      "text": "called horizontal, because earlier there",
+      "start": 168.344,
+      "duration": 3.651
+    },
+    {
+      "text": "was one child, if we make three or four",
+      "start": 170.192,
+      "duration": 3.606
+    },
+    {
+      "text": "more children stand like him, then they",
+      "start": 171.995,
+      "duration": 3.606
+    },
+    {
+      "text": "will start lifting, or one child was so",
+      "start": 173.798,
+      "duration": 2.864
+    },
+    {
+      "text": "big,",
+      "start": 175.601,
+      "duration": 3.183
+    },
+    {
+      "text": "we made him so big by sending him to the",
+      "start": 176.662,
+      "duration": 4.09
+    },
+    {
+      "text": "gym, so this is vertical scaling, and",
+      "start": 178.784,
+      "duration": 3.936
+    },
+    {
+      "text": "when you make a lot of children stand",
+      "start": 180.752,
+      "duration": 3.883
+    },
+    {
+      "text": "side by side, you call it horizontal",
+      "start": 182.72,
+      "duration": 3.935
+    },
+    {
+      "text": "scaling because it expands horizontally",
+      "start": 184.635,
+      "duration": 4.039
+    },
+    {
+      "text": ", so the same thing happens in this too",
+      "start": 186.655,
+      "duration": 3.987
+    },
+    {
+      "text": ", if you want to scale, then vertical",
+      "start": 188.674,
+      "duration": 4.039
+    },
+    {
+      "text": "means that you buy a bigger system, buy",
+      "start": 190.642,
+      "duration": 4.194
+    },
+    {
+      "text": "a bigger server which has more CPU, more",
+      "start": 192.713,
+      "duration": 3.779
+    },
+    {
+      "text": "RAM, more disk space, buy that,",
+      "start": 194.836,
+      "duration": 3.469
+    },
+    {
+      "text": "horizontal means that you buy more",
+      "start": 196.492,
+      "duration": 3.78
+    },
+    {
+      "text": "servers, if one server is not working",
+      "start": 198.305,
+      "duration": 3.987
+    },
+    {
+      "text": "then no problem, buy one more, buy two",
+      "start": 200.272,
+      "duration": 3.935
+    },
+    {
+      "text": "more, buy 10 more, so this is bigger",
+      "start": 202.292,
+      "duration": 3.927
+    },
+    {
+      "text": "servers,",
+      "start": 204.207,
+      "duration": 4.147
+    },
+    {
+      "text": "this is more servers, generally doing",
+      "start": 206.219,
+      "duration": 4.102
+    },
+    {
+      "text": "vertical is very simple, why is it",
+      "start": 208.354,
+      "duration": 4.158
+    },
+    {
+      "text": "simple because it does not require any",
+      "start": 210.321,
+      "duration": 4.102
+    },
+    {
+      "text": "code change, if your app, if your",
+      "start": 212.512,
+      "duration": 4.159
+    },
+    {
+      "text": "website is running on any server on any",
+      "start": 214.423,
+      "duration": 4.215
+    },
+    {
+      "text": "website, then you will not have to",
+      "start": 216.671,
+      "duration": 4.046
+    },
+    {
+      "text": "change the code, it is not that on a",
+      "start": 218.638,
+      "duration": 4.158
+    },
+    {
+      "text": "laptop You don't have to go and code",
+      "start": 220.717,
+      "duration": 4.271
+    },
+    {
+      "text": "anything; you just have to call AWS or",
+      "start": 222.796,
+      "duration": 4.439
+    },
+    {
+      "text": "whoever you purchased your server from,",
+      "start": 224.988,
+      "duration": 4.495
+    },
+    {
+      "text": "and they'll scale your server in a jiffy",
+      "start": 227.235,
+      "duration": 3.505
+    },
+    {
+      "text": ".",
+      "start": 229.483,
+      "duration": 3.06
+    },
+    {
+      "text": "Let's assume that there's no code change",
+      "start": 230.74,
+      "duration": 4.17
+    },
+    {
+      "text": "involved. Horizontal is a bit complex;",
+      "start": 232.543,
+      "duration": 4.744
+    },
+    {
+      "text": "it's complex because it has many reasons",
+      "start": 234.91,
+      "duration": 4.625
+    },
+    {
+      "text": ". As soon as horizontal is introduced, a",
+      "start": 237.287,
+      "duration": 4.123
+    },
+    {
+      "text": "load balancer comes into the picture, as",
+      "start": 239.535,
+      "duration": 3.612
+    },
+    {
+      "text": "we explained yesterday; we'll discuss",
+      "start": 241.41,
+      "duration": 3.231
+    },
+    {
+      "text": "this in detail.",
+      "start": 243.147,
+      "duration": 3.724
+    },
+    {
+      "text": "Load balancer comes into the picture.",
+      "start": 244.641,
+      "duration": 3.852
+    },
+    {
+      "text": "Secondly, there's the problem of",
+      "start": 246.871,
+      "duration": 3.491
+    },
+    {
+      "text": "stateful and stateless servers, which",
+      "start": 248.493,
+      "duration": 3.949
+    },
+    {
+      "text": "may require code changes.",
+      "start": 250.362,
+      "duration": 4.753
+    },
+    {
+      "text": "We'll explain what stateless is.",
+      "start": 252.442,
+      "duration": 5.622
+    },
+    {
+      "text": "That's why it's a bit complex.",
+      "start": 255.115,
+      "duration": 5.878
+    },
+    {
+      "text": "Vertical costs are very high.",
+      "start": 258.064,
+      "duration": 4.507
+    },
+    {
+      "text": "We mentioned yesterday that its cost",
+      "start": 260.993,
+      "duration": 3.58
+    },
+    {
+      "text": "increases exponentially.",
+      "start": 262.571,
+      "duration": 3.602
+    },
+    {
+      "text": "If you take a small child to the gym, it",
+      "start": 264.573,
+      "duration": 2.889
+    },
+    {
+      "text": "will cost a lot when compared to",
+      "start": 266.173,
+      "duration": 2.461
+    },
+    {
+      "text": "horizontal.",
+      "start": 267.462,
+      "duration": 2.863
+    },
+    {
+      "text": "Horizontal costs are linear; if one",
+      "start": 268.634,
+      "duration": 3.711
+    },
+    {
+      "text": "child costs ₹ 10, two children will cost",
+      "start": 270.325,
+      "duration": 4.157
+    },
+    {
+      "text": "₹ 20. It's simple math. That simple math",
+      "start": 272.345,
+      "duration": 4.321
+    },
+    {
+      "text": "doesn't work in vertical. Linear math",
+      "start": 274.482,
+      "duration": 5.582
+    },
+    {
+      "text": "doesn't work. Exponential math works.",
+      "start": 276.666,
+      "duration": 5.953
+    },
+    {
+      "text": "So its cost is higher. This one costs",
+      "start": 280.064,
+      "duration": 3.875
+    },
+    {
+      "text": "less.",
+      "start": 282.619,
+      "duration": 3.328
+    },
+    {
+      "text": "Another problem with vertical is that",
+      "start": 283.939,
+      "duration": 4.322
+    },
+    {
+      "text": "there's a ceiling. How long can you send",
+      "start": 285.947,
+      "duration": 4.054
+    },
+    {
+      "text": "a child to the gym? How many kilos can",
+      "start": 288.261,
+      "duration": 3.003
+    },
+    {
+      "text": "each person lift?",
+      "start": 290.001,
+      "duration": 2.798
+    },
+    {
+      "text": "If he was lifting 20 kilos, if you send",
+      "start": 291.264,
+      "duration": 2.955
+    },
+    {
+      "text": "him to the gym, he'll lift 200. Now,",
+      "start": 292.799,
+      "duration": 2.802
+    },
+    {
+      "text": "will the child increase his lifting",
+      "start": 294.219,
+      "duration": 2.841
+    },
+    {
+      "text": "beyond 200? It's impossible that you",
+      "start": 295.601,
+      "duration": 2.906
+    },
+    {
+      "text": "send a child to the gym all his life and",
+      "start": 297.06,
+      "duration": 3.133
+    },
+    {
+      "text": "he'll keep lifting. There's a human",
+      "start": 298.507,
+      "duration": 3.259
+    },
+    {
+      "text": "limit, right? Similarly, machines also",
+      "start": 300.193,
+      "duration": 3.389
+    },
+    {
+      "text": "have a limit. So, there's a ceiling for",
+      "start": 301.766,
+      "duration": 3.596
+    },
+    {
+      "text": "vertical scaling. How much RAM can you",
+      "start": 303.582,
+      "duration": 3.213
+    },
+    {
+      "text": "buy? You bought 1 TB of RAM. Now,",
+      "start": 305.362,
+      "duration": 2.657
+    },
+    {
+      "text": "there's nothing more available in the",
+      "start": 306.795,
+      "duration": 2.768
+    },
+    {
+      "text": "world, where will you get it? And",
+      "start": 308.019,
+      "duration": 3.843
+    },
+    {
+      "text": "horizontal doesn't have a ceiling. You",
+      "start": 309.563,
+      "duration": 3.813
+    },
+    {
+      "text": "can buy as many machines as you want.",
+      "start": 311.862,
+      "duration": 2.591
+    },
+    {
+      "text": "One machine, two machines, a thousand",
+      "start": 313.376,
+      "duration": 2.211
+    },
+    {
+      "text": "machines, 10,000 machines, whatever you",
+      "start": 314.453,
+      "duration": 2.267
+    },
+    {
+      "text": "ask for, you'll get as many machines as",
+      "start": 315.587,
+      "duration": 2.905
+    },
+    {
+      "text": "you want. So, horizontally, there's no",
+      "start": 316.72,
+      "duration": 3.665
+    },
+    {
+      "text": "ceiling; there's an unlimited ceiling.",
+      "start": 318.492,
+      "duration": 3.789
+    },
+    {
+      "text": "Vertically, there's a defined ceiling.",
+      "start": 320.385,
+      "duration": 3.589
+    },
+    {
+      "text": "What it is, is defined.",
+      "start": 322.281,
+      "duration": 4.094
+    },
+    {
+      "text": "And one thing: vertically, there's a",
+      "start": 323.974,
+      "duration": 4.425
+    },
+    {
+      "text": "little downtime.",
+      "start": 326.375,
+      "duration": 3.724
+    },
+    {
+      "text": "What vertical scaling means is that if",
+      "start": 328.399,
+      "duration": 3.401
+    },
+    {
+      "text": "there's a machine, a server, a computer",
+      "start": 330.099,
+      "duration": 3.803
+    },
+    {
+      "text": ", and your code is running on it.",
+      "start": 331.8,
+      "duration": 3.829
+    },
+    {
+      "text": "Your code is running on it right now. So",
+      "start": 333.902,
+      "duration": 4.032
+    },
+    {
+      "text": ", what will AWS do when it changes it?",
+      "start": 335.629,
+      "duration": 4.033
+    },
+    {
+      "text": "First, it will shut down your code on",
+      "start": 337.934,
+      "duration": 3.25
+    },
+    {
+      "text": "this machine.",
+      "start": 339.662,
+      "duration": 4.072
+    },
+    {
+      "text": "It will copy this code to a larger",
+      "start": 341.184,
+      "duration": 6.084
+    },
+    {
+      "text": "machine and start that larger machine.",
+      "start": 343.734,
+      "duration": 5.865
+    },
+    {
+      "text": "What does this take? It takes time.",
+      "start": 347.268,
+      "duration": 4.214
+    },
+    {
+      "text": "As soon as your code is shut down on",
+      "start": 349.599,
+      "duration": 3.92
+    },
+    {
+      "text": "this machine, your website will go down",
+      "start": 351.482,
+      "duration": 4.39
+    },
+    {
+      "text": "and become inoperable.",
+      "start": 353.519,
+      "duration": 4.235
+    },
+    {
+      "text": "Someone searching for pratyush.com won't",
+      "start": 355.872,
+      "duration": 3.536
+    },
+    {
+      "text": "find it because the computer it was",
+      "start": 357.754,
+      "duration": 4.086
+    },
+    {
+      "text": "running on has been turned off.",
+      "start": 359.408,
+      "duration": 4.795
+    },
+    {
+      "text": "Until this code is copied to the new",
+      "start": 361.84,
+      "duration": 4.697
+    },
+    {
+      "text": "computer, which AWS does. You don't have",
+      "start": 364.203,
+      "duration": 3.627
+    },
+    {
+      "text": "to do anything, but it will take some",
+      "start": 366.537,
+      "duration": 3.113
+    },
+    {
+      "text": "time, brother.",
+      "start": 367.83,
+      "duration": 3.996
+    },
+    {
+      "text": "From the time you copy it to the time",
+      "start": 369.65,
+      "duration": 4.295
+    },
+    {
+      "text": "you start this machine, your website",
+      "start": 371.826,
+      "duration": 3.519
+    },
+    {
+      "text": "will be down.",
+      "start": 373.945,
+      "duration": 3.548
+    },
+    {
+      "text": "So, there's downtime in this. Horizontal",
+      "start": 375.345,
+      "duration": 4.54
+    },
+    {
+      "text": "doesn't have downtime. Horizontal",
+      "start": 377.493,
+      "duration": 5.102
+    },
+    {
+      "text": "doesn't have downtime.",
+      "start": 379.885,
+      "duration": 4.544
+    },
+    {
+      "text": "If you have four machines running and",
+      "start": 382.595,
+      "duration": 3.668
+    },
+    {
+      "text": "you need to add a fifth, it'll happen",
+      "start": 384.429,
+      "duration": 3.716
+    },
+    {
+      "text": "seamlessly.",
+      "start": 386.263,
+      "duration": 4.202
+    },
+    {
+      "text": "You don't need to shut down all four.",
+      "start": 388.145,
+      "duration": 3.682
+    },
+    {
+      "text": "If you have three children who are",
+      "start": 390.465,
+      "duration": 2.802
+    },
+    {
+      "text": "gaining weight well, and you need to",
+      "start": 391.827,
+      "duration": 2.959
+    },
+    {
+      "text": "bring a fourth child, just bring him in",
+      "start": 393.267,
+      "duration": 4.168
+    },
+    {
+      "text": ". There's no need to disturb all three.",
+      "start": 394.786,
+      "duration": 5.531
+    },
+    {
+      "text": "So, horizontal doesn't have downtime. So",
+      "start": 397.435,
+      "duration": 4.85
+    },
+    {
+      "text": ", what are the differences between",
+      "start": 400.317,
+      "duration": 4.29
+    },
+    {
+      "text": "vertical and horizontal scaling? If",
+      "start": 402.285,
+      "duration": 3.989
+    },
+    {
+      "text": "someone asks you what the differences",
+      "start": 404.607,
+      "duration": 3.692
+    },
+    {
+      "text": "are, these are the differences. Vertical",
+      "start": 406.274,
+      "duration": 2.998
+    },
+    {
+      "text": "is better in some things, vertical isn't",
+      "start": 408.299,
+      "duration": 2.383
+    },
+    {
+      "text": "better in others.",
+      "start": 409.272,
+      "duration": 3.085
+    },
+    {
+      "text": "The one thing that's better is that",
+      "start": 410.682,
+      "duration": 3.452
+    },
+    {
+      "text": "vertical is simple. Vertical doesn't",
+      "start": 412.357,
+      "duration": 3.214
+    },
+    {
+      "text": "require much brainpower; it just takes",
+      "start": 414.134,
+      "duration": 3.267
+    },
+    {
+      "text": "money and it's done. Horizontal is a bit",
+      "start": 415.571,
+      "duration": 4.353
+    },
+    {
+      "text": "more complex. Horizontal scaling is a",
+      "start": 417.401,
+      "duration": 4.916
+    },
+    {
+      "text": "bit complex for us. Now the question",
+      "start": 419.924,
+      "duration": 4.806
+    },
+    {
+      "text": "arises, which one to do?",
+      "start": 422.317,
+      "duration": 4.255
+    },
+    {
+      "text": "Whenever we start something, whenever",
+      "start": 424.73,
+      "duration": 3.782
+    },
+    {
+      "text": "someone opens their own startup, people",
+      "start": 426.572,
+      "duration": 4.88
+    },
+    {
+      "text": "usually try vertical scaling first.",
+      "start": 428.512,
+      "duration": 5.912
+    },
+    {
+      "text": "Usually, vertical scaling is tried up to",
+      "start": 431.452,
+      "duration": 5.761
+    },
+    {
+      "text": "a certain limit. Why? Because no one has",
+      "start": 434.424,
+      "duration": 4.095
+    },
+    {
+      "text": "that much complex knowledge in the",
+      "start": 437.213,
+      "duration": 2.463
+    },
+    {
+      "text": "beginning, so people don't try",
+      "start": 438.519,
+      "duration": 2.536
+    },
+    {
+      "text": "horizontal scaling.",
+      "start": 439.676,
+      "duration": 3.797
+    },
+    {
+      "text": "So, vertical scaling is initially tried",
+      "start": 441.055,
+      "duration": 3.408
+    },
+    {
+      "text": ".",
+      "start": 443.473,
+      "duration": 3.246
+    },
+    {
+      "text": "After a certain point, when either the",
+      "start": 444.463,
+      "duration": 4.454
+    },
+    {
+      "text": "ceiling is hit or the cost becomes so",
+      "start": 446.719,
+      "duration": 4.164
+    },
+    {
+      "text": "high, only then do people move to",
+      "start": 448.917,
+      "duration": 3.963
+    },
+    {
+      "text": "horizontal scaling.",
+      "start": 450.883,
+      "duration": 3.363
+    },
+    {
+      "text": "Only then do people say, \"Let's learn a",
+      "start": 452.88,
+      "duration": 2.767
+    },
+    {
+      "text": "little more complex things and then move",
+      "start": 454.246,
+      "duration": 3.389
+    },
+    {
+      "text": "to horizontal.\"",
+      "start": 455.647,
+      "duration": 3.838
+    },
+    {
+      "text": "So, your answer to starting should be, \"",
+      "start": 457.635,
+      "duration": 3.563
+    },
+    {
+      "text": "Sir, if there's double or triple the",
+      "start": 459.485,
+      "duration": 3.795
+    },
+    {
+      "text": "load, we'll go vertical.\"",
+      "start": 461.198,
+      "duration": 3.858
+    },
+    {
+      "text": "As soon as we feel that vertical costs",
+      "start": 463.28,
+      "duration": 3.553
+    },
+    {
+      "text": "are becoming too high or that vertical",
+      "start": 465.056,
+      "duration": 3.6
+    },
+    {
+      "text": "hardware limits are being reached, then",
+      "start": 466.833,
+      "duration": 3.972
+    },
+    {
+      "text": "we'll move to horizontal scaling.",
+      "start": 468.656,
+      "duration": 5.201
+    },
+    {
+      "text": "Large companies use mixed systems. This",
+      "start": 470.805,
+      "duration": 6.76
+    },
+    {
+      "text": "means they have very large computers.",
+      "start": 473.857,
+      "duration": 6.035
+    },
+    {
+      "text": "These are very large computers that they",
+      "start": 477.565,
+      "duration": 4.484
+    },
+    {
+      "text": "have scaled vertically, and there are",
+      "start": 479.892,
+      "duration": 4.618
+    },
+    {
+      "text": "many such large computers.",
+      "start": 482.049,
+      "duration": 4.505
+    },
+    {
+      "text": "Meaning, first scale vertically, make",
+      "start": 484.51,
+      "duration": 3.692
+    },
+    {
+      "text": "the computer bigger.",
+      "start": 486.554,
+      "duration": 3.753
+    },
+    {
+      "text": "When that limit is reached, install more",
+      "start": 488.202,
+      "duration": 5.44
+    },
+    {
+      "text": "similarly large computers.",
+      "start": 490.307,
+      "duration": 3.335
+    },
+    {
+      "text": "And remember one more thing: the",
+      "start": 496.194,
+      "duration": 4.773
+    },
+    {
+      "text": "database, now scale the database as well",
+      "start": 498.351,
+      "duration": 3.732
+    },
+    {
+      "text": ".",
+      "start": 500.967,
+      "duration": 2.376
+    },
+    {
+      "text": "The problem that exists in the computer",
+      "start": 502.083,
+      "duration": 2.521
+    },
+    {
+      "text": "that uses your code is the same problem",
+      "start": 503.343,
+      "duration": 2.459
+    },
+    {
+      "text": "that exists in the computer that uses",
+      "start": 504.604,
+      "duration": 2.336
+    },
+    {
+      "text": "your database.",
+      "start": 505.802,
+      "duration": 3.054
+    },
+    {
+      "text": "People prefer vertical scaling in",
+      "start": 506.94,
+      "duration": 3.416
+    },
+    {
+      "text": "databases.",
+      "start": 508.856,
+      "duration": 3.059
+    },
+    {
+      "text": "You'll understand why this is preferred",
+      "start": 510.356,
+      "duration": 3.18
+    },
+    {
+      "text": "when we teach you about sharding later.",
+      "start": 511.915,
+      "duration": 4.377
+    },
+    {
+      "text": "Horizontalizing a database.",
+      "start": 513.536,
+      "duration": 2.756
+    },
+    {
+      "text": "Now, what does horizontal mean?",
+      "start": 516.336,
+      "duration": 4.578
+    },
+    {
+      "text": "Any machine can run your code. That's",
+      "start": 518.892,
+      "duration": 3.644
+    },
+    {
+      "text": "fine in code, that's possible. Now,",
+      "start": 520.914,
+      "duration": 3.471
+    },
+    {
+      "text": "let's say the database contains data for",
+      "start": 522.536,
+      "duration": 3.684
+    },
+    {
+      "text": "10 users. How do you scale it",
+      "start": 524.385,
+      "duration": 3.201
+    },
+    {
+      "text": "horizontally?",
+      "start": 526.22,
+      "duration": 3.048
+    },
+    {
+      "text": "Scaling horizontally means having one",
+      "start": 527.586,
+      "duration": 3.275
+    },
+    {
+      "text": "computer with data for three users,",
+      "start": 529.268,
+      "duration": 3.187
+    },
+    {
+      "text": "another computer with data for four",
+      "start": 530.861,
+      "duration": 3.276
+    },
+    {
+      "text": "users, and another computer with data",
+      "start": 532.455,
+      "duration": 4.028
+    },
+    {
+      "text": "for the remaining three users.",
+      "start": 534.137,
+      "duration": 5.002
+    },
+    {
+      "text": "This process is called splitting or",
+      "start": 536.483,
+      "duration": 5.619
+    },
+    {
+      "text": "sharding. It becomes even more complex.",
+      "start": 539.139,
+      "duration": 5.758
+    },
+    {
+      "text": "It becomes very complex.",
+      "start": 542.102,
+      "duration": 4.733
+    },
+    {
+      "text": "So, in the case of databases, people",
+      "start": 544.897,
+      "duration": 3.928
+    },
+    {
+      "text": "prefer to scale vertically as long as",
+      "start": 546.835,
+      "duration": 4.462
+    },
+    {
+      "text": "possible.",
+      "start": 548.825,
+      "duration": 2.472
+    },
+    {
+      "text": "When it becomes absolutely impossible to",
+      "start": 551.802,
+      "duration": 3.642
+    },
+    {
+      "text": "scale vertically, like AWS saying you'll",
+      "start": 553.623,
+      "duration": 3.687
+    },
+    {
+      "text": "have to pay ₹ 1 crore, then people say,",
+      "start": 555.444,
+      "duration": 3.643
+    },
+    {
+      "text": "\"Okay, let's do sharding or splitting,\"",
+      "start": 557.31,
+      "duration": 3.421
+    },
+    {
+      "text": "because sharding and splitting are a",
+      "start": 559.087,
+      "duration": 3.585
+    },
+    {
+      "text": "different beast.",
+      "start": 560.731,
+      "duration": 4.582
+    },
+    {
+      "text": "It then becomes very complex. So, in a",
+      "start": 562.672,
+      "duration": 3.913
+    },
+    {
+      "text": "code server, it's fine; a little",
+      "start": 565.313,
+      "duration": 2.775
+    },
+    {
+      "text": "vertical scaling will become horizontal",
+      "start": 566.585,
+      "duration": 3.657
+    },
+    {
+      "text": ". In a database, people prefer to scale",
+      "start": 568.088,
+      "duration": 4.384
+    },
+    {
+      "text": "vertically as long as possible.",
+      "start": 570.242,
+      "duration": 3.839
+    },
+    {
+      "text": "Only when they run out of options will",
+      "start": 572.472,
+      "duration": 3.816
+    },
+    {
+      "text": "they scale horizontally. Right?",
+      "start": 574.081,
+      "duration": 3.87
+    },
+    {
+      "text": "Now, there's not much to understand",
+      "start": 576.288,
+      "duration": 3.301
+    },
+    {
+      "text": "about vertical. There's no vertical at",
+      "start": 577.951,
+      "duration": 3.463
+    },
+    {
+      "text": "all. Just call AWS and say we need a",
+      "start": 579.589,
+      "duration": 3.425
+    },
+    {
+      "text": "bigger machine. Everything will be done",
+      "start": 581.414,
+      "duration": 4.061
+    },
+    {
+      "text": ". AWS will handle whatever happens. As a",
+      "start": 583.014,
+      "duration": 4.544
+    },
+    {
+      "text": "system design student, you don't need to",
+      "start": 585.475,
+      "duration": 4.444
+    },
+    {
+      "text": "worry about that. What do you need to",
+      "start": 587.558,
+      "duration": 5.055
+    },
+    {
+      "text": "worry about? Horizontal scaling. This is",
+      "start": 589.919,
+      "duration": 4.801
+    },
+    {
+      "text": "complex. If it's complex, it's more",
+      "start": 592.613,
+      "duration": 3.966
+    },
+    {
+      "text": "important to learn. That's why we'll",
+      "start": 594.72,
+      "duration": 3.579
+    },
+    {
+      "text": "explain horizontal scaling to you now.",
+      "start": 596.579,
+      "duration": 3.196
+    },
+    {
+      "text": "Vertical scaling is done. Vertical",
+      "start": 598.299,
+      "duration": 2.995
+    },
+    {
+      "text": "scaling means buy a bigger machine,",
+      "start": 599.775,
+      "duration": 3.668
+    },
+    {
+      "text": "that's it. Horizontal scaling requires",
+      "start": 601.294,
+      "duration": 3.781
+    },
+    {
+      "text": "some decision-making.",
+      "start": 603.443,
+      "duration": 2.906
+    },
+    {
+      "text": "So, let's move on. Let's explain",
+      "start": 605.075,
+      "duration": 3.493
+    },
+    {
+      "text": "horizontal scaling to you.",
+      "start": 606.349,
+      "duration": 4.517
+    },
+    {
+      "text": "Now, as soon as horizontal scaling comes",
+      "start": 608.568,
+      "duration": 4.484
+    },
+    {
+      "text": "into play, the horizontal architecture",
+      "start": 610.866,
+      "duration": 4.647
+    },
+    {
+      "text": "is very simple: you had one computer.",
+      "start": 613.052,
+      "duration": 4.216
+    },
+    {
+      "text": "Now, let's say you have three computers",
+      "start": 615.513,
+      "duration": 4.112
+    },
+    {
+      "text": ". This is your C1 computer. This is your",
+      "start": 617.268,
+      "duration": 4.833
+    },
+    {
+      "text": "C2 computer. This is your C3 computer.",
+      "start": 619.625,
+      "duration": 4.517
+    },
+    {
+      "text": "This is your simple laptop. All three",
+      "start": 622.101,
+      "duration": 4.494
+    },
+    {
+      "text": "have their own RAM, their own CPU, and",
+      "start": 624.142,
+      "duration": 4.907
+    },
+    {
+      "text": "their own disks, so they're all easily",
+      "start": 626.595,
+      "duration": 4.638
+    },
+    {
+      "text": "independent computers.",
+      "start": 629.049,
+      "duration": 4.509
+    },
+    {
+      "text": "As soon as horizontal scaling comes into",
+      "start": 631.233,
+      "duration": 4.58
+    },
+    {
+      "text": "the picture, you need a load balancer.",
+      "start": 633.558,
+      "duration": 4.43
+    },
+    {
+      "text": "You need a load balancer. Why is this",
+      "start": 635.813,
+      "duration": 3.735
+    },
+    {
+      "text": "necessary, and why wasn't it necessary",
+      "start": 637.988,
+      "duration": 3.08
+    },
+    {
+      "text": "before, and why isn't a load balancer",
+      "start": 639.548,
+      "duration": 3.757
+    },
+    {
+      "text": "needed vertically? It's because of how",
+      "start": 641.068,
+      "duration": 4.82
+    },
+    {
+      "text": "your system works. You're running your",
+      "start": 643.305,
+      "duration": 4.694
+    },
+    {
+      "text": "code on a laptop. Your code is running",
+      "start": 645.888,
+      "duration": 4.555
+    },
+    {
+      "text": "on this laptop. A user comes in. The",
+      "start": 647.999,
+      "duration": 4.826
+    },
+    {
+      "text": "user sends a request to this laptop. A",
+      "start": 650.443,
+      "duration": 4.42
+    },
+    {
+      "text": "request can be anything.",
+      "start": 652.825,
+      "duration": 4.352
+    },
+    {
+      "text": "Clicking a button is a request. Pressing",
+      "start": 654.863,
+      "duration": 3.868
+    },
+    {
+      "text": "the back button is also a request.",
+      "start": 657.177,
+      "duration": 3.039
+    },
+    {
+      "text": "Asking something on a chat or GPT is a",
+      "start": 658.731,
+      "duration": 3.383
+    },
+    {
+      "text": "request. Clicking on a YouTube playlist",
+      "start": 660.216,
+      "duration": 4.34
+    },
+    {
+      "text": "is a request. Commenting on YouTube is",
+      "start": 662.114,
+      "duration": 4.657
+    },
+    {
+      "text": "any kind of user activity—anything that",
+      "start": 664.556,
+      "duration": 4.378
+    },
+    {
+      "text": "the user does with their hands, pressing",
+      "start": 666.771,
+      "duration": 5.212
+    },
+    {
+      "text": "the computer, is a request. Okay?",
+      "start": 668.934,
+      "duration": 4.795
+    },
+    {
+      "text": "So, initially, it was simple: the user",
+      "start": 671.983,
+      "duration": 3.357
+    },
+    {
+      "text": "would send a request to this laptop",
+      "start": 673.729,
+      "duration": 3.698
+    },
+    {
+      "text": "because there was only one laptop. This",
+      "start": 675.34,
+      "duration": 3.523
+    },
+    {
+      "text": "laptop would send a response to the user",
+      "start": 677.427,
+      "duration": 3.136
+    },
+    {
+      "text": ", so it was very simple at first.",
+      "start": 678.863,
+      "duration": 3.625
+    },
+    {
+      "text": "Now the problem is that you have three",
+      "start": 680.563,
+      "duration": 4.418
+    },
+    {
+      "text": "laptops. Code is running on all three.",
+      "start": 682.488,
+      "duration": 4.396
+    },
+    {
+      "text": "Any one of the three laptops can serve a",
+      "start": 684.981,
+      "duration": 3.862
+    },
+    {
+      "text": "user's request. The same code is running",
+      "start": 686.884,
+      "duration": 3.454
+    },
+    {
+      "text": "on all three.",
+      "start": 688.843,
+      "duration": 3.484
+    },
+    {
+      "text": "So, for example, if the Chat GPT program",
+      "start": 690.338,
+      "duration": 3.881
+    },
+    {
+      "text": "is running on all three laptops, and a",
+      "start": 692.327,
+      "duration": 3.833
+    },
+    {
+      "text": "user asks, \"What is Shah Rukh Khan's age",
+      "start": 694.219,
+      "duration": 3.304
+    },
+    {
+      "text": "?\"",
+      "start": 696.16,
+      "duration": 3.538
+    },
+    {
+      "text": "any of the three laptops can fulfill the",
+      "start": 697.523,
+      "duration": 4.029
+    },
+    {
+      "text": "request.",
+      "start": 699.698,
+      "duration": 3.739
+    },
+    {
+      "text": "But it's impossible for any laptop to",
+      "start": 701.552,
+      "duration": 3.72
+    },
+    {
+      "text": "have all the users on one laptop and",
+      "start": 703.437,
+      "duration": 3.72
+    },
+    {
+      "text": "these two remain idle, or for all the",
+      "start": 705.272,
+      "duration": 3.919
+    },
+    {
+      "text": "users to have all the users on these two",
+      "start": 707.157,
+      "duration": 4.441
+    },
+    {
+      "text": "and this one remain idle.",
+      "start": 709.191,
+      "duration": 3.389
+    },
+    {
+      "text": "This is why load balancing is so",
+      "start": 711.598,
+      "duration": 2.391
+    },
+    {
+      "text": "important. Now, what do we do with load",
+      "start": 712.58,
+      "duration": 2.818
+    },
+    {
+      "text": "balancing?",
+      "start": 713.989,
+      "duration": 3.595
+    },
+    {
+      "text": "We place a load balancer in front of our",
+      "start": 715.398,
+      "duration": 4.408
+    },
+    {
+      "text": "laptop. We place a person in front of",
+      "start": 717.584,
+      "duration": 4.489
+    },
+    {
+      "text": "our laptop, in front of our house.",
+      "start": 719.806,
+      "duration": 4.599
+    },
+    {
+      "text": "Now, the user was directly sending a",
+      "start": 722.073,
+      "duration": 4.791
+    },
+    {
+      "text": "request to your laptop to tell us Shah",
+      "start": 724.405,
+      "duration": 5.087
+    },
+    {
+      "text": "Rukh Khan's age. Now, the user is not",
+      "start": 726.864,
+      "duration": 5.509
+    },
+    {
+      "text": "directly connected to your laptop. The",
+      "start": 729.492,
+      "duration": 5.35
+    },
+    {
+      "text": "user knows only one thing: the load",
+      "start": 732.373,
+      "duration": 3.756
+    },
+    {
+      "text": "balancer.",
+      "start": 734.842,
+      "duration": 3.66
+    },
+    {
+      "text": "Now, every request the user sends will",
+      "start": 736.129,
+      "duration": 5.131
+    },
+    {
+      "text": "go to the load balancer first. Which one",
+      "start": 738.502,
+      "duration": 4.366
+    },
+    {
+      "text": "? The load balancer. What is a load",
+      "start": 741.26,
+      "duration": 3.31
+    },
+    {
+      "text": "balancer? A load balancer is also a",
+      "start": 742.868,
+      "duration": 3.347
+    },
+    {
+      "text": "laptop. Some different code is running",
+      "start": 744.57,
+      "duration": 3.654
+    },
+    {
+      "text": "inside it. Its job is different. What is",
+      "start": 746.215,
+      "duration": 3.274
+    },
+    {
+      "text": "that job?",
+      "start": 748.224,
+      "duration": 2.673
+    },
+    {
+      "text": "Now, the load balancer receives a",
+      "start": 749.489,
+      "duration": 3.518
+    },
+    {
+      "text": "request from this man. It asks, \"What is",
+      "start": 750.897,
+      "duration": 4.308
+    },
+    {
+      "text": "Shah Rukh Khan's age?\"",
+      "start": 753.007,
+      "duration": 4.551
+    },
+    {
+      "text": "The load balancer has to decide which of",
+      "start": 755.205,
+      "duration": 4.706
+    },
+    {
+      "text": "the three laptops should this request go",
+      "start": 757.558,
+      "duration": 3.706
+    },
+    {
+      "text": "to.",
+      "start": 759.911,
+      "duration": 4.143
+    },
+    {
+      "text": "That's why it's called a load balancer.",
+      "start": 761.264,
+      "duration": 4.455
+    },
+    {
+      "text": "Now, the load balancer doesn't have just",
+      "start": 764.054,
+      "duration": 3.331
+    },
+    {
+      "text": "one user for every user. You have",
+      "start": 765.719,
+      "duration": 3.389
+    },
+    {
+      "text": "millions of users. So, user one is",
+      "start": 767.385,
+      "duration": 3.634
+    },
+    {
+      "text": "talking to this same user. User two is",
+      "start": 769.108,
+      "duration": 3.381
+    },
+    {
+      "text": "also talking to this same load balancer",
+      "start": 771.019,
+      "duration": 3.309
+    },
+    {
+      "text": ". User three is also talking to this",
+      "start": 772.489,
+      "duration": 3.766
+    },
+    {
+      "text": "same load balancer. So, what is coming",
+      "start": 774.328,
+      "duration": 4.151
+    },
+    {
+      "text": "to the load balancer? Load is coming.",
+      "start": 776.255,
+      "duration": 5.974
+    },
+    {
+      "text": "Now, how should this load be balanced?",
+      "start": 778.479,
+      "duration": 5.736
+    },
+    {
+      "text": "Should all the requests be sent to this",
+      "start": 782.229,
+      "duration": 3.873
+    },
+    {
+      "text": "laptop, or should all the requests be",
+      "start": 784.215,
+      "duration": 3.922
+    },
+    {
+      "text": "sent to this one, or should all three be",
+      "start": 786.102,
+      "duration": 3.972
+    },
+    {
+      "text": "sent to this one, two to this one, and",
+      "start": 788.137,
+      "duration": 3.732
+    },
+    {
+      "text": "one to this one?",
+      "start": 790.074,
+      "duration": 4.616
+    },
+    {
+      "text": "How should we balance? This is the load",
+      "start": 791.869,
+      "duration": 5.097
+    },
+    {
+      "text": "balancer's job. Whose job is this? This",
+      "start": 794.69,
+      "duration": 5.009
+    },
+    {
+      "text": "is the load balancer's job. Okay.",
+      "start": 796.966,
+      "duration": 4.683
+    },
+    {
+      "text": "So, now, it must have some function.",
+      "start": 799.699,
+      "duration": 3.896
+    },
+    {
+      "text": "Next, we'll see how this works.",
+      "start": 801.649,
+      "duration": 3.439
+    },
+    {
+      "text": "There's some algorithm for this too. How",
+      "start": 803.595,
+      "duration": 3.129
+    },
+    {
+      "text": "does it work? But before that,",
+      "start": 805.088,
+      "duration": 3.976
+    },
+    {
+      "text": "understand one very important thing we",
+      "start": 806.724,
+      "duration": 4.59
+    },
+    {
+      "text": "talked about: stateless servers. What",
+      "start": 809.064,
+      "duration": 4.077
+    },
+    {
+      "text": "did we say? Stateless servers. When we",
+      "start": 811.314,
+      "duration": 2.758
+    },
+    {
+      "text": "created the horizontal table, did we",
+      "start": 813.141,
+      "duration": 2.14
+    },
+    {
+      "text": "write it somewhere? Where did we write",
+      "start": 814.072,
+      "duration": 3.141
+    },
+    {
+      "text": "it? Stateless. What does this mean? Look",
+      "start": 815.281,
+      "duration": 3.781
+    },
+    {
+      "text": ", understand it very easily. Now, what",
+      "start": 817.213,
+      "duration": 3.296
+    },
+    {
+      "text": "does stateless mean? For example,",
+      "start": 819.062,
+      "duration": 3.191
+    },
+    {
+      "text": "imagine a scenario.",
+      "start": 820.509,
+      "duration": 3.646
+    },
+    {
+      "text": "We are a user. What are we? We are a",
+      "start": 822.253,
+      "duration": 3.986
+    },
+    {
+      "text": "user. My name is Pratyush. My name is",
+      "start": 824.155,
+      "duration": 3.723
+    },
+    {
+      "text": "Pratyush. Okay.",
+      "start": 826.239,
+      "duration": 3.59
+    },
+    {
+      "text": "Everything is a request. So, what did we",
+      "start": 827.878,
+      "duration": 3.754
+    },
+    {
+      "text": "do? Let's say this is an Amazon website",
+      "start": 829.829,
+      "duration": 4.147
+    },
+    {
+      "text": ". So what did we do? My name is Pratyush",
+      "start": 831.632,
+      "duration": 4.747
+    },
+    {
+      "text": ", right? So what was our first request?",
+      "start": 833.976,
+      "duration": 4.084
+    },
+    {
+      "text": "We requested to create an account on",
+      "start": 836.379,
+      "duration": 3.845
+    },
+    {
+      "text": "Amazon. On what? We requested to create",
+      "start": 838.06,
+      "duration": 3.604
+    },
+    {
+      "text": "an account.",
+      "start": 840.224,
+      "duration": 3.659
+    },
+    {
+      "text": "Let's say that request went to the load",
+      "start": 841.664,
+      "duration": 4.3
+    },
+    {
+      "text": "balancer and went to laptop C1. The load",
+      "start": 843.883,
+      "duration": 3.411
+    },
+    {
+      "text": "balancer can send it to anyone. Let's",
+      "start": 845.964,
+      "duration": 2.935
+    },
+    {
+      "text": "say the account creation process was",
+      "start": 847.294,
+      "duration": 3.181
+    },
+    {
+      "text": "completed on C1.",
+      "start": 848.899,
+      "duration": 4.82
+    },
+    {
+      "text": "Now, C1 doesn't know that there is a",
+      "start": 850.475,
+      "duration": 6.789
+    },
+    {
+      "text": "user named Pratyush. C1 knows this.",
+      "start": 853.719,
+      "duration": 5.73
+    },
+    {
+      "text": "C2 and C3 don't know what's going on yet",
+      "start": 857.264,
+      "duration": 4.017
+    },
+    {
+      "text": ". How would C2 and C3 know? They're",
+      "start": 859.449,
+      "duration": 3.53
+    },
+    {
+      "text": "different laptops, right? So, C1 knows",
+      "start": 861.281,
+      "duration": 3.555
+    },
+    {
+      "text": "that Pratyush has created his account.",
+      "start": 862.979,
+      "duration": 4.022
+    },
+    {
+      "text": "So far, everything is fine. Okay.",
+      "start": 864.836,
+      "duration": 4.015
+    },
+    {
+      "text": "What's our next request?",
+      "start": 867.001,
+      "duration": 4.266
+    },
+    {
+      "text": "We like a laptop and click to buy on",
+      "start": 868.851,
+      "duration": 4.013
+    },
+    {
+      "text": "that laptop.",
+      "start": 871.267,
+      "duration": 3.352
+    },
+    {
+      "text": "This is also a request. Everything is a",
+      "start": 872.864,
+      "duration": 4.402
+    },
+    {
+      "text": "request, so we click to buy a laptop.",
+      "start": 874.619,
+      "duration": 5.177
+    },
+    {
+      "text": "By God's grace, this request also went",
+      "start": 877.266,
+      "duration": 4.703
+    },
+    {
+      "text": "to C1. So, C1 already knew that Pratyush",
+      "start": 879.796,
+      "duration": 4.398
+    },
+    {
+      "text": "had just created an account. Now, C1",
+      "start": 881.969,
+      "duration": 4.919
+    },
+    {
+      "text": "also knows that Pratyush wants to buy a",
+      "start": 884.194,
+      "duration": 5.199
+    },
+    {
+      "text": "Dell laptop. He wants to add it to cart",
+      "start": 886.888,
+      "duration": 3.083
+    },
+    {
+      "text": ".",
+      "start": 889.393,
+      "duration": 3.213
+    },
+    {
+      "text": "So, C1 added it to cart.",
+      "start": 889.971,
+      "duration": 4.331
+    },
+    {
+      "text": "C2 and C3 have no idea about me yet",
+      "start": 892.606,
+      "duration": 4.227
+    },
+    {
+      "text": "because nothing has happened to them.",
+      "start": 894.302,
+      "duration": 4.06
+    },
+    {
+      "text": "Okay.",
+      "start": 896.833,
+      "duration": 3.863
+    },
+    {
+      "text": "Next, we're going to the final step.",
+      "start": 898.362,
+      "duration": 4.071
+    },
+    {
+      "text": "We've created the account, added it to",
+      "start": 900.696,
+      "duration": 4.684
+    },
+    {
+      "text": "cart. Now, we want to make the payment",
+      "start": 902.433,
+      "duration": 5.65
+    },
+    {
+      "text": "and complete our purchase of that laptop",
+      "start": 905.38,
+      "duration": 4.565
+    },
+    {
+      "text": ". This is also a request. Making the",
+      "start": 908.083,
+      "duration": 4.383
+    },
+    {
+      "text": "payment is also a request. But now, by",
+      "start": 909.945,
+      "duration": 5.911
+    },
+    {
+      "text": "God's grace, it went to C2.",
+      "start": 912.466,
+      "duration": 7.224
+    },
+    {
+      "text": "This payment request went to C2.",
+      "start": 915.856,
+      "duration": 5.266
+    },
+    {
+      "text": "Now, look!",
+      "start": 919.69,
+      "duration": 4.699
+    },
+    {
+      "text": "We never created an account on C2.",
+      "start": 921.122,
+      "duration": 5.204
+    },
+    {
+      "text": "When I created an account on C1, C1 must",
+      "start": 924.389,
+      "duration": 3.827
+    },
+    {
+      "text": "have stored my information on its disk,",
+      "start": 926.326,
+      "duration": 3.543
+    },
+    {
+      "text": "on its hard disk, that this guy is",
+      "start": 928.216,
+      "duration": 3.59
+    },
+    {
+      "text": "Pratyush, his username is P Narayan, and",
+      "start": 929.869,
+      "duration": 4.147
+    },
+    {
+      "text": "his password is password.",
+      "start": 931.806,
+      "duration": 4.325
+    },
+    {
+      "text": "I added Pratyush to cart.",
+      "start": 934.016,
+      "duration": 3.656
+    },
+    {
+      "text": "C1 must have stored this in its RAM,",
+      "start": 936.131,
+      "duration": 3.248
+    },
+    {
+      "text": "thinking that this guy just added a Dell",
+      "start": 937.672,
+      "duration": 4.334
+    },
+    {
+      "text": "laptop to his cart. Very good.",
+      "start": 939.379,
+      "duration": 5.32
+    },
+    {
+      "text": "But when my payment request goes to C2,",
+      "start": 942.006,
+      "duration": 5.408
+    },
+    {
+      "text": "C2 will be confused.",
+      "start": 944.699,
+      "duration": 4.718
+    },
+    {
+      "text": "What request will reach C2, that",
+      "start": 947.414,
+      "duration": 4.189
+    },
+    {
+      "text": "Pratyush wants to make a payment of",
+      "start": 949.417,
+      "duration": 3.754
+    },
+    {
+      "text": "65,000 rupees?",
+      "start": 951.603,
+      "duration": 3.226
+    },
+    {
+      "text": "Now C2 will ask, \"Who is Pratyush, and",
+      "start": 953.171,
+      "duration": 3.317
+    },
+    {
+      "text": "for whom is he trying to make a payment",
+      "start": 954.829,
+      "duration": 3.902
+    },
+    {
+      "text": "? What's wrong with him?\"",
+      "start": 956.488,
+      "duration": 3.812
+    },
+    {
+      "text": "C2 will reject my request because it",
+      "start": 958.731,
+      "duration": 4.287
+    },
+    {
+      "text": "doesn't know what's going on.",
+      "start": 960.3,
+      "duration": 4.676
+    },
+    {
+      "text": "Imagine, there are three hotels. What's",
+      "start": 963.018,
+      "duration": 3.51
+    },
+    {
+      "text": "the point? There are three hotels here.",
+      "start": 964.976,
+      "duration": 4.513
+    },
+    {
+      "text": "Right? You enter one hotel and order for",
+      "start": 966.528,
+      "duration": 4.778
+    },
+    {
+      "text": "the first time. Everything is going well",
+      "start": 969.489,
+      "duration": 2.603
+    },
+    {
+      "text": ".",
+      "start": 971.306,
+      "duration": 2.382
+    },
+    {
+      "text": "You even eat at the same hotel, place",
+      "start": 972.092,
+      "duration": 3.192
+    },
+    {
+      "text": "your order, the food arrives, and you",
+      "start": 973.688,
+      "duration": 3.775
+    },
+    {
+      "text": "eat. Now you feel like making a payment",
+      "start": 975.284,
+      "duration": 4.163
+    },
+    {
+      "text": ", so you leave this hotel and enter this",
+      "start": 977.463,
+      "duration": 4.048
+    },
+    {
+      "text": "hotel. You go there and say, \"Here's ₹",
+      "start": 979.447,
+      "duration": 4.094
+    },
+    {
+      "text": "720 payment.\" What's the payment for?",
+      "start": 981.511,
+      "duration": 3.785
+    },
+    {
+      "text": "You didn't even eat here. You ate at Ram",
+      "start": 983.541,
+      "duration": 3.634
+    },
+    {
+      "text": "Hotel, and then you come to Shyam Hotel",
+      "start": 985.296,
+      "duration": 3.841
+    },
+    {
+      "text": "and say you'll pay ₹ 720.",
+      "start": 987.175,
+      "duration": 5.907
+    },
+    {
+      "text": "This problem is called a state problem.",
+      "start": 989.137,
+      "duration": 5.995
+    },
+    {
+      "text": "This is happening, each server is",
+      "start": 993.082,
+      "duration": 5.255
+    },
+    {
+      "text": "keeping my information to itself.",
+      "start": 995.132,
+      "duration": 6.86
+    },
+    {
+      "text": "This type of design is called a stateful",
+      "start": 998.337,
+      "duration": 6.794
+    },
+    {
+      "text": "server. What is it called? It's called a",
+      "start": 1001.992,
+      "duration": 6.57
+    },
+    {
+      "text": "stateful server. What is state?",
+      "start": 1005.131,
+      "duration": 7.216
+    },
+    {
+      "text": "Any information about any user? What is",
+      "start": 1008.562,
+      "duration": 7.213
+    },
+    {
+      "text": "this user's user ID? What was it doing?",
+      "start": 1012.347,
+      "duration": 5.467
+    },
+    {
+      "text": "When any user sends a request, the",
+      "start": 1015.775,
+      "duration": 4.312
+    },
+    {
+      "text": "information related to that request is",
+      "start": 1017.814,
+      "duration": 4.937
+    },
+    {
+      "text": "stored. As long as everything was going",
+      "start": 1020.087,
+      "duration": 5.305
+    },
+    {
+      "text": "to C1, there was no problem. As soon as",
+      "start": 1022.751,
+      "duration": 4.212
+    },
+    {
+      "text": "one of my requests goes to C2, there",
+      "start": 1025.392,
+      "duration": 2.885
+    },
+    {
+      "text": "will be a problem.",
+      "start": 1026.963,
+      "duration": 4.047
+    },
+    {
+      "text": "This type of design is called a stateful",
+      "start": 1028.277,
+      "duration": 4.827
+    },
+    {
+      "text": "server. Why is it called a stateful",
+      "start": 1031.01,
+      "duration": 3.477
+    },
+    {
+      "text": "server?",
+      "start": 1033.104,
+      "duration": 3.303
+    },
+    {
+      "text": "Because this server keeps my state, my",
+      "start": 1034.487,
+      "duration": 3.592
+    },
+    {
+      "text": "information, my information about",
+      "start": 1036.407,
+      "duration": 3.643
+    },
+    {
+      "text": "Pratyush, and the information about the",
+      "start": 1038.079,
+      "duration": 3.743
+    },
+    {
+      "text": "requests Pratyush is making, all to",
+      "start": 1040.05,
+      "duration": 3.456
+    },
+    {
+      "text": "itself.",
+      "start": 1041.822,
+      "duration": 4.135
+    },
+    {
+      "text": "It doesn't share it with anyone.",
+      "start": 1043.506,
+      "duration": 5.336
+    },
+    {
+      "text": "So, when you design this, it's called a",
+      "start": 1045.957,
+      "duration": 6.04
+    },
+    {
+      "text": "stateful server.",
+      "start": 1048.842,
+      "duration": 3.155
+    },
+    {
+      "text": "Now, if you have such a design, your",
+      "start": 1052.167,
+      "duration": 5.178
+    },
+    {
+      "text": "load balancer will have to ensure that",
+      "start": 1054.688,
+      "duration": 5.042
+    },
+    {
+      "text": "if Pratyush is a user, then all of",
+      "start": 1057.345,
+      "duration": 5.042
+    },
+    {
+      "text": "Pratyush's work, all the work Pratyush",
+      "start": 1059.73,
+      "duration": 4.974
+    },
+    {
+      "text": "wants to do in the world, all the",
+      "start": 1062.387,
+      "duration": 5.042
+    },
+    {
+      "text": "requests Pratyush wants to make, always",
+      "start": 1064.704,
+      "duration": 7.383
+    },
+    {
+      "text": "go to one laptop, and not to any other.",
+      "start": 1067.429,
+      "duration": 4.658
+    },
+    {
+      "text": "If Pratyush enters a hotel for the first",
+      "start": 1072.297,
+      "duration": 4.317
+    },
+    {
+      "text": "time, he will order from there, eat",
+      "start": 1074.595,
+      "duration": 4.205
+    },
+    {
+      "text": "there, pay there, and leave a tip there",
+      "start": 1076.614,
+      "duration": 3.433
+    },
+    {
+      "text": ".",
+      "start": 1078.8,
+      "duration": 4.107
+    },
+    {
+      "text": "Pratyush cannot go to any other hotel.",
+      "start": 1080.047,
+      "duration": 4.42
+    },
+    {
+      "text": "This is where the problem arises.",
+      "start": 1082.907,
+      "duration": 4.659
+    },
+    {
+      "text": "Suppose this laptop is busy. A hotel is",
+      "start": 1084.467,
+      "duration": 4.627
+    },
+    {
+      "text": "very crowded.",
+      "start": 1087.566,
+      "duration": 2.848
+    },
+    {
+      "text": "The two of them are sitting comfortably",
+      "start": 1089.094,
+      "duration": 3.282
+    },
+    {
+      "text": ", eating tea and biscuits. Now Pratyush",
+      "start": 1090.414,
+      "duration": 3.771
+    },
+    {
+      "text": "arrives, and the load balancer thinks, \"",
+      "start": 1092.376,
+      "duration": 3.906
+    },
+    {
+      "text": "Okay, Pratyush needs to be sent to C1.\"",
+      "start": 1094.185,
+      "duration": 3.871
+    },
+    {
+      "text": "It remembers that Pratyush went to C1,",
+      "start": 1096.282,
+      "duration": 3.594
+    },
+    {
+      "text": "so it pushes him into this queue as well",
+      "start": 1098.056,
+      "duration": 2.379
+    },
+    {
+      "text": ".",
+      "start": 1099.876,
+      "duration": 2.289
+    },
+    {
+      "text": "Pratyush is standing in line even though",
+      "start": 1100.435,
+      "duration": 3.772
+    },
+    {
+      "text": "both of these laptops are empty. The",
+      "start": 1102.165,
+      "duration": 3.924
+    },
+    {
+      "text": "other Shyam Hotel and Mohan Hotel are",
+      "start": 1104.207,
+      "duration": 3.912
+    },
+    {
+      "text": "empty, and Pratyush is entering the line",
+      "start": 1106.089,
+      "duration": 3.912
+    },
+    {
+      "text": "at Ram Hotel, saying, \"I'll pay here,",
+      "start": 1108.119,
+      "duration": 4.305
+    },
+    {
+      "text": "eat here, and sleep here.\" This is wrong",
+      "start": 1110.001,
+      "duration": 3.522
+    },
+    {
+      "text": ".",
+      "start": 1112.424,
+      "duration": 3.216
+    },
+    {
+      "text": "To solve this problem, you have to",
+      "start": 1113.523,
+      "duration": 4.355
+    },
+    {
+      "text": "convert your server from stateful to",
+      "start": 1115.64,
+      "duration": 3.933
+    },
+    {
+      "text": "stateless.",
+      "start": 1117.878,
+      "duration": 3.625
+    },
+    {
+      "text": "What does that mean? You have to convert",
+      "start": 1119.573,
+      "duration": 3.33
+    },
+    {
+      "text": "a stateful server from stateful to",
+      "start": 1121.503,
+      "duration": 3.405
+    },
+    {
+      "text": "stateless. What is this stateless thing",
+      "start": 1122.903,
+      "duration": 3.983
+    },
+    {
+      "text": "? Let me explain. Did you understand the",
+      "start": 1124.908,
+      "duration": 3.869
+    },
+    {
+      "text": "problem with stateful? This is a problem",
+      "start": 1126.886,
+      "duration": 3.342
+    },
+    {
+      "text": "with horizontal servers.",
+      "start": 1128.777,
+      "duration": 2.732
+    },
+    {
+      "text": "It's not a problem with vertical servers",
+      "start": 1130.228,
+      "duration": 2.609
+    },
+    {
+      "text": ". There's only one laptop and one hotel",
+      "start": 1131.509,
+      "duration": 3.004
+    },
+    {
+      "text": "in vertical servers. The hotel will",
+      "start": 1132.837,
+      "duration": 3.315
+    },
+    {
+      "text": "remember you, eat, and do whatever you",
+      "start": 1134.513,
+      "duration": 2.741
+    },
+    {
+      "text": "want. This problem occurs with",
+      "start": 1136.152,
+      "duration": 2.906
+    },
+    {
+      "text": "horizontal servers. This is called the",
+      "start": 1137.254,
+      "duration": 3.996
+    },
+    {
+      "text": "state problem, and to solve this problem",
+      "start": 1139.058,
+      "duration": 4.521
+    },
+    {
+      "text": ", we'll build a stateless server. What",
+      "start": 1141.25,
+      "duration": 3.98
+    },
+    {
+      "text": "is a stateless server? Now, let's",
+      "start": 1143.579,
+      "duration": 4.269
+    },
+    {
+      "text": "explain this state problem. What does",
+      "start": 1145.23,
+      "duration": 7.5
+    },
+    {
+      "text": "state mean? Any information",
+      "start": 1147.848,
+      "duration": 4.882
+    },
+    {
+      "text": "about any request or any user is called",
+      "start": 1153.908,
+      "duration": 5.05
+    },
+    {
+      "text": "state, and this is called a cookie.",
+      "start": 1156.062,
+      "duration": 5.155
+    },
+    {
+      "text": "Not a cookie, but a cookie. Okay? What",
+      "start": 1158.958,
+      "duration": 4.82
+    },
+    {
+      "text": "happens is, how does login work?",
+      "start": 1161.217,
+      "duration": 4.44
+    },
+    {
+      "text": "When you buy a laptop for the first time",
+      "start": 1163.778,
+      "duration": 3.254
+    },
+    {
+      "text": "and you go to Instagram, say,",
+      "start": 1165.657,
+      "duration": 3.162
+    },
+    {
+      "text": "instagram.com, and log in, you have to",
+      "start": 1167.032,
+      "duration": 3.529
+    },
+    {
+      "text": "provide your username or password, or",
+      "start": 1168.819,
+      "duration": 3.392
+    },
+    {
+      "text": "you have to log in with your Google",
+      "start": 1170.561,
+      "duration": 4.017
+    },
+    {
+      "text": "account.",
+      "start": 1172.211,
+      "duration": 2.367
+    },
+    {
+      "text": "After that, if you log in with Chrome,",
+      "start": 1175.453,
+      "duration": 3.625
+    },
+    {
+      "text": "say, you come back tomorrow, shut down",
+      "start": 1177.265,
+      "duration": 3.626
+    },
+    {
+      "text": "your laptop, and open Instagram again,",
+      "start": 1179.078,
+      "duration": 4.112
+    },
+    {
+      "text": "you don't have to log in.",
+      "start": 1180.891,
+      "duration": 3.932
+    },
+    {
+      "text": "That Instagram account remains logged in",
+      "start": 1183.19,
+      "duration": 3.399
+    },
+    {
+      "text": ", right? How does this happen? It's done",
+      "start": 1184.823,
+      "duration": 2.86
+    },
+    {
+      "text": "with cookies.",
+      "start": 1186.589,
+      "duration": 2.94
+    },
+    {
+      "text": "What happens is that whenever you assume",
+      "start": 1187.683,
+      "duration": 3.693
+    },
+    {
+      "text": "you have a server, the one marked C1 and",
+      "start": 1189.529,
+      "duration": 4.409
+    },
+    {
+      "text": "C2 above, this is C1.",
+      "start": 1191.376,
+      "duration": 4.312
+    },
+    {
+      "text": "When someone comes to log in for the",
+      "start": 1193.938,
+      "duration": 3.359
+    },
+    {
+      "text": "first time, you're the first one,",
+      "start": 1195.688,
+      "duration": 3.407
+    },
+    {
+      "text": "Pratyush is the first one, the server",
+      "start": 1197.297,
+      "duration": 3.455
+    },
+    {
+      "text": "says, \"OK, enter your username and",
+      "start": 1199.095,
+      "duration": 2.735
+    },
+    {
+      "text": "password.",
+      "start": 1200.752,
+      "duration": 2.312
+    },
+    {
+      "text": "Authentication is successful.\" The",
+      "start": 1201.83,
+      "duration": 2.614
+    },
+    {
+      "text": "server understands that this is Pratyush",
+      "start": 1203.064,
+      "duration": 4.615
+    },
+    {
+      "text": ". Now it creates a session. What does a",
+      "start": 1204.444,
+      "duration": 4.675
+    },
+    {
+      "text": "session mean?",
+      "start": 1207.679,
+      "duration": 4.241
+    },
+    {
+      "text": "What does a session ID say? It says that",
+      "start": 1209.119,
+      "duration": 5.704
+    },
+    {
+      "text": "this person's name is Pratyush.",
+      "start": 1211.92,
+      "duration": 4.723
+    },
+    {
+      "text": "He's authenticated, meaning he entered",
+      "start": 1214.823,
+      "duration": 3.546
+    },
+    {
+      "text": "his username and password correctly,",
+      "start": 1216.643,
+      "duration": 4.94
+    },
+    {
+      "text": "we've got his account, and",
+      "start": 1218.369,
+      "duration": 3.214
+    },
+    {
+      "text": "we'll remember it for that long. For",
+      "start": 1221.801,
+      "duration": 3.888
+    },
+    {
+      "text": "example, for two days, seven days, or",
+      "start": 1223.395,
+      "duration": 4.361
+    },
+    {
+      "text": "eight days.",
+      "start": 1225.689,
+      "duration": 4.418
+    },
+    {
+      "text": "It's like a token. When you go somewhere",
+      "start": 1227.756,
+      "duration": 3.926
+    },
+    {
+      "text": "for the first time, you're asked to",
+      "start": 1230.107,
+      "duration": 3.459
+    },
+    {
+      "text": "register, so you register and sign in.",
+      "start": 1231.682,
+      "duration": 3.604
+    },
+    {
+      "text": "After that, the guard there will",
+      "start": 1233.566,
+      "duration": 3.887
+    },
+    {
+      "text": "remember that you came. If you don't log",
+      "start": 1235.286,
+      "duration": 3.516
+    },
+    {
+      "text": "in for a month or two, the server will",
+      "start": 1237.453,
+      "duration": 2.698
+    },
+    {
+      "text": "forget you, and you'll have to register",
+      "start": 1238.802,
+      "duration": 2.222
+    },
+    {
+      "text": ".",
+      "start": 1240.151,
+      "duration": 2.705
+    },
+    {
+      "text": "This is what a session is. Now, what",
+      "start": 1241.024,
+      "duration": 4.197
+    },
+    {
+      "text": "this server does is, let's say you log",
+      "start": 1242.856,
+      "duration": 5.143
+    },
+    {
+      "text": "in as a user. The server will create a",
+      "start": 1245.221,
+      "duration": 4.589
+    },
+    {
+      "text": "session ID.",
+      "start": 1247.999,
+      "duration": 3.92
+    },
+    {
+      "text": "The session ID is something like a big",
+      "start": 1249.81,
+      "duration": 4.955
+    },
+    {
+      "text": "ABX and send it to your browser.",
+      "start": 1251.919,
+      "duration": 4.372
+    },
+    {
+      "text": "It will send it to your browser, that is",
+      "start": 1254.765,
+      "duration": 3.731
+    },
+    {
+      "text": ", to your Chrome browser.",
+      "start": 1256.291,
+      "duration": 3.962
+    },
+    {
+      "text": "From then on, whenever you log in,",
+      "start": 1258.496,
+      "duration": 3.962
+    },
+    {
+      "text": "you're done. Now, if you open Instagram",
+      "start": 1260.253,
+      "duration": 4.145
+    },
+    {
+      "text": "or do anything, your browser will send",
+      "start": 1262.458,
+      "duration": 3.833
+    },
+    {
+      "text": "this cookie. This is called a cookie. It",
+      "start": 1264.398,
+      "duration": 3.621
+    },
+    {
+      "text": "will send it to the server. The server",
+      "start": 1266.291,
+      "duration": 3.334
+    },
+    {
+      "text": "will read the cookie and understand, \"",
+      "start": 1268.019,
+      "duration": 3.096
+    },
+    {
+      "text": "Yes, this is Pratyush. We need to",
+      "start": 1269.625,
+      "duration": 3.395
+    },
+    {
+      "text": "remember him for 10 days. He's logged in",
+      "start": 1271.115,
+      "duration": 3.837
+    },
+    {
+      "text": ".\" That's why you don't have to log in",
+      "start": 1273.02,
+      "duration": 4.157
+    },
+    {
+      "text": "again and again. If this weren't the",
+      "start": 1274.952,
+      "duration": 4.058
+    },
+    {
+      "text": "case, every time you open or close",
+      "start": 1277.177,
+      "duration": 3.824
+    },
+    {
+      "text": "Instagram.com, it would prompt you to",
+      "start": 1279.01,
+      "duration": 4.255
+    },
+    {
+      "text": "enter your username and password. This",
+      "start": 1281.001,
+      "duration": 4.418
+    },
+    {
+      "text": "doesn't happen. Why? This isn't the case",
+      "start": 1283.265,
+      "duration": 3.94
+    },
+    {
+      "text": ". So, you can use this cookie as a",
+      "start": 1285.419,
+      "duration": 3.769
+    },
+    {
+      "text": "statement, \"What is this cookie?\" Your",
+      "start": 1287.205,
+      "duration": 3.774
+    },
+    {
+      "text": "information is this: your name is this,",
+      "start": 1289.188,
+      "duration": 3.537
+    },
+    {
+      "text": "your ID is this, your IP is this, your",
+      "start": 1290.979,
+      "duration": 3.493
+    },
+    {
+      "text": "password is this, your username is this",
+      "start": 1292.725,
+      "duration": 3.537
+    },
+    {
+      "text": ", so and so, whatever information there",
+      "start": 1294.472,
+      "duration": 2.973
+    },
+    {
+      "text": "is about you.",
+      "start": 1296.262,
+      "duration": 5.03
+    },
+    {
+      "text": "Okay, so what comes next? Wait a minute",
+      "start": 1297.445,
+      "duration": 5.744
+    },
+    {
+      "text": ". Yes, sorry, someone's information came",
+      "start": 1301.292,
+      "duration": 4.186
+    },
+    {
+      "text": "up. So, this cookie system, so what",
+      "start": 1303.189,
+      "duration": 4.146
+    },
+    {
+      "text": "happens in stateful?",
+      "start": 1305.478,
+      "duration": 4.602
+    },
+    {
+      "text": "What happens in stateful? You were a",
+      "start": 1307.335,
+      "duration": 5.625
+    },
+    {
+      "text": "user, you went and logged in.",
+      "start": 1310.08,
+      "duration": 5.33
+    },
+    {
+      "text": "Suppose your first login was on C1, then",
+      "start": 1312.96,
+      "duration": 4.722
+    },
+    {
+      "text": "C1 remembered your cookie and session",
+      "start": 1315.41,
+      "duration": 4.225
+    },
+    {
+      "text": "information.",
+      "start": 1317.682,
+      "duration": 4.061
+    },
+    {
+      "text": "Now, if you go back to C1, you don't",
+      "start": 1319.635,
+      "duration": 4.16
+    },
+    {
+      "text": "have to log in, but when you make a",
+      "start": 1321.743,
+      "duration": 4.275
+    },
+    {
+      "text": "request to C2, you have to log in again",
+      "start": 1323.795,
+      "duration": 3.09
+    },
+    {
+      "text": ".",
+      "start": 1326.018,
+      "duration": 3.128
+    },
+    {
+      "text": "Why? Because C1 has kept this cookie and",
+      "start": 1326.885,
+      "duration": 4.5
+    },
+    {
+      "text": "session information in itself.",
+      "start": 1329.146,
+      "duration": 3.711
+    },
+    {
+      "text": "It didn't share this with C2, so C2 had",
+      "start": 1331.385,
+      "duration": 4.225
+    },
+    {
+      "text": "a problem. This was stateful.",
+      "start": 1332.857,
+      "duration": 5.044
+    },
+    {
+      "text": "Stateless doesn't mean that this cookie",
+      "start": 1335.61,
+      "duration": 4.582
+    },
+    {
+      "text": "or session is stored in a shared storage",
+      "start": 1337.901,
+      "duration": 3.404
+    },
+    {
+      "text": ".",
+      "start": 1340.192,
+      "duration": 3.505
+    },
+    {
+      "text": "What? Your cookie or session should be",
+      "start": 1341.305,
+      "duration": 4.248
+    },
+    {
+      "text": "stored on a shared system or shared",
+      "start": 1343.697,
+      "duration": 3.414
+    },
+    {
+      "text": "server.",
+      "start": 1345.553,
+      "duration": 3.617
+    },
+    {
+      "text": "Now, what will happen is that no matter",
+      "start": 1347.111,
+      "duration": 4.068
+    },
+    {
+      "text": "which server you go to, whether it's C1",
+      "start": 1349.17,
+      "duration": 4.017
+    },
+    {
+      "text": ", C2, or any other, everyone will read",
+      "start": 1351.179,
+      "duration": 3.862
+    },
+    {
+      "text": "this shared system and know that it",
+      "start": 1353.187,
+      "duration": 4.289
+    },
+    {
+      "text": "belongs to Pratyush.",
+      "start": 1355.041,
+      "duration": 4.643
+    },
+    {
+      "text": "Even if you take the previous example,",
+      "start": 1357.476,
+      "duration": 4.247
+    },
+    {
+      "text": "you logged in, added to Amazon, and",
+      "start": 1359.684,
+      "duration": 3.528
+    },
+    {
+      "text": "added to cart.",
+      "start": 1361.723,
+      "duration": 4.179
+    },
+    {
+      "text": "What did you do? Add to cart. Now, all",
+      "start": 1363.212,
+      "duration": 5.23
+    },
+    {
+      "text": "this information, all this state, will",
+      "start": 1365.902,
+      "duration": 5.542
+    },
+    {
+      "text": "be stored in a shared storage.",
+      "start": 1368.442,
+      "duration": 4.907
+    },
+    {
+      "text": "It won't be stored in your laptop's own",
+      "start": 1371.444,
+      "duration": 2.792
+    },
+    {
+      "text": "memory.",
+      "start": 1373.349,
+      "duration": 2.933
+    },
+    {
+      "text": "It will be stored in a shared storage.",
+      "start": 1374.236,
+      "duration": 3.786
+    },
+    {
+      "text": "Now, if you go to another storage to",
+      "start": 1376.282,
+      "duration": 3.669
+    },
+    {
+      "text": "make a payment, that shared storage will",
+      "start": 1378.022,
+      "duration": 3.717
+    },
+    {
+      "text": "see what this person has done so far:",
+      "start": 1379.951,
+      "duration": 3.646
+    },
+    {
+      "text": "created an account and added to cart.",
+      "start": 1381.739,
+      "duration": 3.148
+    },
+    {
+      "text": "Okay, you want to make a payment. Yes,",
+      "start": 1383.597,
+      "duration": 3.176
+    },
+    {
+      "text": "you can make a payment of Rs. 65,000. So",
+      "start": 1384.887,
+      "duration": 3.48
+    },
+    {
+      "text": ", the problem with these three hotels is",
+      "start": 1386.773,
+      "duration": 3.187
+    },
+    {
+      "text": "that previously, none of the hotels were",
+      "start": 1388.367,
+      "duration": 3.525
+    },
+    {
+      "text": "talking to each other. Now, all the",
+      "start": 1389.96,
+      "duration": 3.955
+    },
+    {
+      "text": "hotels are connected. You go and place",
+      "start": 1391.892,
+      "duration": 4.225
+    },
+    {
+      "text": "your order here, eat here, and then go",
+      "start": 1393.915,
+      "duration": 3.581
+    },
+    {
+      "text": "here to pay.",
+      "start": 1396.117,
+      "duration": 3.131
+    },
+    {
+      "text": "The person there will ask the central",
+      "start": 1397.496,
+      "duration": 3.643
+    },
+    {
+      "text": "system, \"Hey, this guy came, paid ₹ 720",
+      "start": 1399.248,
+      "duration": 3.631
+    },
+    {
+      "text": ", who is this guy?\" Someone will tell",
+      "start": 1401.139,
+      "duration": 3.061
+    },
+    {
+      "text": "him, \"Yes, he came, placed an order, and",
+      "start": 1402.879,
+      "duration": 2.913
+    },
+    {
+      "text": "ate the food. This is the payment for",
+      "start": 1404.2,
+      "duration": 3.254
+    },
+    {
+      "text": "that.\" This person will take your",
+      "start": 1405.792,
+      "duration": 2.964
+    },
+    {
+      "text": "payment.",
+      "start": 1407.454,
+      "duration": 4.539
+    },
+    {
+      "text": "This system is called stateless servers",
+      "start": 1408.756,
+      "duration": 4.3
+    },
+    {
+      "text": ".",
+      "start": 1411.993,
+      "duration": 3.302
+    },
+    {
+      "text": "No single server is individually",
+      "start": 1413.056,
+      "duration": 4.66
+    },
+    {
+      "text": "remembering your state. Everyone is",
+      "start": 1415.295,
+      "duration": 3.716
+    },
+    {
+      "text": "storing a shared server somewhere, and",
+      "start": 1417.716,
+      "duration": 2.457
+    },
+    {
+      "text": "everyone is reading from their own",
+      "start": 1419.011,
+      "duration": 3.306
+    },
+    {
+      "text": "shared server. This is crucial when",
+      "start": 1420.173,
+      "duration": 5.686
+    },
+    {
+      "text": "building a horizontally scaling system.",
+      "start": 1422.317,
+      "duration": 4.951
+    },
+    {
+      "text": "If you make it stateful, it will cause a",
+      "start": 1425.859,
+      "duration": 2.787
+    },
+    {
+      "text": "lot of problems.",
+      "start": 1427.268,
+      "duration": 3.666
+    },
+    {
+      "text": "Let me explain why.",
+      "start": 1428.646,
+      "duration": 4.452
+    },
+    {
+      "text": "Now, another thought should come to your",
+      "start": 1430.934,
+      "duration": 4.276
+    },
+    {
+      "text": "mind: can we also do what we said, that",
+      "start": 1433.098,
+      "duration": 4.065
+    },
+    {
+      "text": "all of Pratyush's requests go to one",
+      "start": 1435.21,
+      "duration": 2.867
+    },
+    {
+      "text": "server?",
+      "start": 1437.163,
+      "duration": 3.07
+    },
+    {
+      "text": "Why is this problematic? There's a load",
+      "start": 1438.077,
+      "duration": 3.044
+    },
+    {
+      "text": "problem.",
+      "start": 1440.233,
+      "duration": 2.819
+    },
+    {
+      "text": "Now, Pratyush is making 2,000 requests a",
+      "start": 1441.121,
+      "duration": 4.03
+    },
+    {
+      "text": "day. You're sending all of Pratyush's",
+      "start": 1443.052,
+      "duration": 3.404
+    },
+    {
+      "text": "requests to C1.",
+      "start": 1445.151,
+      "duration": 3.365
+    },
+    {
+      "text": "What will C2 and C3 do if C1 is busy?",
+      "start": 1446.456,
+      "duration": 3.603
+    },
+    {
+      "text": "Suppose a fire breaks out in C1, what",
+      "start": 1448.516,
+      "duration": 3.181
+    },
+    {
+      "text": "will happen then? Then you'll send it to",
+      "start": 1450.059,
+      "duration": 3.587
+    },
+    {
+      "text": "C2. He'll have to log in again. That's",
+      "start": 1451.697,
+      "duration": 3.471
+    },
+    {
+      "text": "why all these problems arise in stateful",
+      "start": 1453.646,
+      "duration": 4.016
+    },
+    {
+      "text": "systems. Stateless systems are designed",
+      "start": 1455.168,
+      "duration": 4.926
+    },
+    {
+      "text": "to make your system stateless. So whose",
+      "start": 1457.662,
+      "duration": 4.2
+    },
+    {
+      "text": "problem is this? Horizontal. And how do",
+      "start": 1460.094,
+      "duration": 3.54
+    },
+    {
+      "text": "you solve it? Let's do it this way. Now",
+      "start": 1461.862,
+      "duration": 3.774
+    },
+    {
+      "text": ", let's move on to load balancers.",
+      "start": 1463.634,
+      "duration": 3.902
+    },
+    {
+      "text": "A load balancer has four functions in",
+      "start": 1465.636,
+      "duration": 3.183
+    },
+    {
+      "text": "total. How many functions does it have",
+      "start": 1467.536,
+      "duration": 2.43
+    },
+    {
+      "text": "in total? A load balancer has four",
+      "start": 1468.819,
+      "duration": 2.323
+    },
+    {
+      "text": "functions.",
+      "start": 1469.966,
+      "duration": 2.775
+    },
+    {
+      "text": "First, it's obvious that you need to",
+      "start": 1471.142,
+      "duration": 3.285
+    },
+    {
+      "text": "spread the traffic, the user requests,",
+      "start": 1472.741,
+      "duration": 3.511
+    },
+    {
+      "text": "across all the servers.",
+      "start": 1474.427,
+      "duration": 3.905
+    },
+    {
+      "text": "Spreading is the main function.",
+      "start": 1476.252,
+      "duration": 3.768
+    },
+    {
+      "text": "Second, you need to keep checking the",
+      "start": 1478.332,
+      "duration": 3.081
+    },
+    {
+      "text": "health. What do you need to keep doing?",
+      "start": 1480.02,
+      "duration": 3.146
+    },
+    {
+      "text": "Health checks. This is called heartbeat",
+      "start": 1481.413,
+      "duration": 3.643
+    },
+    {
+      "text": ". What's this called? A heartbeat. A",
+      "start": 1483.166,
+      "duration": 4.671
+    },
+    {
+      "text": "heartbeat isn't anything.",
+      "start": 1485.056,
+      "duration": 4.627
+    },
+    {
+      "text": "If you have three laptops in your system",
+      "start": 1487.837,
+      "duration": 3.602
+    },
+    {
+      "text": "and a load balancer, the load balancer",
+      "start": 1489.683,
+      "duration": 3.423
+    },
+    {
+      "text": "will ask all three laptops, \"Listen,",
+      "start": 1491.439,
+      "duration": 3.407
+    },
+    {
+      "text": "Laptop One, are you okay?\"",
+      "start": 1493.106,
+      "duration": 3.251
+    },
+    {
+      "text": "Laptop One will say, \"Yes, brother, I'm",
+      "start": 1494.846,
+      "duration": 3.079
+    },
+    {
+      "text": "fine.\" What's this called? A health",
+      "start": 1496.357,
+      "duration": 3.641
+    },
+    {
+      "text": "check. You ask, \"Are you okay?\" It says",
+      "start": 1497.925,
+      "duration": 3.721
+    },
+    {
+      "text": ", \"I'm fine.\" It's a very simple request",
+      "start": 1499.998,
+      "duration": 4.255
+    },
+    {
+      "text": ". There's no fraud involved. It asks, \"",
+      "start": 1501.646,
+      "duration": 4.348
+    },
+    {
+      "text": "Are you okay?\" It says, \"Yes, I'm fine.",
+      "start": 1504.253,
+      "duration": 3.586
+    },
+    {
+      "text": "\" This means the health check has passed",
+      "start": 1505.994,
+      "duration": 3.885
+    },
+    {
+      "text": ", and this happens continuously. This",
+      "start": 1507.839,
+      "duration": 3.62
+    },
+    {
+      "text": "happens every five seconds, every ten",
+      "start": 1509.879,
+      "duration": 3.439
+    },
+    {
+      "text": "seconds.",
+      "start": 1511.459,
+      "duration": 4.607
+    },
+    {
+      "text": "If the load balancer thinks, \"C1 hasn't",
+      "start": 1513.318,
+      "duration": 6.429
+    },
+    {
+      "text": "responded,\" say, three times in a row.",
+      "start": 1516.066,
+      "duration": 4.749
+    },
+    {
+      "text": "We ask, \"Are you okay?\" It didn't",
+      "start": 1519.747,
+      "duration": 2.05
+    },
+    {
+      "text": "respond. Then, five seconds later, it",
+      "start": 1520.815,
+      "duration": 2.086
+    },
+    {
+      "text": "asks, \"Are you okay?\" It didn't respond",
+      "start": 1521.797,
+      "duration": 2.335
+    },
+    {
+      "text": ". Then, it asks, \"Are you okay?\" It",
+      "start": 1522.901,
+      "duration": 2.765
+    },
+    {
+      "text": "doesn't respond. Then, it asks, \"Are you",
+      "start": 1524.132,
+      "duration": 3.633
+    },
+    {
+      "text": "okay?\" It doesn't respond. So, the load",
+      "start": 1525.666,
+      "duration": 5.117
+    },
+    {
+      "text": "balancer thinks, \"C1 has caught fire. C1",
+      "start": 1527.765,
+      "duration": 5.694
+    },
+    {
+      "text": "has gone down.\" So, no traffic is sent",
+      "start": 1530.783,
+      "duration": 5.229
+    },
+    {
+      "text": "to C1. Traffic is no longer sent to C1.",
+      "start": 1533.459,
+      "duration": 4.703
+    },
+    {
+      "text": "This is called a health check.",
+      "start": 1536.012,
+      "duration": 4.263
+    },
+    {
+      "text": "The second and third are to add or",
+      "start": 1538.162,
+      "duration": 4.179
+    },
+    {
+      "text": "remove machines. Which ones? Add or",
+      "start": 1540.275,
+      "duration": 4.479
+    },
+    {
+      "text": "remove. Suppose you had three machines",
+      "start": 1542.341,
+      "duration": 4.887
+    },
+    {
+      "text": "in total: one, two, and three. This was",
+      "start": 1544.754,
+      "duration": 4.469
+    },
+    {
+      "text": "your load balancer. So, it was currently",
+      "start": 1547.228,
+      "duration": 3.737
+    },
+    {
+      "text": "serving these three.",
+      "start": 1549.223,
+      "duration": 3.982
+    },
+    {
+      "text": "Now, you can also install a fourth",
+      "start": 1550.965,
+      "duration": 4.864
+    },
+    {
+      "text": "machine and tell your load balancer that",
+      "start": 1553.205,
+      "duration": 5.65
+    },
+    {
+      "text": "C4 is now in the system.",
+      "start": 1555.829,
+      "duration": 4.254
+    },
+    {
+      "text": "The load balancer will now perform a",
+      "start": 1558.855,
+      "duration": 2.59
+    },
+    {
+      "text": "health check on this machine as well and",
+      "start": 1560.083,
+      "duration": 2.583
+    },
+    {
+      "text": "start sending traffic to it. So,",
+      "start": 1561.445,
+      "duration": 2.201
+    },
+    {
+      "text": "previously, it was sending traffic to",
+      "start": 1562.666,
+      "duration": 2.578
+    },
+    {
+      "text": "three. Now, it will spread traffic to",
+      "start": 1563.646,
+      "duration": 3.136
+    },
+    {
+      "text": "four and start doing health checks on it",
+      "start": 1565.244,
+      "duration": 2.554
+    },
+    {
+      "text": "as well.",
+      "start": 1566.782,
+      "duration": 2.868
+    },
+    {
+      "text": "What is the fourth function?",
+      "start": 1567.798,
+      "duration": 3.402
+    },
+    {
+      "text": "For security. What is the fourth",
+      "start": 1569.65,
+      "duration": 3.653
+    },
+    {
+      "text": "function? For security. When the load",
+      "start": 1571.2,
+      "duration": 4.012
+    },
+    {
+      "text": "balancer wasn't in place, the user was",
+      "start": 1573.303,
+      "duration": 3.999
+    },
+    {
+      "text": "talking directly to your laptop.",
+      "start": 1575.212,
+      "duration": 3.407
+    },
+    {
+      "text": "The user was talking directly to your",
+      "start": 1577.302,
+      "duration": 3.444
+    },
+    {
+      "text": "laptop. Your laptop will need to have a",
+      "start": 1578.619,
+      "duration": 3.963
+    },
+    {
+      "text": "public IP. Remember, we explained public",
+      "start": 1580.746,
+      "duration": 3.518
+    },
+    {
+      "text": "IP and private IP in Lecture 2. What are",
+      "start": 1582.582,
+      "duration": 3.437
+    },
+    {
+      "text": "they? A public IP refers to the main",
+      "start": 1584.264,
+      "duration": 3.588
+    },
+    {
+      "text": "gate of your apartment or society. A",
+      "start": 1586.019,
+      "duration": 3.869
+    },
+    {
+      "text": "private IP refers to your home address.",
+      "start": 1587.852,
+      "duration": 4.076
+    },
+    {
+      "text": "Someone from Zomato could access the",
+      "start": 1589.888,
+      "duration": 4.746
+    },
+    {
+      "text": "main gate, but not your home.",
+      "start": 1591.928,
+      "duration": 4.65
+    },
+    {
+      "text": "Without a load balancer, every user",
+      "start": 1594.634,
+      "duration": 3.943
+    },
+    {
+      "text": "could directly access your C1 laptop",
+      "start": 1596.578,
+      "duration": 3.943
+    },
+    {
+      "text": "because your C1 was public, so they",
+      "start": 1598.577,
+      "duration": 4.362
+    },
+    {
+      "text": "could access your C1 laptop.",
+      "start": 1600.521,
+      "duration": 4.825
+    },
+    {
+      "text": "What happens with a load balancer? Think",
+      "start": 1602.939,
+      "duration": 6.653
+    },
+    {
+      "text": "of the load balancer as the main gate.",
+      "start": 1605.346,
+      "duration": 4.246
+    },
+    {
+      "text": "Think of C1, C2, and C3 as house",
+      "start": 1610.284,
+      "duration": 4.267
+    },
+    {
+      "text": "addresses.",
+      "start": 1612.893,
+      "duration": 4.201
+    },
+    {
+      "text": "Now, a user can't directly access your",
+      "start": 1614.551,
+      "duration": 4.653
+    },
+    {
+      "text": "laptop. The user will go to the main",
+      "start": 1617.094,
+      "duration": 4.164
+    },
+    {
+      "text": "gate. The main gate will decide which",
+      "start": 1619.204,
+      "duration": 3.958
+    },
+    {
+      "text": "house to send the user to, increasing",
+      "start": 1621.258,
+      "duration": 4.34
+    },
+    {
+      "text": "security. If someone has direct access",
+      "start": 1623.162,
+      "duration": 4.998
+    },
+    {
+      "text": "to your server, they can do anything.",
+      "start": 1625.598,
+      "duration": 4.057
+    },
+    {
+      "text": "Now, they only have access to the load",
+      "start": 1628.16,
+      "duration": 3.305
+    },
+    {
+      "text": "balancer. They can hack the load",
+      "start": 1629.655,
+      "duration": 3.754
+    },
+    {
+      "text": "balancer, for example. They can't access",
+      "start": 1631.465,
+      "duration": 3.287
+    },
+    {
+      "text": "your machine. They're not allowed to",
+      "start": 1633.409,
+      "duration": 2.695
+    },
+    {
+      "text": "access your machine. They don't even",
+      "start": 1634.752,
+      "duration": 2.942
+    },
+    {
+      "text": "know your machine's IP address. So,",
+      "start": 1636.104,
+      "duration": 4.702
+    },
+    {
+      "text": "security is one of its four functions.",
+      "start": 1637.694,
+      "duration": 5.525
+    },
+    {
+      "text": "These three are simple.",
+      "start": 1640.806,
+      "duration": 5.201
+    },
+    {
+      "text": "How will you spread traffic? There are",
+      "start": 1643.219,
+      "duration": 4.923
+    },
+    {
+      "text": "techniques for this. You'll be asked, \"",
+      "start": 1646.007,
+      "duration": 4.562
+    },
+    {
+      "text": "Okay, you've built a load balancer.",
+      "start": 1648.142,
+      "duration": 4.275
+    },
+    {
+      "text": "Which load balancing algorithm will you",
+      "start": 1650.569,
+      "duration": 4.236
+    },
+    {
+      "text": "use?\" So, the simplest algorithm is",
+      "start": 1652.417,
+      "duration": 4.187
+    },
+    {
+      "text": "called round robin.",
+      "start": 1654.805,
+      "duration": 3.981
+    },
+    {
+      "text": "What does round robin mean? Request one",
+      "start": 1656.604,
+      "duration": 4.043
+    },
+    {
+      "text": "comes, give it to C1.",
+      "start": 1658.786,
+      "duration": 2.516
+    },
+    {
+      "text": "Request two comes, give it to C2.",
+      "start": 1660.647,
+      "duration": 2.3
+    },
+    {
+      "text": "Request three comes, give it to C3.",
+      "start": 1661.302,
+      "duration": 4.899
+    },
+    {
+      "text": "Request four comes, give it back to C1.",
+      "start": 1662.947,
+      "duration": 4.537
+    },
+    {
+      "text": "Request five comes, give it back to C2.",
+      "start": 1666.201,
+      "duration": 4.917
+    },
+    {
+      "text": "Request six comes, give it to C3, and",
+      "start": 1667.484,
+      "duration": 5.834
+    },
+    {
+      "text": "repeat. This is called round robin. The",
+      "start": 1671.118,
+      "duration": 3.638
+    },
+    {
+      "text": "first request comes, give it to this one",
+      "start": 1673.318,
+      "duration": 3.143
+    },
+    {
+      "text": ". Now give it its turn. Any other",
+      "start": 1674.756,
+      "duration": 2.955
+    },
+    {
+      "text": "request comes, give it to this one. The",
+      "start": 1676.461,
+      "duration": 2.615
+    },
+    {
+      "text": "next request comes, give it to this one",
+      "start": 1677.711,
+      "duration": 3.362
+    },
+    {
+      "text": ". This is called round robin. So, this",
+      "start": 1679.076,
+      "duration": 3.422
+    },
+    {
+      "text": "is the simplest. There's no brain",
+      "start": 1681.073,
+      "duration": 3.439
+    },
+    {
+      "text": "involved. The load balancer knows, \"I",
+      "start": 1682.498,
+      "duration": 4.179
+    },
+    {
+      "text": "have three laptops.\" A request came in,",
+      "start": 1684.512,
+      "duration": 4.277
+    },
+    {
+      "text": "\"Yes, take C1.\" Another came in, \"C2.\" A",
+      "start": 1686.677,
+      "duration": 3.694
+    },
+    {
+      "text": "third came in, \"C3.\"",
+      "start": 1688.789,
+      "duration": 3.947
+    },
+    {
+      "text": "So, it's like dealing cards, one, two,",
+      "start": 1690.371,
+      "duration": 5.272
+    },
+    {
+      "text": "three, this, and so on.",
+      "start": 1692.736,
+      "duration": 4.812
+    },
+    {
+      "text": "This is very simple, very easy. What's",
+      "start": 1695.643,
+      "duration": 3.982
+    },
+    {
+      "text": "the problem with this? The problem is",
+      "start": 1697.548,
+      "duration": 4.487
+    },
+    {
+      "text": "that some requests are heavy. Some",
+      "start": 1699.625,
+      "duration": 4.179
+    },
+    {
+      "text": "requests are heavy. And they are heavy,",
+      "start": 1702.035,
+      "duration": 3.645
+    },
+    {
+      "text": "aren't they? A request could be for",
+      "start": 1703.804,
+      "duration": 4.015
+    },
+    {
+      "text": "payment. So, let's say a payment request",
+      "start": 1705.68,
+      "duration": 3.851
+    },
+    {
+      "text": "is a heavy request. Another request",
+      "start": 1707.819,
+      "duration": 3.37
+    },
+    {
+      "text": "could be just a click of the back button",
+      "start": 1709.531,
+      "duration": 3.354
+    },
+    {
+      "text": ", so that's a light request.",
+      "start": 1711.189,
+      "duration": 4.295
+    },
+    {
+      "text": "Meaning, processing a request can take a",
+      "start": 1712.885,
+      "duration": 5.008
+    },
+    {
+      "text": "lot of time, while processing another",
+      "start": 1715.484,
+      "duration": 4.887
+    },
+    {
+      "text": "request can take less time.",
+      "start": 1717.893,
+      "duration": 3.932
+    },
+    {
+      "text": "Just think about it, all kinds of work",
+      "start": 1720.371,
+      "duration": 2.359
+    },
+    {
+      "text": "work.",
+      "start": 1721.825,
+      "duration": 3.052
+    },
+    {
+      "text": "If you give us a video, it will take",
+      "start": 1722.73,
+      "duration": 4.67
+    },
+    {
+      "text": "time, brother.",
+      "start": 1724.877,
+      "duration": 4.567
+    },
+    {
+      "text": "Sending us a large payment, that will",
+      "start": 1727.4,
+      "duration": 4.088
+    },
+    {
+      "text": "take time too, but if someone presses",
+      "start": 1729.444,
+      "duration": 4.142
+    },
+    {
+      "text": "the back button, it will take less time",
+      "start": 1731.488,
+      "duration": 3.617
+    },
+    {
+      "text": ".",
+      "start": 1733.586,
+      "duration": 3.18
+    },
+    {
+      "text": "The same thing happens in chat. You tell",
+      "start": 1735.105,
+      "duration": 3.124
+    },
+    {
+      "text": "Chat GPT to tell you Shah Rukh Khan's",
+      "start": 1736.766,
+      "duration": 2.964
+    },
+    {
+      "text": "age; it's a small request, and it will",
+      "start": 1738.229,
+      "duration": 3.306
+    },
+    {
+      "text": "respond immediately. Now, you're asking",
+      "start": 1739.73,
+      "duration": 3.471
+    },
+    {
+      "text": "it to make a game, and you're giving us",
+      "start": 1741.535,
+      "duration": 3.83
+    },
+    {
+      "text": "the full draft, which will take longer.",
+      "start": 1743.201,
+      "duration": 4.524
+    },
+    {
+      "text": "So, what happens in round robin is that",
+      "start": 1745.365,
+      "duration": 4.19
+    },
+    {
+      "text": "one of your machines might get",
+      "start": 1747.725,
+      "duration": 3.82
+    },
+    {
+      "text": "overloaded. What could happen? It could",
+      "start": 1749.555,
+      "duration": 3.066
+    },
+    {
+      "text": "get overloaded.",
+      "start": 1751.545,
+      "duration": 2.731
+    },
+    {
+      "text": "Is the overloaded machine going to this",
+      "start": 1752.621,
+      "duration": 3.02
+    },
+    {
+      "text": "one, because it's not being used",
+      "start": 1754.276,
+      "duration": 3.525
+    },
+    {
+      "text": "intelligently? The request comes in, it",
+      "start": 1755.641,
+      "duration": 4.34
+    },
+    {
+      "text": "goes to this one, and it can't go to any",
+      "start": 1757.801,
+      "duration": 4.264
+    },
+    {
+      "text": "other one.",
+      "start": 1759.981,
+      "duration": 4.131
+    },
+    {
+      "text": "Let's say this has happened to you: your",
+      "start": 1762.065,
+      "duration": 3.746
+    },
+    {
+      "text": "laptop with C1 is running at 99%,",
+      "start": 1764.112,
+      "duration": 3.597
+    },
+    {
+      "text": "meaning it's running at 99%, and this",
+      "start": 1765.811,
+      "duration": 3.746
+    },
+    {
+      "text": "machine could catch fire any moment,",
+      "start": 1767.709,
+      "duration": 5.421
+    },
+    {
+      "text": "while C2 is running comfortably at 40%.",
+      "start": 1769.557,
+      "duration": 5.241
+    },
+    {
+      "text": "Now, when a request comes in, the load",
+      "start": 1773.13,
+      "duration": 3.294
+    },
+    {
+      "text": "balancer is following round robin, so",
+      "start": 1774.798,
+      "duration": 3.337
+    },
+    {
+      "text": "it's determined to send it to this one,",
+      "start": 1776.424,
+      "duration": 3.423
+    },
+    {
+      "text": "whether it's at 99%or 100%. I don't care",
+      "start": 1778.135,
+      "duration": 2.375
+    },
+    {
+      "text": ".",
+      "start": 1779.847,
+      "duration": 2.084
+    },
+    {
+      "text": "So, what could happen is that your",
+      "start": 1780.51,
+      "duration": 3.474
+    },
+    {
+      "text": "machine could get overloaded. So this is",
+      "start": 1781.931,
+      "duration": 4.143
+    },
+    {
+      "text": "simple, but it also has a problem. What",
+      "start": 1783.984,
+      "duration": 4.033
+    },
+    {
+      "text": "is the other method?",
+      "start": 1786.074,
+      "duration": 4.228
+    },
+    {
+      "text": "Load-based? Load-based, either",
+      "start": 1788.017,
+      "duration": 5.56
+    },
+    {
+      "text": "connection-based or request-based.",
+      "start": 1790.302,
+      "duration": 7.245
+    },
+    {
+      "text": "Send the server that appears to be the",
+      "start": 1793.577,
+      "duration": 6.271
+    },
+    {
+      "text": "least free. This solves the problem of",
+      "start": 1797.547,
+      "duration": 3.694
+    },
+    {
+      "text": "round robin.",
+      "start": 1799.848,
+      "duration": 3.259
+    },
+    {
+      "text": "The problem with round robin was that",
+      "start": 1801.241,
+      "duration": 3.83
+    },
+    {
+      "text": "you were forcing the server to be loaded",
+      "start": 1803.107,
+      "duration": 2.698
+    },
+    {
+      "text": ".",
+      "start": 1805.071,
+      "duration": 2.658
+    },
+    {
+      "text": "This solves that problem. It says, \"",
+      "start": 1805.805,
+      "duration": 4.267
+    },
+    {
+      "text": "Okay, send it to the one with the least",
+      "start": 1807.729,
+      "duration": 3.766
+    },
+    {
+      "text": "load.\" Isn't it?",
+      "start": 1810.072,
+      "duration": 2.863
+    },
+    {
+      "text": "There are three interview rooms, or",
+      "start": 1811.495,
+      "duration": 3.372
+    },
+    {
+      "text": "three people cooking. One person is",
+      "start": 1812.935,
+      "duration": 3.617
+    },
+    {
+      "text": "making a small thing: tea, another",
+      "start": 1814.867,
+      "duration": 3.562
+    },
+    {
+      "text": "person is making parathas, and another",
+      "start": 1816.552,
+      "duration": 3.753
+    },
+    {
+      "text": "person is preparing a seven-course meal",
+      "start": 1818.429,
+      "duration": 3.324
+    },
+    {
+      "text": ". So you'll see that the one serving the",
+      "start": 1820.305,
+      "duration": 3.009
+    },
+    {
+      "text": "seven-course meal is already busy. If",
+      "start": 1821.753,
+      "duration": 2.794
+    },
+    {
+      "text": "the tea vendor finishes immediately,",
+      "start": 1823.314,
+      "duration": 2.6
+    },
+    {
+      "text": "give the next dish to the one serving.",
+      "start": 1824.547,
+      "duration": 3.786
+    },
+    {
+      "text": "So, this is called",
+      "start": 1825.914,
+      "duration": 4.459
+    },
+    {
+      "text": "load-based balancing, so that the one",
+      "start": 1828.333,
+      "duration": 4.422
+    },
+    {
+      "text": "with the least load gets the least.",
+      "start": 1830.373,
+      "duration": 4.941
+    },
+    {
+      "text": "The third is weighted round robin. What",
+      "start": 1832.755,
+      "duration": 4.679
+    },
+    {
+      "text": "is it? Weighted round robin. What is",
+      "start": 1835.314,
+      "duration": 3.993
+    },
+    {
+      "text": "weighted round robin? In horizontal",
+      "start": 1837.434,
+      "duration": 3.872
+    },
+    {
+      "text": "scaling, it's not necessary that all",
+      "start": 1839.307,
+      "duration": 4.297
+    },
+    {
+      "text": "your laptops be identical. It could be,",
+      "start": 1841.306,
+      "duration": 3.735
+    },
+    {
+      "text": "no problem.",
+      "start": 1843.604,
+      "duration": 5.535
+    },
+    {
+      "text": "But it could also be that laptop C1 has",
+      "start": 1845.041,
+      "duration": 8.094
+    },
+    {
+      "text": "8 GB of RAM, C2 has 128 GB of RAM, and",
+      "start": 1849.139,
+      "duration": 7.442
+    },
+    {
+      "text": "C3 has 1 TB of RAM.",
+      "start": 1853.135,
+      "duration": 5.457
+    },
+    {
+      "text": "Ideally, C1 should receive fewer",
+      "start": 1856.581,
+      "duration": 3.575
+    },
+    {
+      "text": "requests.",
+      "start": 1858.592,
+      "duration": 3.664
+    },
+    {
+      "text": "C2 should receive slightly more, and C3",
+      "start": 1860.156,
+      "duration": 4.475
+    },
+    {
+      "text": "should receive the most. So, you can",
+      "start": 1862.256,
+      "duration": 4.554
+    },
+    {
+      "text": "also assign weights to these.",
+      "start": 1864.631,
+      "duration": 4.12
+    },
+    {
+      "text": "Weight means ratio. This one has a",
+      "start": 1866.81,
+      "duration": 3.603
+    },
+    {
+      "text": "weight of 1, this one has a weight of 2",
+      "start": 1868.751,
+      "duration": 3.324
+    },
+    {
+      "text": ", and this one has a weight of 3. Now,",
+      "start": 1870.413,
+      "duration": 3.669
+    },
+    {
+      "text": "how will this be distributed?",
+      "start": 1872.075,
+      "duration": 4.327
+    },
+    {
+      "text": "What does 1 + 2 + 3 mean?",
+      "start": 1874.082,
+      "duration": 5.701
+    },
+    {
+      "text": "6. So, out of every six requests, one",
+      "start": 1876.402,
+      "duration": 6.852
+    },
+    {
+      "text": "will go to C1, two to C2, and three to",
+      "start": 1879.783,
+      "duration": 4.559
+    },
+    {
+      "text": "C3.",
+      "start": 1883.254,
+      "duration": 3.561
+    },
+    {
+      "text": "What is this called? Weighted round",
+      "start": 1884.342,
+      "duration": 4.722
+    },
+    {
+      "text": "robin. So you've weighted C1, saying,",
+      "start": 1886.815,
+      "duration": 4.118
+    },
+    {
+      "text": "okay, if there are six requests, one",
+      "start": 1889.064,
+      "duration": 3.94
+    },
+    {
+      "text": "will go to this, the next two will go to",
+      "start": 1890.933,
+      "duration": 4.164
+    },
+    {
+      "text": "this, the next three will go to this.",
+      "start": 1893.004,
+      "duration": 3.193
+    },
+    {
+      "text": "Then if another request comes, it",
+      "start": 1895.097,
+      "duration": 2.358
+    },
+    {
+      "text": "repeats. One will go to this, two will",
+      "start": 1896.197,
+      "duration": 2.633
+    },
+    {
+      "text": "go to this, three will go to this. This",
+      "start": 1897.455,
+      "duration": 4.041
+    },
+    {
+      "text": "is called weighted round robin. Okay?",
+      "start": 1898.83,
+      "duration": 5.129
+    },
+    {
+      "text": "And the fourth method, the fourth method",
+      "start": 1901.496,
+      "duration": 4.427
+    },
+    {
+      "text": ", is called hash-based.",
+      "start": 1903.959,
+      "duration": 4.389
+    },
+    {
+      "text": "What is it called? Hash-based. Now, what",
+      "start": 1905.923,
+      "duration": 4.705
+    },
+    {
+      "text": "is hash-based? First of all, understand",
+      "start": 1908.348,
+      "duration": 4.467
+    },
+    {
+      "text": "the meaning of hash.",
+      "start": 1910.628,
+      "duration": 4.397
+    },
+    {
+      "text": "Hash means take any information, any",
+      "start": 1912.815,
+      "duration": 4.301
+    },
+    {
+      "text": "information, and convert it into a",
+      "start": 1915.025,
+      "duration": 3.931
+    },
+    {
+      "text": "number.",
+      "start": 1917.116,
+      "duration": 4.266
+    },
+    {
+      "text": "Convert it into a number.",
+      "start": 1918.956,
+      "duration": 4.965
+    },
+    {
+      "text": "We'll give you a very simple example of",
+      "start": 1921.382,
+      "duration": 5.142
+    },
+    {
+      "text": "hashing: take any number and multiply it",
+      "start": 1923.921,
+      "duration": 5.142
+    },
+    {
+      "text": "by 10. Now, suppose you have the number",
+      "start": 1926.524,
+      "duration": 4.888
+    },
+    {
+      "text": "17, then 17 modulo 10 means when you",
+      "start": 1929.063,
+      "duration": 4.761
+    },
+    {
+      "text": "divide 17 by 10, how much reminder is",
+      "start": 1931.412,
+      "duration": 3.411
+    },
+    {
+      "text": "left?",
+      "start": 1933.824,
+      "duration": 2.278
+    },
+    {
+      "text": "7 is left.",
+      "start": 1934.823,
+      "duration": 4.793
+    },
+    {
+      "text": "27 modulo 10 is also 7. What is 13",
+      "start": 1936.102,
+      "duration": 7.64
+    },
+    {
+      "text": "modulo 10? It's 3. So this number is",
+      "start": 1939.616,
+      "duration": 6.125
+    },
+    {
+      "text": "called a hash.",
+      "start": 1943.742,
+      "duration": 3.987
+    },
+    {
+      "text": "You're converting information into a",
+      "start": 1945.741,
+      "duration": 4.312
+    },
+    {
+      "text": "number, so it's hash-based. Now, a hash",
+      "start": 1947.729,
+      "duration": 4.617
+    },
+    {
+      "text": "can contain anything. Information means",
+      "start": 1950.053,
+      "duration": 3.95
+    },
+    {
+      "text": "any information.",
+      "start": 1952.346,
+      "duration": 3.436
+    },
+    {
+      "text": "You can do this with a user ID; if a",
+      "start": 1954.003,
+      "duration": 3.607
+    },
+    {
+      "text": "request comes for this user ID, we'll",
+      "start": 1955.782,
+      "duration": 3.611
+    },
+    {
+      "text": "send it there.",
+      "start": 1957.61,
+      "duration": 4.763
+    },
+    {
+      "text": "You can combine the user's IP address.",
+      "start": 1959.393,
+      "duration": 5.201
+    },
+    {
+      "text": "You can combine the user's port number.",
+      "start": 1962.373,
+      "duration": 3.331
+    },
+    {
+      "text": "We'll explain all this later when we",
+      "start": 1964.594,
+      "duration": 3.029
+    },
+    {
+      "text": "come to networking. But information",
+      "start": 1965.704,
+      "duration": 4.519
+    },
+    {
+      "text": "means anything is hashed by the type of",
+      "start": 1967.623,
+      "duration": 3.921
+    },
+    {
+      "text": "request.",
+      "start": 1970.223,
+      "duration": 4.096
+    },
+    {
+      "text": "If someone asks for a video, we'll send",
+      "start": 1971.544,
+      "duration": 4.1
+    },
+    {
+      "text": "it to C1.",
+      "start": 1974.319,
+      "duration": 3.253
+    },
+    {
+      "text": "If someone sends a payment request,",
+      "start": 1975.644,
+      "duration": 3.57
+    },
+    {
+      "text": "we'll send it to C2.",
+      "start": 1977.572,
+      "duration": 4.316
+    },
+    {
+      "text": "If someone wants to place an order,",
+      "start": 1979.214,
+      "duration": 4.814
+    },
+    {
+      "text": "we'll send it to C3.",
+      "start": 1981.888,
+      "duration": 3.857
+    },
+    {
+      "text": "So, hash-based can mean both: you decide",
+      "start": 1984.028,
+      "duration": 3.434
+    },
+    {
+      "text": "which channel will go where based on the",
+      "start": 1985.745,
+      "duration": 3.308
+    },
+    {
+      "text": "user's information, by hashing it and",
+      "start": 1987.462,
+      "duration": 3.057
+    },
+    {
+      "text": "converting it into a number, as is",
+      "start": 1989.053,
+      "duration": 3.808
+    },
+    {
+      "text": "happening here.",
+      "start": 1990.519,
+      "duration": 4.101
+    },
+    {
+      "text": "Or you can do it role-based: \"Okay,",
+      "start": 1992.861,
+      "duration": 3.617
+    },
+    {
+      "text": "brother, we've already decided that I",
+      "start": 1994.62,
+      "duration": 3.764
+    },
+    {
+      "text": "have YouTube, so whenever anyone wants",
+      "start": 1996.478,
+      "duration": 3.813
+    },
+    {
+      "text": "to watch a video, we'll send them to C1",
+      "start": 1998.384,
+      "duration": 2.591
+    },
+    {
+      "text": ".",
+      "start": 2000.291,
+      "duration": 2.534
+    },
+    {
+      "text": "This is my rule. No matter who the user",
+      "start": 2000.975,
+      "duration": 3.376
+    },
+    {
+      "text": "is, no matter how much load C1 is",
+      "start": 2002.825,
+      "duration": 3.66
+    },
+    {
+      "text": "running. Whenever anyone wants to make a",
+      "start": 2004.351,
+      "duration": 4.057
+    },
+    {
+      "text": "payment, we'll send them to C2. We've",
+      "start": 2006.485,
+      "duration": 4.232
+    },
+    {
+      "text": "decided this. And if anyone wants to",
+      "start": 2008.408,
+      "duration": 4.778
+    },
+    {
+      "text": "order something, we'll send them to C3.",
+      "start": 2010.717,
+      "duration": 4.537
+    },
+    {
+      "text": "This is decided.\" So, there are a few",
+      "start": 2013.186,
+      "duration": 4.269
+    },
+    {
+      "text": "methods, what are they called? Balancing",
+      "start": 2015.254,
+      "duration": 3.819
+    },
+    {
+      "text": "algorithms. What do they call them?",
+      "start": 2017.455,
+      "duration": 3.793
+    },
+    {
+      "text": "Balancing algorithms. Let me explain to",
+      "start": 2019.073,
+      "duration": 4.736
+    },
+    {
+      "text": "recap. What's the simplest? Round Robin",
+      "start": 2021.248,
+      "duration": 4.847
+    },
+    {
+      "text": "one by one. What's a little bit more",
+      "start": 2023.809,
+      "duration": 4.204
+    },
+    {
+      "text": "than that? Weighted Round Robin. You",
+      "start": 2026.095,
+      "duration": 3.459
+    },
+    {
+      "text": "decide the weights.",
+      "start": 2028.013,
+      "duration": 3.011
+    },
+    {
+      "text": "Don't give them one at a time. Give one",
+      "start": 2029.554,
+      "duration": 3.099
+    },
+    {
+      "text": "to this one. Give the next two to that",
+      "start": 2031.024,
+      "duration": 3.102
+    },
+    {
+      "text": "one. Give the next three to that one.",
+      "start": 2032.653,
+      "duration": 3.299
+    },
+    {
+      "text": "What happens after that? Load-based",
+      "start": 2034.126,
+      "duration": 3.335
+    },
+    {
+      "text": "means give it to the server that's",
+      "start": 2035.952,
+      "duration": 3.574
+    },
+    {
+      "text": "currently under the least load. And what",
+      "start": 2037.461,
+      "duration": 4.465
+    },
+    {
+      "text": "about the fourth one? Hash-based. Decide",
+      "start": 2039.526,
+      "duration": 4.162
+    },
+    {
+      "text": "which one goes to which server based on",
+      "start": 2041.926,
+      "duration": 3.332
+    },
+    {
+      "text": "the incoming requests. It's",
+      "start": 2043.688,
+      "duration": 3.76
+    },
+    {
+      "text": "pre-determined. Load plays no role in",
+      "start": 2045.258,
+      "duration": 3.988
+    },
+    {
+      "text": "this, and round-robin or anything like",
+      "start": 2047.448,
+      "duration": 3.294
+    },
+    {
+      "text": "that plays a role.",
+      "start": 2049.246,
+      "duration": 3.317
+    },
+    {
+      "text": "It's pre-decided that every request that",
+      "start": 2050.742,
+      "duration": 3.595
+    },
+    {
+      "text": "comes in this way will go to this server",
+      "start": 2052.563,
+      "duration": 4.953
+    },
+    {
+      "text": ". So, this is the balancing algorithm,",
+      "start": 2054.337,
+      "duration": 6.121
+    },
+    {
+      "text": "and this is the overall scaling.",
+      "start": 2057.516,
+      "duration": 5.571
+    },
+    {
+      "text": "This is the overall scaling.",
+      "start": 2060.458,
+      "duration": 3.94
+    },
+    {
+      "text": "If you understand scaling this much,",
+      "start": 2063.087,
+      "duration": 2.517
+    },
+    {
+      "text": "you're in a very good position to",
+      "start": 2064.398,
+      "duration": 2.127
+    },
+    {
+      "text": "explain.",
+      "start": 2065.604,
+      "duration": 3.048
+    },
+    {
+      "text": "We've already talked for 30-40 minutes.",
+      "start": 2066.525,
+      "duration": 3.754
+    },
+    {
+      "text": "If you want, you can also talk about it",
+      "start": 2068.652,
+      "duration": 3.89
+    },
+    {
+      "text": "for 30-40 minutes. Okay? So watch this",
+      "start": 2070.279,
+      "duration": 4.17
+    },
+    {
+      "text": "video, tell us in the comments, and if",
+      "start": 2072.542,
+      "duration": 3.862
+    },
+    {
+      "text": "the video doesn't come in the next two,",
+      "start": 2074.449,
+      "duration": 4.224
+    },
+    {
+      "text": "three, four days, please revise. We're",
+      "start": 2076.404,
+      "duration": 3.893
+    },
+    {
+      "text": "planning a project in the AI series.",
+      "start": 2078.673,
+      "duration": 2.597
+    },
+    {
+      "text": "That project is in development, so it",
+      "start": 2080.297,
+      "duration": 2.182
+    },
+    {
+      "text": "hasn't arrived. Some people are asking,",
+      "start": 2081.27,
+      "duration": 2.566
+    },
+    {
+      "text": "so I'll let you know. He has one",
+      "start": 2082.479,
+      "duration": 2.921
+    },
+    {
+      "text": "remaining project, so we'll get that",
+      "start": 2083.836,
+      "duration": 2.876
+    },
+    {
+      "text": "done. Right now, we're building it",
+      "start": 2085.4,
+      "duration": 2.412
+    },
+    {
+      "text": "ourselves. We're encountering some",
+      "start": 2086.712,
+      "duration": 2.313
+    },
+    {
+      "text": "errors, which is why it's not working.",
+      "start": 2087.812,
+      "duration": 2.326
+    },
+    {
+      "text": "So, until then, let's just watch it.",
+      "start": 2089.025,
+      "duration": 2.319
+    },
+    {
+      "text": "Thank you very much for watching. You",
+      "start": 2090.138,
+      "duration": 3.921
+    },
+    {
+      "text": "guys are also very happy.",
+      "start": 2091.344,
+      "duration": 2.715
+    }
+  ],
+  "text": "Hello kids, how are you? How are you? Today's topic is scaling. We'll teach you all about this topic today. Last time we covered scaling, we explained what vertical and horizontal scaling are. Some people were saying that horizontal is good. That's not true in system design. So, let's explain what both are. When to use what? The first question you'll likely ask is, what will you do if you scale? Vertical or horizontal, and there's no single answer to horizontal. The question is, why would you do it? So , it's crucial to understand that. How does horizontal scaling work? Horizontal is a little more complex than vertical scaling. How do load balancers work? What is a heartbeat? What are cookies? What do you mean when you log in? What does it mean when they say \"cookies are stored on the server\"? How do all these things work? What is a stateless server? It's very important horizontally because you have to make it stateless. Consistent hashing will be covered in a future lecture, but Danny Luin and Tom Layton were two people who discovered it. Then an entire company was formed around it. Today, that company is known as Akamai. So, it's very important; all this is connected to the real world. Okay? And let me tell you one more thing: if we go home tomorrow, it's possible that videos won't be available for three or four days while Chhath is going on. So, don't complain in the comments about them not being available. Right? So, understand everything a little. Okay? Now, let's see what scaling means. Scaling doesn't mean anything. Whatever your system is, what your system looks like in the beginning. We told you in the previous article that a laptop is your system, that's all. So if it is working for 10 users then scaling means how to take it from 10 users to 10 crore users? This is what is called scaling. Scaling means increasing . You are living in one room, it is fine to live there but three people, four people can live in one room. Apartments have to be made for a thousand people to live. What is an apartment? It is a collection of rooms. So this is called scale that by scaling one room we have made an apartment. Okay? Let's do it. Now there are only two ways of scaling. One is called vertical scaling and the other is called horizontal scaling. What ? Vertical and horizontal. (Vertical) and horizontal () if you do not remember , to understand this, suppose there is a child and he can lift 20 kg weight, how much 20 kg weight can he lift at one time, now you have to make him lift 40 kg weight, now 20 kg is not enough for you, you need 40 kg, so you have two options, either send this child to the gym, build a little body of this child, make this child big, make him muscle, then he will start lifting 40 kg, okay and one way is that this child was lifting 20 kg, similarly bring another Sukhandi child and make him stand next to him, this is the thing in which you are making the child grow, by sending the child to the gym you are advancing the child, you are improving the child, this is called vertical because you can see that the height of the child has increased, the child was this big, now the child has become this big, so this is called vertical scaling, horizontal means another like this Bring a child and make him stand, that is why it is called horizontal, because earlier there was one child, if we make three or four more children stand like him, then they will start lifting, or one child was so big, we made him so big by sending him to the gym, so this is vertical scaling, and when you make a lot of children stand side by side, you call it horizontal scaling because it expands horizontally , so the same thing happens in this too , if you want to scale, then vertical means that you buy a bigger system, buy a bigger server which has more CPU, more RAM, more disk space, buy that, horizontal means that you buy more servers, if one server is not working then no problem, buy one more, buy two more, buy 10 more, so this is bigger servers, this is more servers, generally doing vertical is very simple, why is it simple because it does not require any code change, if your app, if your website is running on any server on any website, then you will not have to change the code, it is not that on a laptop You don't have to go and code anything; you just have to call AWS or whoever you purchased your server from, and they'll scale your server in a jiffy . Let's assume that there's no code change involved. Horizontal is a bit complex; it's complex because it has many reasons . As soon as horizontal is introduced, a load balancer comes into the picture, as we explained yesterday; we'll discuss this in detail. Load balancer comes into the picture. Secondly, there's the problem of stateful and stateless servers, which may require code changes. We'll explain what stateless is. That's why it's a bit complex. Vertical costs are very high. We mentioned yesterday that its cost increases exponentially. If you take a small child to the gym, it will cost a lot when compared to horizontal. Horizontal costs are linear; if one child costs ₹ 10, two children will cost ₹ 20. It's simple math. That simple math doesn't work in vertical. Linear math doesn't work. Exponential math works. So its cost is higher. This one costs less. Another problem with vertical is that there's a ceiling. How long can you send a child to the gym? How many kilos can each person lift? If he was lifting 20 kilos, if you send him to the gym, he'll lift 200. Now, will the child increase his lifting beyond 200? It's impossible that you send a child to the gym all his life and he'll keep lifting. There's a human limit, right? Similarly, machines also have a limit. So, there's a ceiling for vertical scaling. How much RAM can you buy? You bought 1 TB of RAM. Now, there's nothing more available in the world, where will you get it? And horizontal doesn't have a ceiling. You can buy as many machines as you want. One machine, two machines, a thousand machines, 10,000 machines, whatever you ask for, you'll get as many machines as you want. So, horizontally, there's no ceiling; there's an unlimited ceiling. Vertically, there's a defined ceiling. What it is, is defined. And one thing: vertically, there's a little downtime. What vertical scaling means is that if there's a machine, a server, a computer , and your code is running on it. Your code is running on it right now. So , what will AWS do when it changes it? First, it will shut down your code on this machine. It will copy this code to a larger machine and start that larger machine. What does this take? It takes time. As soon as your code is shut down on this machine, your website will go down and become inoperable. Someone searching for pratyush.com won't find it because the computer it was running on has been turned off. Until this code is copied to the new computer, which AWS does. You don't have to do anything, but it will take some time, brother. From the time you copy it to the time you start this machine, your website will be down. So, there's downtime in this. Horizontal doesn't have downtime. Horizontal doesn't have downtime. If you have four machines running and you need to add a fifth, it'll happen seamlessly. You don't need to shut down all four. If you have three children who are gaining weight well, and you need to bring a fourth child, just bring him in . There's no need to disturb all three. So, horizontal doesn't have downtime. So , what are the differences between vertical and horizontal scaling? If someone asks you what the differences are, these are the differences. Vertical is better in some things, vertical isn't better in others. The one thing that's better is that vertical is simple. Vertical doesn't require much brainpower; it just takes money and it's done. Horizontal is a bit more complex. Horizontal scaling is a bit complex for us. Now the question arises, which one to do? Whenever we start something, whenever someone opens their own startup, people usually try vertical scaling first. Usually, vertical scaling is tried up to a certain limit. Why? Because no one has that much complex knowledge in the beginning, so people don't try horizontal scaling. So, vertical scaling is initially tried . After a certain point, when either the ceiling is hit or the cost becomes so high, only then do people move to horizontal scaling. Only then do people say, \"Let's learn a little more complex things and then move to horizontal.\" So, your answer to starting should be, \" Sir, if there's double or triple the load, we'll go vertical.\" As soon as we feel that vertical costs are becoming too high or that vertical hardware limits are being reached, then we'll move to horizontal scaling. Large companies use mixed systems. This means they have very large computers. These are very large computers that they have scaled vertically, and there are many such large computers. Meaning, first scale vertically, make the computer bigger. When that limit is reached, install more similarly large computers. And remember one more thing: the database, now scale the database as well . The problem that exists in the computer that uses your code is the same problem that exists in the computer that uses your database. People prefer vertical scaling in databases. You'll understand why this is preferred when we teach you about sharding later. Horizontalizing a database. Now, what does horizontal mean? Any machine can run your code. That's fine in code, that's possible. Now, let's say the database contains data for 10 users. How do you scale it horizontally? Scaling horizontally means having one computer with data for three users, another computer with data for four users, and another computer with data for the remaining three users. This process is called splitting or sharding. It becomes even more complex. It becomes very complex. So, in the case of databases, people prefer to scale vertically as long as possible. When it becomes absolutely impossible to scale vertically, like AWS saying you'll have to pay ₹ 1 crore, then people say, \"Okay, let's do sharding or splitting,\" because sharding and splitting are a different beast. It then becomes very complex. So, in a code server, it's fine; a little vertical scaling will become horizontal . In a database, people prefer to scale vertically as long as possible. Only when they run out of options will they scale horizontally. Right? Now, there's not much to understand about vertical. There's no vertical at all. Just call AWS and say we need a bigger machine. Everything will be done . AWS will handle whatever happens. As a system design student, you don't need to worry about that. What do you need to worry about? Horizontal scaling. This is complex. If it's complex, it's more important to learn. That's why we'll explain horizontal scaling to you now. Vertical scaling is done. Vertical scaling means buy a bigger machine, that's it. Horizontal scaling requires some decision-making. So, let's move on. Let's explain horizontal scaling to you. Now, as soon as horizontal scaling comes into play, the horizontal architecture is very simple: you had one computer. Now, let's say you have three computers . This is your C1 computer. This is your C2 computer. This is your C3 computer. This is your simple laptop. All three have their own RAM, their own CPU, and their own disks, so they're all easily independent computers. As soon as horizontal scaling comes into the picture, you need a load balancer. You need a load balancer. Why is this necessary, and why wasn't it necessary before, and why isn't a load balancer needed vertically? It's because of how your system works. You're running your code on a laptop. Your code is running on this laptop. A user comes in. The user sends a request to this laptop. A request can be anything. Clicking a button is a request. Pressing the back button is also a request. Asking something on a chat or GPT is a request. Clicking on a YouTube playlist is a request. Commenting on YouTube is any kind of user activity—anything that the user does with their hands, pressing the computer, is a request. Okay? So, initially, it was simple: the user would send a request to this laptop because there was only one laptop. This laptop would send a response to the user , so it was very simple at first. Now the problem is that you have three laptops. Code is running on all three. Any one of the three laptops can serve a user's request. The same code is running on all three. So, for example, if the Chat GPT program is running on all three laptops, and a user asks, \"What is Shah Rukh Khan's age ?\" any of the three laptops can fulfill the request. But it's impossible for any laptop to have all the users on one laptop and these two remain idle, or for all the users to have all the users on these two and this one remain idle. This is why load balancing is so important. Now, what do we do with load balancing? We place a load balancer in front of our laptop. We place a person in front of our laptop, in front of our house. Now, the user was directly sending a request to your laptop to tell us Shah Rukh Khan's age. Now, the user is not directly connected to your laptop. The user knows only one thing: the load balancer. Now, every request the user sends will go to the load balancer first. Which one ? The load balancer. What is a load balancer? A load balancer is also a laptop. Some different code is running inside it. Its job is different. What is that job? Now, the load balancer receives a request from this man. It asks, \"What is Shah Rukh Khan's age?\" The load balancer has to decide which of the three laptops should this request go to. That's why it's called a load balancer. Now, the load balancer doesn't have just one user for every user. You have millions of users. So, user one is talking to this same user. User two is also talking to this same load balancer . User three is also talking to this same load balancer. So, what is coming to the load balancer? Load is coming. Now, how should this load be balanced? Should all the requests be sent to this laptop, or should all the requests be sent to this one, or should all three be sent to this one, two to this one, and one to this one? How should we balance? This is the load balancer's job. Whose job is this? This is the load balancer's job. Okay. So, now, it must have some function. Next, we'll see how this works. There's some algorithm for this too. How does it work? But before that, understand one very important thing we talked about: stateless servers. What did we say? Stateless servers. When we created the horizontal table, did we write it somewhere? Where did we write it? Stateless. What does this mean? Look , understand it very easily. Now, what does stateless mean? For example, imagine a scenario. We are a user. What are we? We are a user. My name is Pratyush. My name is Pratyush. Okay. Everything is a request. So, what did we do? Let's say this is an Amazon website . So what did we do? My name is Pratyush , right? So what was our first request? We requested to create an account on Amazon. On what? We requested to create an account. Let's say that request went to the load balancer and went to laptop C1. The load balancer can send it to anyone. Let's say the account creation process was completed on C1. Now, C1 doesn't know that there is a user named Pratyush. C1 knows this. C2 and C3 don't know what's going on yet . How would C2 and C3 know? They're different laptops, right? So, C1 knows that Pratyush has created his account. So far, everything is fine. Okay. What's our next request? We like a laptop and click to buy on that laptop. This is also a request. Everything is a request, so we click to buy a laptop. By God's grace, this request also went to C1. So, C1 already knew that Pratyush had just created an account. Now, C1 also knows that Pratyush wants to buy a Dell laptop. He wants to add it to cart . So, C1 added it to cart. C2 and C3 have no idea about me yet because nothing has happened to them. Okay. Next, we're going to the final step. We've created the account, added it to cart. Now, we want to make the payment and complete our purchase of that laptop . This is also a request. Making the payment is also a request. But now, by God's grace, it went to C2. This payment request went to C2. Now, look! We never created an account on C2. When I created an account on C1, C1 must have stored my information on its disk, on its hard disk, that this guy is Pratyush, his username is P Narayan, and his password is password. I added Pratyush to cart. C1 must have stored this in its RAM, thinking that this guy just added a Dell laptop to his cart. Very good. But when my payment request goes to C2, C2 will be confused. What request will reach C2, that Pratyush wants to make a payment of 65,000 rupees? Now C2 will ask, \"Who is Pratyush, and for whom is he trying to make a payment ? What's wrong with him?\" C2 will reject my request because it doesn't know what's going on. Imagine, there are three hotels. What's the point? There are three hotels here. Right? You enter one hotel and order for the first time. Everything is going well . You even eat at the same hotel, place your order, the food arrives, and you eat. Now you feel like making a payment , so you leave this hotel and enter this hotel. You go there and say, \"Here's ₹ 720 payment.\" What's the payment for? You didn't even eat here. You ate at Ram Hotel, and then you come to Shyam Hotel and say you'll pay ₹ 720. This problem is called a state problem. This is happening, each server is keeping my information to itself. This type of design is called a stateful server. What is it called? It's called a stateful server. What is state? Any information about any user? What is this user's user ID? What was it doing? When any user sends a request, the information related to that request is stored. As long as everything was going to C1, there was no problem. As soon as one of my requests goes to C2, there will be a problem. This type of design is called a stateful server. Why is it called a stateful server? Because this server keeps my state, my information, my information about Pratyush, and the information about the requests Pratyush is making, all to itself. It doesn't share it with anyone. So, when you design this, it's called a stateful server. Now, if you have such a design, your load balancer will have to ensure that if Pratyush is a user, then all of Pratyush's work, all the work Pratyush wants to do in the world, all the requests Pratyush wants to make, always go to one laptop, and not to any other. If Pratyush enters a hotel for the first time, he will order from there, eat there, pay there, and leave a tip there . Pratyush cannot go to any other hotel. This is where the problem arises. Suppose this laptop is busy. A hotel is very crowded. The two of them are sitting comfortably , eating tea and biscuits. Now Pratyush arrives, and the load balancer thinks, \" Okay, Pratyush needs to be sent to C1.\" It remembers that Pratyush went to C1, so it pushes him into this queue as well . Pratyush is standing in line even though both of these laptops are empty. The other Shyam Hotel and Mohan Hotel are empty, and Pratyush is entering the line at Ram Hotel, saying, \"I'll pay here, eat here, and sleep here.\" This is wrong . To solve this problem, you have to convert your server from stateful to stateless. What does that mean? You have to convert a stateful server from stateful to stateless. What is this stateless thing ? Let me explain. Did you understand the problem with stateful? This is a problem with horizontal servers. It's not a problem with vertical servers . There's only one laptop and one hotel in vertical servers. The hotel will remember you, eat, and do whatever you want. This problem occurs with horizontal servers. This is called the state problem, and to solve this problem , we'll build a stateless server. What is a stateless server? Now, let's explain this state problem. What does state mean? Any information about any request or any user is called state, and this is called a cookie. Not a cookie, but a cookie. Okay? What happens is, how does login work? When you buy a laptop for the first time and you go to Instagram, say, instagram.com, and log in, you have to provide your username or password, or you have to log in with your Google account. After that, if you log in with Chrome, say, you come back tomorrow, shut down your laptop, and open Instagram again, you don't have to log in. That Instagram account remains logged in , right? How does this happen? It's done with cookies. What happens is that whenever you assume you have a server, the one marked C1 and C2 above, this is C1. When someone comes to log in for the first time, you're the first one, Pratyush is the first one, the server says, \"OK, enter your username and password. Authentication is successful.\" The server understands that this is Pratyush . Now it creates a session. What does a session mean? What does a session ID say? It says that this person's name is Pratyush. He's authenticated, meaning he entered his username and password correctly, we've got his account, and we'll remember it for that long. For example, for two days, seven days, or eight days. It's like a token. When you go somewhere for the first time, you're asked to register, so you register and sign in. After that, the guard there will remember that you came. If you don't log in for a month or two, the server will forget you, and you'll have to register . This is what a session is. Now, what this server does is, let's say you log in as a user. The server will create a session ID. The session ID is something like a big ABX and send it to your browser. It will send it to your browser, that is , to your Chrome browser. From then on, whenever you log in, you're done. Now, if you open Instagram or do anything, your browser will send this cookie. This is called a cookie. It will send it to the server. The server will read the cookie and understand, \" Yes, this is Pratyush. We need to remember him for 10 days. He's logged in .\" That's why you don't have to log in again and again. If this weren't the case, every time you open or close Instagram.com, it would prompt you to enter your username and password. This doesn't happen. Why? This isn't the case . So, you can use this cookie as a statement, \"What is this cookie?\" Your information is this: your name is this, your ID is this, your IP is this, your password is this, your username is this , so and so, whatever information there is about you. Okay, so what comes next? Wait a minute . Yes, sorry, someone's information came up. So, this cookie system, so what happens in stateful? What happens in stateful? You were a user, you went and logged in. Suppose your first login was on C1, then C1 remembered your cookie and session information. Now, if you go back to C1, you don't have to log in, but when you make a request to C2, you have to log in again . Why? Because C1 has kept this cookie and session information in itself. It didn't share this with C2, so C2 had a problem. This was stateful. Stateless doesn't mean that this cookie or session is stored in a shared storage . What? Your cookie or session should be stored on a shared system or shared server. Now, what will happen is that no matter which server you go to, whether it's C1 , C2, or any other, everyone will read this shared system and know that it belongs to Pratyush. Even if you take the previous example, you logged in, added to Amazon, and added to cart. What did you do? Add to cart. Now, all this information, all this state, will be stored in a shared storage. It won't be stored in your laptop's own memory. It will be stored in a shared storage. Now, if you go to another storage to make a payment, that shared storage will see what this person has done so far: created an account and added to cart. Okay, you want to make a payment. Yes, you can make a payment of Rs. 65,000. So , the problem with these three hotels is that previously, none of the hotels were talking to each other. Now, all the hotels are connected. You go and place your order here, eat here, and then go here to pay. The person there will ask the central system, \"Hey, this guy came, paid ₹ 720 , who is this guy?\" Someone will tell him, \"Yes, he came, placed an order, and ate the food. This is the payment for that.\" This person will take your payment. This system is called stateless servers . No single server is individually remembering your state. Everyone is storing a shared server somewhere, and everyone is reading from their own shared server. This is crucial when building a horizontally scaling system. If you make it stateful, it will cause a lot of problems. Let me explain why. Now, another thought should come to your mind: can we also do what we said, that all of Pratyush's requests go to one server? Why is this problematic? There's a load problem. Now, Pratyush is making 2,000 requests a day. You're sending all of Pratyush's requests to C1. What will C2 and C3 do if C1 is busy? Suppose a fire breaks out in C1, what will happen then? Then you'll send it to C2. He'll have to log in again. That's why all these problems arise in stateful systems. Stateless systems are designed to make your system stateless. So whose problem is this? Horizontal. And how do you solve it? Let's do it this way. Now , let's move on to load balancers. A load balancer has four functions in total. How many functions does it have in total? A load balancer has four functions. First, it's obvious that you need to spread the traffic, the user requests, across all the servers. Spreading is the main function. Second, you need to keep checking the health. What do you need to keep doing? Health checks. This is called heartbeat . What's this called? A heartbeat. A heartbeat isn't anything. If you have three laptops in your system and a load balancer, the load balancer will ask all three laptops, \"Listen, Laptop One, are you okay?\" Laptop One will say, \"Yes, brother, I'm fine.\" What's this called? A health check. You ask, \"Are you okay?\" It says , \"I'm fine.\" It's a very simple request . There's no fraud involved. It asks, \" Are you okay?\" It says, \"Yes, I'm fine. \" This means the health check has passed , and this happens continuously. This happens every five seconds, every ten seconds. If the load balancer thinks, \"C1 hasn't responded,\" say, three times in a row. We ask, \"Are you okay?\" It didn't respond. Then, five seconds later, it asks, \"Are you okay?\" It didn't respond . Then, it asks, \"Are you okay?\" It doesn't respond. Then, it asks, \"Are you okay?\" It doesn't respond. So, the load balancer thinks, \"C1 has caught fire. C1 has gone down.\" So, no traffic is sent to C1. Traffic is no longer sent to C1. This is called a health check. The second and third are to add or remove machines. Which ones? Add or remove. Suppose you had three machines in total: one, two, and three. This was your load balancer. So, it was currently serving these three. Now, you can also install a fourth machine and tell your load balancer that C4 is now in the system. The load balancer will now perform a health check on this machine as well and start sending traffic to it. So, previously, it was sending traffic to three. Now, it will spread traffic to four and start doing health checks on it as well. What is the fourth function? For security. What is the fourth function? For security. When the load balancer wasn't in place, the user was talking directly to your laptop. The user was talking directly to your laptop. Your laptop will need to have a public IP. Remember, we explained public IP and private IP in Lecture 2. What are they? A public IP refers to the main gate of your apartment or society. A private IP refers to your home address. Someone from Zomato could access the main gate, but not your home. Without a load balancer, every user could directly access your C1 laptop because your C1 was public, so they could access your C1 laptop. What happens with a load balancer? Think of the load balancer as the main gate. Think of C1, C2, and C3 as house addresses. Now, a user can't directly access your laptop. The user will go to the main gate. The main gate will decide which house to send the user to, increasing security. If someone has direct access to your server, they can do anything. Now, they only have access to the load balancer. They can hack the load balancer, for example. They can't access your machine. They're not allowed to access your machine. They don't even know your machine's IP address. So, security is one of its four functions. These three are simple. How will you spread traffic? There are techniques for this. You'll be asked, \" Okay, you've built a load balancer. Which load balancing algorithm will you use?\" So, the simplest algorithm is called round robin. What does round robin mean? Request one comes, give it to C1. Request two comes, give it to C2. Request three comes, give it to C3. Request four comes, give it back to C1. Request five comes, give it back to C2. Request six comes, give it to C3, and repeat. This is called round robin. The first request comes, give it to this one . Now give it its turn. Any other request comes, give it to this one. The next request comes, give it to this one . This is called round robin. So, this is the simplest. There's no brain involved. The load balancer knows, \"I have three laptops.\" A request came in, \"Yes, take C1.\" Another came in, \"C2.\" A third came in, \"C3.\" So, it's like dealing cards, one, two, three, this, and so on. This is very simple, very easy. What's the problem with this? The problem is that some requests are heavy. Some requests are heavy. And they are heavy, aren't they? A request could be for payment. So, let's say a payment request is a heavy request. Another request could be just a click of the back button , so that's a light request. Meaning, processing a request can take a lot of time, while processing another request can take less time. Just think about it, all kinds of work work. If you give us a video, it will take time, brother. Sending us a large payment, that will take time too, but if someone presses the back button, it will take less time . The same thing happens in chat. You tell Chat GPT to tell you Shah Rukh Khan's age; it's a small request, and it will respond immediately. Now, you're asking it to make a game, and you're giving us the full draft, which will take longer. So, what happens in round robin is that one of your machines might get overloaded. What could happen? It could get overloaded. Is the overloaded machine going to this one, because it's not being used intelligently? The request comes in, it goes to this one, and it can't go to any other one. Let's say this has happened to you: your laptop with C1 is running at 99%, meaning it's running at 99%, and this machine could catch fire any moment, while C2 is running comfortably at 40%. Now, when a request comes in, the load balancer is following round robin, so it's determined to send it to this one, whether it's at 99%or 100%. I don't care . So, what could happen is that your machine could get overloaded. So this is simple, but it also has a problem. What is the other method? Load-based? Load-based, either connection-based or request-based. Send the server that appears to be the least free. This solves the problem of round robin. The problem with round robin was that you were forcing the server to be loaded . This solves that problem. It says, \" Okay, send it to the one with the least load.\" Isn't it? There are three interview rooms, or three people cooking. One person is making a small thing: tea, another person is making parathas, and another person is preparing a seven-course meal . So you'll see that the one serving the seven-course meal is already busy. If the tea vendor finishes immediately, give the next dish to the one serving. So, this is called load-based balancing, so that the one with the least load gets the least. The third is weighted round robin. What is it? Weighted round robin. What is weighted round robin? In horizontal scaling, it's not necessary that all your laptops be identical. It could be, no problem. But it could also be that laptop C1 has 8 GB of RAM, C2 has 128 GB of RAM, and C3 has 1 TB of RAM. Ideally, C1 should receive fewer requests. C2 should receive slightly more, and C3 should receive the most. So, you can also assign weights to these. Weight means ratio. This one has a weight of 1, this one has a weight of 2 , and this one has a weight of 3. Now, how will this be distributed? What does 1 + 2 + 3 mean? 6. So, out of every six requests, one will go to C1, two to C2, and three to C3. What is this called? Weighted round robin. So you've weighted C1, saying, okay, if there are six requests, one will go to this, the next two will go to this, the next three will go to this. Then if another request comes, it repeats. One will go to this, two will go to this, three will go to this. This is called weighted round robin. Okay? And the fourth method, the fourth method , is called hash-based. What is it called? Hash-based. Now, what is hash-based? First of all, understand the meaning of hash. Hash means take any information, any information, and convert it into a number. Convert it into a number. We'll give you a very simple example of hashing: take any number and multiply it by 10. Now, suppose you have the number 17, then 17 modulo 10 means when you divide 17 by 10, how much reminder is left? 7 is left. 27 modulo 10 is also 7. What is 13 modulo 10? It's 3. So this number is called a hash. You're converting information into a number, so it's hash-based. Now, a hash can contain anything. Information means any information. You can do this with a user ID; if a request comes for this user ID, we'll send it there. You can combine the user's IP address. You can combine the user's port number. We'll explain all this later when we come to networking. But information means anything is hashed by the type of request. If someone asks for a video, we'll send it to C1. If someone sends a payment request, we'll send it to C2. If someone wants to place an order, we'll send it to C3. So, hash-based can mean both: you decide which channel will go where based on the user's information, by hashing it and converting it into a number, as is happening here. Or you can do it role-based: \"Okay, brother, we've already decided that I have YouTube, so whenever anyone wants to watch a video, we'll send them to C1 . This is my rule. No matter who the user is, no matter how much load C1 is running. Whenever anyone wants to make a payment, we'll send them to C2. We've decided this. And if anyone wants to order something, we'll send them to C3. This is decided.\" So, there are a few methods, what are they called? Balancing algorithms. What do they call them? Balancing algorithms. Let me explain to recap. What's the simplest? Round Robin one by one. What's a little bit more than that? Weighted Round Robin. You decide the weights. Don't give them one at a time. Give one to this one. Give the next two to that one. Give the next three to that one. What happens after that? Load-based means give it to the server that's currently under the least load. And what about the fourth one? Hash-based. Decide which one goes to which server based on the incoming requests. It's pre-determined. Load plays no role in this, and round-robin or anything like that plays a role. It's pre-decided that every request that comes in this way will go to this server . So, this is the balancing algorithm, and this is the overall scaling. This is the overall scaling. If you understand scaling this much, you're in a very good position to explain. We've already talked for 30-40 minutes. If you want, you can also talk about it for 30-40 minutes. Okay? So watch this video, tell us in the comments, and if the video doesn't come in the next two, three, four days, please revise. We're planning a project in the AI series. That project is in development, so it hasn't arrived. Some people are asking, so I'll let you know. He has one remaining project, so we'll get that done. Right now, we're building it ourselves. We're encountering some errors, which is why it's not working. So, until then, let's just watch it. Thank you very much for watching. You guys are also very happy.",
+  "channel": "Gaurav Sen",
+  "timestamp": "00:00"
+}
